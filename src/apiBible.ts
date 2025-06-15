@@ -8,6 +8,7 @@ const bibleApiKey = process.env.BIBLE_API_KEY as string;
 type GetBiblesInput = {
   language?: string;
   abbreviation?: string;
+  name?: string;
   ids?: string[];
   includeFullDetails?: boolean;
 };
@@ -35,7 +36,7 @@ export async function getBibles(getBiblesInput: GetBiblesInput = {}) {
 type GetVerseInput = {
   bibleId: string;
   verseId: string;
-  contentType?: string;
+  contentType?: "html" | "json" | "text";
   includeNotes?: boolean;
   includeTitles?: boolean;
   includeChapterNumbers?: boolean;
@@ -81,7 +82,7 @@ export async function getVerse(getVerseInput: GetVerseInput) {
 
 type SearchInput = {
   bibleId: string;
-  query?: string;
+  query: string;
   limit?: number;
   offset?: number;
   sort?: "relevance" | "canonical" | "reverse-canonical";
