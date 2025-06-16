@@ -1,6 +1,6 @@
 import { beforeEach, describe, expect, test, vi } from "vitest";
 
-import { getBibles, getVerse, searchForVerses } from "./apiBible";
+import { getBibles, getVerse, searchForVerses, cache } from "./apiBible";
 
 function createFetchResponse(data: Record<string, unknown>) {
   return {
@@ -13,6 +13,7 @@ describe("getBibles()", () => {
   beforeEach(() => {
     vi.clearAllMocks();
     global.fetch = vi.fn();
+    cache.store.clear();
   });
 
   test("does not require any input", async () => {
@@ -57,12 +58,34 @@ describe("getBibles()", () => {
       "Request failed with status code 400 Bad Request: https://api.scripture.api.bible/v1/bibles",
     );
   });
+
+  test("caches successful responses", async () => {
+    const mockResponseData = {};
+    const requestURL = "https://api.scripture.api.bible/v1/bibles";
+
+    const mockedFetch = vi.mocked(global.fetch);
+    mockedFetch.mockResolvedValue(createFetchResponse(mockResponseData));
+
+    expect(cache.get(requestURL)).toBeUndefined();
+    await getBibles();
+
+    expect(mockedFetch).toBeCalledWith(requestURL, expect.any(Object));
+
+    mockedFetch.mockClear();
+
+    // should read value from cache instead of fetching from api
+    expect(cache.get(requestURL)).toEqual(mockResponseData);
+    await getBibles();
+
+    expect(mockedFetch).toHaveBeenCalledTimes(0);
+  });
 });
 
 describe("getVerse()", () => {
   beforeEach(() => {
     vi.clearAllMocks();
     global.fetch = vi.fn();
+    cache.store.clear();
   });
 
   test("uses default values", async () => {
@@ -116,29 +139,46 @@ describe("getVerse()", () => {
       "Request failed with status code 400 Bad Request: https://api.scripture.api.bible/v1/bibles/de4e12af7f28f599-02/verses/1JN.1.9?content-type=json&include-notes=false&include-titles=false&include-chapter-numbers=false&include-verse-numbers=false&include-verse-spans=false&use-org-id=false",
     );
   });
+
+  test("caches successful responses", async () => {
+    const mockResponseData = {};
+    const requestURL =
+      "https://api.scripture.api.bible/v1/bibles/de4e12af7f28f599-02/verses/1JN.1.9?content-type=json&include-notes=false&include-titles=false&include-chapter-numbers=false&include-verse-numbers=false&include-verse-spans=false&use-org-id=false";
+
+    const mockedFetch = vi.mocked(global.fetch);
+    mockedFetch.mockResolvedValue(createFetchResponse(mockResponseData));
+
+    expect(cache.get(requestURL)).toBeUndefined();
+
+    await getVerse({
+      bibleId: "de4e12af7f28f599-02",
+      verseId: "1JN.1.9",
+    });
+
+    expect(mockedFetch).toBeCalledWith(requestURL, expect.any(Object));
+
+    mockedFetch.mockClear();
+
+    // should read value from cache instead of fetching from api
+    expect(cache.get(requestURL)).toEqual(mockResponseData);
+
+    await getVerse({
+      bibleId: "de4e12af7f28f599-02",
+      verseId: "1JN.1.9",
+    });
+
+    expect(mockedFetch).toHaveBeenCalledTimes(0);
+  });
 });
 
 describe("searchForVerses()", () => {
   beforeEach(() => {
     vi.clearAllMocks();
     global.fetch = vi.fn();
+    cache.store.clear();
   });
 
-  test("only requires bibleId", async () => {
-    const mockedFetch = vi.mocked(global.fetch);
-    mockedFetch.mockResolvedValue(createFetchResponse({}));
-
-    await searchForVerses({
-      bibleId: "de4e12af7f28f599-02",
-    });
-
-    expect(mockedFetch).toBeCalledWith(
-      "https://api.scripture.api.bible/v1/bibles/de4e12af7f28f599-02/search",
-      expect.any(Object),
-    );
-  });
-
-  test("formats optional input into kebab-case query string parameters", async () => {
+  test("only requires bibleId and query", async () => {
     const mockedFetch = vi.mocked(global.fetch);
     mockedFetch.mockResolvedValue(createFetchResponse({}));
 
@@ -149,6 +189,23 @@ describe("searchForVerses()", () => {
 
     expect(mockedFetch).toBeCalledWith(
       "https://api.scripture.api.bible/v1/bibles/de4e12af7f28f599-02/search?query=John+3",
+      expect.any(Object),
+    );
+  });
+
+  test("supports optional input", async () => {
+    const mockedFetch = vi.mocked(global.fetch);
+    mockedFetch.mockResolvedValue(createFetchResponse({}));
+
+    await searchForVerses({
+      bibleId: "de4e12af7f28f599-02",
+      query: "John 3",
+      limit: 3,
+      sort: "canonical",
+    });
+
+    expect(mockedFetch).toBeCalledWith(
+      "https://api.scripture.api.bible/v1/bibles/de4e12af7f28f599-02/search?query=John+3&limit=3&sort=canonical",
       expect.any(Object),
     );
   });
@@ -171,5 +228,34 @@ describe("searchForVerses()", () => {
     ).rejects.toThrowError(
       "Request failed with status code 400 Bad Request: https://api.scripture.api.bible/v1/bibles/de4e12af7f28f599-02/search?query=John+3",
     );
+  });
+
+  test("caches successful responses", async () => {
+    const mockResponseData = {};
+    const requestURL =
+      "https://api.scripture.api.bible/v1/bibles/de4e12af7f28f599-02/search?query=John+3";
+    const mockedFetch = vi.mocked(global.fetch);
+    mockedFetch.mockResolvedValue(createFetchResponse(mockResponseData));
+
+    expect(cache.get(requestURL)).toBeUndefined();
+
+    await searchForVerses({
+      bibleId: "de4e12af7f28f599-02",
+      query: "John 3",
+    });
+
+    expect(mockedFetch).toBeCalledWith(requestURL, expect.any(Object));
+
+    mockedFetch.mockClear();
+
+    // should read value from cache instead of fetching from api
+    expect(cache.get(requestURL)).toEqual(mockResponseData);
+
+    await searchForVerses({
+      bibleId: "de4e12af7f28f599-02",
+      query: "John 3",
+    });
+
+    expect(mockedFetch).toHaveBeenCalledTimes(0);
   });
 });

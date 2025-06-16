@@ -1,9 +1,14 @@
 import "dotenv/config";
 
 import { HTTPError } from "./HTTPError";
+import logger from "./logger";
+import Cache from "./cache";
 
 const baseUrl = "https://api.scripture.api.bible/v1";
 const bibleApiKey = process.env.BIBLE_API_KEY as string;
+
+const ONE_HOUR_IN_MILLISECONDS = 60 * 60 * 1000;
+export const cache = new Cache(ONE_HOUR_IN_MILLISECONDS);
 
 type GetBiblesInput = {
   language?: string;
@@ -17,7 +22,16 @@ export async function getBibles(getBiblesInput: GetBiblesInput = {}) {
   const url = new URL(`${baseUrl}/bibles`);
   url.search = getQueryStringFromObject(getBiblesInput);
 
-  const response = await fetch(url.toString(), {
+  const urlString = url.toString();
+  const cacheValue = cache.get(urlString);
+
+  logger.debug({ url: urlString }, "getBibles");
+
+  if (cacheValue) {
+    return cacheValue;
+  }
+
+  const response = await fetch(urlString, {
     method: "GET",
     headers: {
       "Api-Key": bibleApiKey,
@@ -30,6 +44,8 @@ export async function getBibles(getBiblesInput: GetBiblesInput = {}) {
   }
 
   const data = await response.json();
+  cache.set(urlString, data);
+
   return data;
 }
 
@@ -64,7 +80,16 @@ export async function getVerse(getVerseInput: GetVerseInput) {
     ...queryParamInput,
   });
 
-  const response = await fetch(url.toString(), {
+  const urlString = url.toString();
+  const cacheValue = cache.get(urlString);
+
+  logger.debug({ url: urlString }, "getVerse");
+
+  if (cacheValue) {
+    return cacheValue;
+  }
+
+  const response = await fetch(urlString, {
     method: "GET",
     headers: {
       "Api-Key": bibleApiKey,
@@ -77,6 +102,8 @@ export async function getVerse(getVerseInput: GetVerseInput) {
   }
 
   const data = await response.json();
+  cache.set(urlString, data);
+
   return data;
 }
 
@@ -95,7 +122,16 @@ export async function searchForVerses(searchForVersesInput: SearchInput) {
   const url = new URL(`${baseUrl}/bibles/${bibleId}/search`);
   url.search = getQueryStringFromObject(queryParamInput);
 
-  const response = await fetch(url.toString(), {
+  const urlString = url.toString();
+  const cacheValue = cache.get(urlString);
+
+  logger.debug({ url: urlString }, "searchForVerses");
+
+  if (cacheValue) {
+    return cacheValue;
+  }
+
+  const response = await fetch(urlString, {
     method: "GET",
     headers: {
       "Api-Key": bibleApiKey,
@@ -108,6 +144,8 @@ export async function searchForVerses(searchForVersesInput: SearchInput) {
   }
 
   const data = await response.json();
+  cache.set(urlString, data);
+
   return data;
 }
 
