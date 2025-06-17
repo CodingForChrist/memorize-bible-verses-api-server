@@ -34,7 +34,7 @@ describe("getBibles()", () => {
 
     await getBibles({
       language: "eng",
-      ids: ["de4e12af7f28f599-02", "32664dc3288a28df-02"],
+      ids: "de4e12af7f28f599-02,32664dc3288a28df-02",
       includeFullDetails: true,
     });
 

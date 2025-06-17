@@ -1,3 +1,61 @@
 # Memorize Scripture Server
 
-Node.js Express server that wraps [API.Bible](https://scripture.api.bible/).
+Node.js Express server that wraps [API.Bible](https://scripture.api.bible/). This server acts as a thin wrapper for API.Bible and exposes a subset of endpoints for client-side applications.
+
+## Before You Code
+
+Create an [API.Bible developer account](https://docs.api.bible/getting-started/setup-an-account) and request an API key.
+
+## Running Locally
+
+1. Clone the repository by running the following command in your terminal:
+   ```
+   git clone https://github.com/CodingForChrist/memorize-scripture-api-server.git
+   ```
+2. Create a `.env` file based on the `.env.sample` file at the root of this repository:
+   ```bash
+   cd memorize-scripture-api-server
+   cp .env.sample .env
+   ```
+3. Install dependencies and start the server:
+   ```bash
+   npm install
+   npm start
+   ```
+
+## API Endpoints
+
+This server wraps 3 API endpoints provided by API.Bible:
+
+1. [Get Bibles](https://scripture.api.bible/livedocs#/Bibles/getBibles)
+
+   Here's an example API call that gets the details for two Bible IDs:
+
+   ```bash
+   curl http://localhost:4000/api/v1/bibles --request POST \
+   --data '{"language": "eng", "ids": "de4e12af7f28f599-02,32664dc3288a28df-02", "includeFullDetails": true}' \
+   --header "Content-Type: application/json" \
+   --header "Application-User-Id: <YOUR_APP_USER_ID>"
+   ```
+
+2. [Get Verse](https://scripture.api.bible/livedocs#/Verses/getVerse)
+
+   Here's an example API call to get the World English Bible version of Galatians 2:20:
+
+   ```bash
+   curl http://localhost:4000/api/v1/bibles/32664dc3288a28df-02/verses/GAL.2.20 --request POST \
+   --data '{"contentType": "json"}' \
+   --header "Content-Type: application/json" \
+   --header "Application-User-Id: <YOUR_APP_USER_ID>"
+   ```
+
+3. [Search](https://scripture.api.bible/livedocs#/Search/searchBible)
+
+   Here's an example API call to search the World English Bible version for "The Word" in John chapter 1 between verses 1 and 18:
+
+   ```bash
+   curl http://localhost:4000/api/v1/bibles/32664dc3288a28df-02/search --request POST \
+   --data '{"query": "The Word", "range": "JHN.1.1-JHN.1.18"}' \
+   --header "Content-Type: application/json" \
+   --header "Application-User-Id: <YOUR_APP_USER_ID>"
+   ```

@@ -2,33 +2,37 @@ import express, { Request, Response } from "express";
 import cors from "cors";
 import { z } from "zod/v4";
 
+import "dotenv/config";
+
 import { getBibles, getVerse, searchForVerses } from "./apiBible";
+import authorizationMiddleware from "./authorizationMiddleware";
 import errorMiddleware from "./errorMiddleware";
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+app.use(authorizationMiddleware);
 
 const queryParamBoolean = z
   .enum(["true", "false"])
   .transform((value) => value === "true");
 
-app.get("/api/v1/bibles", async (req: Request, res: Response) => {
+app.post("/api/v1/bibles", async (req: Request, res: Response) => {
   const schema = z.object({
     language: z.string().length(3).optional(),
     abbreviation: z.string().optional(),
     name: z.string().optional(),
-    ids: z.array(z.string()).optional(),
-    includeFullDetails: queryParamBoolean.optional(),
+    ids: z.coerce.string().optional(),
+    includeFullDetails: z.boolean().optional(),
   });
 
-  const trustedInput = schema.parse(req.query);
+  const trustedInput = schema.parse(req.body);
   const results = await getBibles(trustedInput);
   res.status(200).json(results);
 });
 
-app.get(
+app.post(
   "/api/v1/bibles/:bibleId/verses/:verseId",
   async (req: Request, res: Response) => {
     const schema = z.object({
@@ -45,7 +49,7 @@ app.get(
 
     const trustedInput = schema.parse({
       ...req.params,
-      ...req.query,
+      ...req.body,
     });
 
     const results = await getVerse(trustedInput);
@@ -53,7 +57,7 @@ app.get(
   },
 );
 
-app.get(
+app.post(
   "/api/v1/bibles/:bibleId/search",
   async (req: Request, res: Response) => {
     const schema = z.object({
@@ -68,7 +72,7 @@ app.get(
 
     const trustedInput = schema.parse({
       ...req.params,
-      ...req.query,
+      ...req.body,
     });
 
     const results = await searchForVerses(trustedInput);

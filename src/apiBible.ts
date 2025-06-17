@@ -1,5 +1,3 @@
-import "dotenv/config";
-
 import { HTTPError } from "./HTTPError";
 import logger from "./logger";
 import Cache from "./cache";
@@ -14,7 +12,7 @@ type GetBiblesInput = {
   language?: string;
   abbreviation?: string;
   name?: string;
-  ids?: string[];
+  ids?: string;
   includeFullDetails?: boolean;
 };
 
