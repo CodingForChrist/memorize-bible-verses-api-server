@@ -7,6 +7,7 @@ import "dotenv/config";
 import { getBibles, getVerse, searchForVerses } from "./apiBible";
 import authorizationMiddleware from "./authorizationMiddleware";
 import errorMiddleware from "./errorMiddleware";
+import logger from "./logger";
 
 const app = express();
 
@@ -82,8 +83,13 @@ app.post(
 
 app.use(errorMiddleware);
 
+const hostname = process.env.HOSTNAME ?? "localhost";
 const port = process.env.PORT ?? 4000;
 
-app.listen(port, () => {
-  console.log(`API server listening at http://localhost:${port}`);
+app.listen({ port, hostname }, (error) => {
+  logger.info(`API server listening at http://localhost:${port}`);
+
+  if (error) {
+    logger.error(error, "API server failed to start");
+  }
 });

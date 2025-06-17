@@ -1,6 +1,14 @@
-# Memorize Scripture Server
+# Memorize Scripture API Server
 
 Node.js Express server that wraps [API.Bible](https://scripture.api.bible/). This server acts as a thin wrapper for API.Bible and exposes a subset of endpoints for client-side applications.
+
+## API Features
+
+- Caches API results in memory
+- Validates API input
+- Built for a client-side apps to consume
+  - Keeps the API key private on the server-side
+  - Uses an Application-User-Id request header to authenticate client-side apps
 
 ## Before You Code
 

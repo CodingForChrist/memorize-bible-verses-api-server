@@ -7,12 +7,11 @@
   "scripts": {
     "build": "rm -rf dist && tsc",
     "check-node-version": "tsx src/checkNodeVersion.ts",
-    "clean": "rm -rf dist",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "test": "vitest",
-    "start": "npm run check-node-version && tsx --watch src/server.ts",
-    "start-production": "node dist/server.js"
+    "start": "npm run check-node-version && tsx --watch src/server.ts | pino-pretty",
+    "start-production": "node dist/src/server.js"
   },
   "license": "MIT",
   "dependencies": {
@@ -27,6 +26,7 @@
     "@types/express": "^5.0.3",
     "@types/node": "^24.0.1",
     "@types/semver": "^7.7.0",
+    "pino-pretty": "^13.0.0",
     "prettier": "^3.5.3",
     "semver": "^7.7.2",
     "tsx": "^4.20.3",
