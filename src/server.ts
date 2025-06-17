@@ -14,10 +14,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-const queryParamBoolean = z
-  .enum(["true", "false"])
-  .transform((value) => value === "true");
-
 app.get("/health", (_req: Request, res: Response) => {
   res.status(200).send("OK");
 });
@@ -48,12 +44,12 @@ app.post(
       bibleId: z.string(),
       verseId: z.string(),
       contentType: z.enum(["html", "json", "text"]).optional(),
-      includeNotes: queryParamBoolean.optional(),
-      includeTitles: queryParamBoolean.optional(),
-      includeChapterNumbers: queryParamBoolean.optional(),
-      includeVerseNumbers: queryParamBoolean.optional(),
-      includeVerseSpans: queryParamBoolean.optional(),
-      useOrgId: queryParamBoolean.optional(),
+      includeNotes: z.boolean().optional(),
+      includeTitles: z.boolean().optional(),
+      includeChapterNumbers: z.boolean().optional(),
+      includeVerseNumbers: z.boolean().optional(),
+      includeVerseSpans: z.boolean().optional(),
+      useOrgId: z.boolean().optional(),
     });
 
     const trustedInput = schema.parse({
