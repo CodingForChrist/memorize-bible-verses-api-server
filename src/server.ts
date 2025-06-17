@@ -13,28 +13,36 @@ const app = express();
 
 app.use(cors());
 app.use(express.json());
-app.use(authorizationMiddleware);
 
 const queryParamBoolean = z
   .enum(["true", "false"])
   .transform((value) => value === "true");
 
-app.post("/api/v1/bibles", async (req: Request, res: Response) => {
-  const schema = z.object({
-    language: z.string().length(3).optional(),
-    abbreviation: z.string().optional(),
-    name: z.string().optional(),
-    ids: z.coerce.string().optional(),
-    includeFullDetails: z.boolean().optional(),
-  });
-
-  const trustedInput = schema.parse(req.body);
-  const results = await getBibles(trustedInput);
-  res.status(200).json(results);
+app.get("/health", (_req: Request, res: Response) => {
+  res.status(200).send("OK");
 });
 
 app.post(
+  "/api/v1/bibles",
+  authorizationMiddleware,
+  async (req: Request, res: Response) => {
+    const schema = z.object({
+      language: z.string().length(3).optional(),
+      abbreviation: z.string().optional(),
+      name: z.string().optional(),
+      ids: z.coerce.string().optional(),
+      includeFullDetails: z.boolean().optional(),
+    });
+
+    const trustedInput = schema.parse(req.body);
+    const results = await getBibles(trustedInput);
+    res.status(200).json(results);
+  },
+);
+
+app.post(
   "/api/v1/bibles/:bibleId/verses/:verseId",
+  authorizationMiddleware,
   async (req: Request, res: Response) => {
     const schema = z.object({
       bibleId: z.string(),
@@ -60,6 +68,7 @@ app.post(
 
 app.post(
   "/api/v1/bibles/:bibleId/search",
+  authorizationMiddleware,
   async (req: Request, res: Response) => {
     const schema = z.object({
       bibleId: z.string(),
