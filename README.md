@@ -59,11 +59,11 @@ This server wraps 3 API endpoints provided by API.Bible:
 
 3. [Search](https://scripture.api.bible/livedocs#/Search/searchBible)
 
-   Here's an example API call to search the World English Bible version for "The Word" in John chapter 1 between verses 1 and 18:
+   Here's an example API call to search the World English Bible version for for the bible verse range "John 3:1-16":
 
    ```bash
-   curl http://localhost:4000/api/v1/bibles/32664dc3288a28df-02/search --request POST \
-   --data '{"query": "The Word", "range": "JHN.1.1-JHN.1.18"}' \
+   curl http://localhost:4000/api/v1/bibles/32664dc3288a28df-02/search/verse-reference --request POST \
+   --data '{"query": "John 3:1-16"}' \
    --header "Content-Type: application/json" \
    --header "Application-User-Id: <YOUR_APP_USER_ID>"
    ```

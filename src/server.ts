@@ -63,7 +63,7 @@ app.post(
 );
 
 app.post(
-  "/api/v1/bibles/:bibleId/search",
+  "/api/v1/bibles/:bibleId/search/verse-reference",
   authorizationMiddleware,
   async (req: Request, res: Response) => {
     const schema = z.object({
@@ -79,7 +79,7 @@ app.post(
           },
           {
             message:
-              "bible verse reference must include a single colon character to separate the book from the chapter (e.g. John 3:16)",
+              "bible verse reference must include a single colon character to separate the chapter from the verse (e.g. John 3:16)",
           },
         ),
       limit: z.number().optional(),
