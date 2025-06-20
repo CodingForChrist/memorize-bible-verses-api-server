@@ -41,8 +41,8 @@ app.post(
   authorizationMiddleware,
   async (req: Request, res: Response) => {
     const schema = z.object({
-      bibleId: z.string(),
-      verseId: z.string(),
+      bibleId: z.string().min(4).max(40),
+      verseId: z.string().min(4).max(40),
       contentType: z.enum(["html", "json", "text"]).optional(),
       includeNotes: z.boolean().optional(),
       includeTitles: z.boolean().optional(),
@@ -67,8 +67,21 @@ app.post(
   authorizationMiddleware,
   async (req: Request, res: Response) => {
     const schema = z.object({
-      bibleId: z.string(),
-      query: z.string(),
+      bibleId: z.string().min(4).max(40),
+      query: z
+        .string()
+        .min(4)
+        .max(40)
+        .refine(
+          (value) => {
+            const characterCount = value.match(/:/g)?.length;
+            return characterCount === 1;
+          },
+          {
+            message:
+              "bible verse reference must include a single colon character to separate the book from the chapter (e.g. John 3:16)",
+          },
+        ),
       limit: z.number().optional(),
       offset: z.number().optional(),
       contentType: z.enum(["relevance", "relevance", "canonical"]).optional(),
