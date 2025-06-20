@@ -2,8 +2,11 @@ import { HTTPError } from "./HTTPError";
 import logger from "./logger";
 import Cache from "./cache";
 
+import bibleListFixtureData from "./fixtures/bibleList.json";
+
 const baseUrl = "https://api.scripture.api.bible/v1";
 const bibleApiKey = process.env.BIBLE_API_KEY as string;
+const inMemoryMode = process.env.API_CLIENT_BEHAVIOR_IN_MEMORY_MODE as string;
 
 const ONE_HOUR_IN_MILLISECONDS = 60 * 60 * 1000;
 export const cache = new Cache(ONE_HOUR_IN_MILLISECONDS);
@@ -27,6 +30,11 @@ export async function getBibles(getBiblesInput: GetBiblesInput = {}) {
 
   if (cacheValue) {
     return cacheValue;
+  }
+
+  if (inMemoryMode === "true") {
+    logger.debug("bible list loaded from fixture data");
+    return bibleListFixtureData;
   }
 
   const response = await fetch(urlString, {

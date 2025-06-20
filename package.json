@@ -10,6 +10,7 @@
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "test": "vitest",
+    "dev": "npm start",
     "start": "npm run check-node-version && tsx --watch src/server.ts | pino-pretty",
     "start-production": "node dist/src/server.js"
   },
