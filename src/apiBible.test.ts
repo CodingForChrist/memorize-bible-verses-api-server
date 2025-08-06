@@ -23,7 +23,7 @@ describe("getBibles()", () => {
     await getBibles();
 
     expect(mockedFetch).toBeCalledWith(
-      "https://api.scripture.api.bible/v1/bibles",
+      "https://rest.api.bible/v1/bibles",
       expect.any(Object),
     );
   });
@@ -39,7 +39,7 @@ describe("getBibles()", () => {
     });
 
     expect(mockedFetch).toBeCalledWith(
-      "https://api.scripture.api.bible/v1/bibles?language=eng&ids=de4e12af7f28f599-02%2C32664dc3288a28df-02&include-full-details=true",
+      "https://rest.api.bible/v1/bibles?language=eng&ids=de4e12af7f28f599-02%2C32664dc3288a28df-02&include-full-details=true",
       expect.any(Object),
     );
   });
@@ -55,13 +55,13 @@ describe("getBibles()", () => {
     mockedFetch.mockResolvedValue(errorResponse);
 
     await expect(() => getBibles()).rejects.toThrowError(
-      "Request failed with status code 400 Bad Request: https://api.scripture.api.bible/v1/bibles",
+      "Request failed with status code 400 Bad Request: https://rest.api.bible/v1/bibles",
     );
   });
 
   test("caches successful responses", async () => {
     const mockResponseData = {};
-    const requestURL = "https://api.scripture.api.bible/v1/bibles";
+    const requestURL = "https://rest.api.bible/v1/bibles";
 
     const mockedFetch = vi.mocked(global.fetch);
     mockedFetch.mockResolvedValue(createFetchResponse(mockResponseData));
@@ -98,7 +98,7 @@ describe("getVerse()", () => {
     });
 
     expect(mockedFetch).toBeCalledWith(
-      "https://api.scripture.api.bible/v1/bibles/de4e12af7f28f599-02/verses/1JN.1.9?content-type=json&include-notes=false&include-titles=false&include-chapter-numbers=false&include-verse-numbers=false&include-verse-spans=false&use-org-id=false",
+      "https://rest.api.bible/v1/bibles/de4e12af7f28f599-02/verses/1JN.1.9?content-type=json&include-notes=false&include-titles=false&include-chapter-numbers=false&include-verse-numbers=false&include-verse-spans=false&use-org-id=false",
       expect.any(Object),
     );
   });
@@ -115,7 +115,7 @@ describe("getVerse()", () => {
     });
 
     expect(mockedFetch).toBeCalledWith(
-      "https://api.scripture.api.bible/v1/bibles/de4e12af7f28f599-02/verses/1JN.1.9?content-type=html&include-notes=true&include-titles=false&include-chapter-numbers=false&include-verse-numbers=false&include-verse-spans=false&use-org-id=false",
+      "https://rest.api.bible/v1/bibles/de4e12af7f28f599-02/verses/1JN.1.9?content-type=html&include-notes=true&include-titles=false&include-chapter-numbers=false&include-verse-numbers=false&include-verse-spans=false&use-org-id=false",
       expect.any(Object),
     );
   });
@@ -136,14 +136,14 @@ describe("getVerse()", () => {
         verseId: "1JN.1.9",
       }),
     ).rejects.toThrowError(
-      "Request failed with status code 400 Bad Request: https://api.scripture.api.bible/v1/bibles/de4e12af7f28f599-02/verses/1JN.1.9?content-type=json&include-notes=false&include-titles=false&include-chapter-numbers=false&include-verse-numbers=false&include-verse-spans=false&use-org-id=false",
+      "Request failed with status code 400 Bad Request: https://rest.api.bible/v1/bibles/de4e12af7f28f599-02/verses/1JN.1.9?content-type=json&include-notes=false&include-titles=false&include-chapter-numbers=false&include-verse-numbers=false&include-verse-spans=false&use-org-id=false",
     );
   });
 
   test("caches successful responses", async () => {
     const mockResponseData = {};
     const requestURL =
-      "https://api.scripture.api.bible/v1/bibles/de4e12af7f28f599-02/verses/1JN.1.9?content-type=json&include-notes=false&include-titles=false&include-chapter-numbers=false&include-verse-numbers=false&include-verse-spans=false&use-org-id=false";
+      "https://rest.api.bible/v1/bibles/de4e12af7f28f599-02/verses/1JN.1.9?content-type=json&include-notes=false&include-titles=false&include-chapter-numbers=false&include-verse-numbers=false&include-verse-spans=false&use-org-id=false";
 
     const mockedFetch = vi.mocked(global.fetch);
     mockedFetch.mockResolvedValue(createFetchResponse(mockResponseData));
@@ -188,7 +188,7 @@ describe("searchForVerses()", () => {
     });
 
     expect(mockedFetch).toBeCalledWith(
-      "https://api.scripture.api.bible/v1/bibles/de4e12af7f28f599-02/search?query=John+3",
+      "https://rest.api.bible/v1/bibles/de4e12af7f28f599-02/search?query=John+3",
       expect.any(Object),
     );
   });
@@ -205,7 +205,7 @@ describe("searchForVerses()", () => {
     });
 
     expect(mockedFetch).toBeCalledWith(
-      "https://api.scripture.api.bible/v1/bibles/de4e12af7f28f599-02/search?query=John+3&limit=3&sort=canonical",
+      "https://rest.api.bible/v1/bibles/de4e12af7f28f599-02/search?query=John+3&limit=3&sort=canonical",
       expect.any(Object),
     );
   });
@@ -226,14 +226,14 @@ describe("searchForVerses()", () => {
         query: "John 3",
       }),
     ).rejects.toThrowError(
-      "Request failed with status code 400 Bad Request: https://api.scripture.api.bible/v1/bibles/de4e12af7f28f599-02/search?query=John+3",
+      "Request failed with status code 400 Bad Request: https://rest.api.bible/v1/bibles/de4e12af7f28f599-02/search?query=John+3",
     );
   });
 
   test("caches successful responses", async () => {
     const mockResponseData = {};
     const requestURL =
-      "https://api.scripture.api.bible/v1/bibles/de4e12af7f28f599-02/search?query=John+3";
+      "https://rest.api.bible/v1/bibles/de4e12af7f28f599-02/search?query=John+3";
     const mockedFetch = vi.mocked(global.fetch);
     mockedFetch.mockResolvedValue(createFetchResponse(mockResponseData));
 
