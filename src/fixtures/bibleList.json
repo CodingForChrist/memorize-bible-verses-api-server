@@ -251,6 +251,36 @@
           "dblId": "105a06b6146d11e7"
         }
       ]
+    },
+    {
+      "id": "a761ca71e0b3ddcf-01",
+      "dblId": "a761ca71e0b3ddcf",
+      "relatedDbl": null,
+      "name": "New American Standard Bible 2020",
+      "nameLocal": "New American Standard Bible - NASB",
+      "abbreviation": "NASB",
+      "abbreviationLocal": "NASB",
+      "description": null,
+      "descriptionLocal": null,
+      "language": {
+        "id": "eng",
+        "name": "English",
+        "nameLocal": "English",
+        "script": "Latin",
+        "scriptDirection": "LTR"
+      },
+      "countries": [
+        {
+          "id": "US",
+          "name": "United States of America",
+          "nameLocal": "United States of America"
+        }
+      ],
+      "type": "text",
+      "updatedAt": "2024-10-14T22:00:55.000Z",
+      "copyright": "NEW AMERICAN STANDARD BIBLE® NASB® Copyright © 1960, 1971, 1977,1995, 2020 by The Lockman Foundation A Corporation Not for Profit La Habra, CA All Rights Reserved www.lockman.org",
+      "info": "<p>The NASB 2020 is an update of the NASB 1995 that further improves accuracy where possible, modernizes language, and improves readability. These refinements maintain faithful accuracy to the original texts and provide a clear understanding of God’s Word to those who prefer more modern English standards. The long-established translation standard for the NASB remains the same as it always has been, that is to accurately translate the inspired Word of God from the Hebrew, Aramaic, and Greek texts into modern English that is clearly understandable today.</p>",
+      "audioBibles": []
     }
   ]
 }
