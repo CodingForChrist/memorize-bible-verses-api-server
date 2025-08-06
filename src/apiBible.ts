@@ -4,7 +4,7 @@ import Cache from "./cache";
 
 import bibleListFixtureData from "./fixtures/bibleList.json";
 
-const baseUrl = "https://api.scripture.api.bible/v1";
+const baseUrl = "https://rest.api.bible/v1";
 const bibleApiKey = process.env.BIBLE_API_KEY as string;
 const inMemoryMode = process.env.API_CLIENT_BEHAVIOR_IN_MEMORY_MODE as string;
 
@@ -40,8 +40,8 @@ export async function getBibles(getBiblesInput: GetBiblesInput = {}) {
   const response = await fetch(urlString, {
     method: "GET",
     headers: {
-      "Api-Key": bibleApiKey,
-      "Content-Type": "application/json",
+      "api-key": bibleApiKey,
+      accept: "application/json",
     },
   });
 
@@ -98,8 +98,8 @@ export async function getVerse(getVerseInput: GetVerseInput) {
   const response = await fetch(urlString, {
     method: "GET",
     headers: {
-      "Api-Key": bibleApiKey,
-      "Content-Type": "application/json",
+      "api-key": bibleApiKey,
+      accept: "application/json",
     },
   });
 
@@ -140,8 +140,8 @@ export async function searchForVerses(searchForVersesInput: SearchInput) {
   const response = await fetch(urlString, {
     method: "GET",
     headers: {
-      "Api-Key": bibleApiKey,
-      "Content-Type": "application/json",
+      "api-key": bibleApiKey,
+      accept: "application/json",
     },
   });
 
