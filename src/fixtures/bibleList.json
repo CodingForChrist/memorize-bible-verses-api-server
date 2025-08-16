@@ -253,6 +253,34 @@
       ]
     },
     {
+      "id": "b8ee27bcd1cae43a-01",
+      "dblId": "b8ee27bcd1cae43a",
+      "relatedDbl": null,
+      "name": "New American Standard Bible 1995",
+      "nameLocal": "New American Standard Bible - NASB 1995",
+      "abbreviation": "NASB1995",
+      "abbreviationLocal": "NASB 1995",
+      "description": null,
+      "descriptionLocal": null,
+      "language": {
+        "id": "eng",
+        "name": "English",
+        "nameLocal": "English",
+        "script": "Latin",
+        "scriptDirection": "LTR"
+      },
+      "countries": [
+        {
+          "id": "US",
+          "name": "United States",
+          "nameLocal": "United States"
+        }
+      ],
+      "type": "text",
+      "updatedAt": "2024-06-29T00:29:34.000Z",
+      "audioBibles": []
+    },
+    {
       "id": "a761ca71e0b3ddcf-01",
       "dblId": "a761ca71e0b3ddcf",
       "relatedDbl": null,
