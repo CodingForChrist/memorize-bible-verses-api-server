@@ -1,5 +1,5 @@
 {
-  "name": "memorize-scripture-server",
+  "name": "memorize-bible-verses-api-server",
   "version": "0.1.0",
   "private": true,
   "description": "Node.js Express server that wraps API.Bible",

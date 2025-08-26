@@ -1,4 +1,4 @@
-# Memorize Scripture API Server
+# Memorize Bible Verses API Server
 
 Node.js Express server that wraps [API.Bible](https://scripture.api.bible/). This server acts as a thin wrapper for API.Bible and exposes a subset of endpoints for client-side applications.
 
@@ -18,11 +18,11 @@ Create an [API.Bible developer account](https://docs.api.bible/getting-started/s
 
 1. Clone the repository by running the following command in your terminal:
    ```
-   git clone https://github.com/CodingForChrist/memorize-scripture-api-server.git
+   git clone https://github.com/CodingForChrist/memorize-bible-verses-api-server.git
    ```
 2. Create a `.env` file based on the `.env.sample` file at the root of this repository:
    ```bash
-   cd memorize-scripture-api-server
+   cd memorize-bible-verses-api-server
    cp .env.sample .env
    ```
 3. Install dependencies and start the server:

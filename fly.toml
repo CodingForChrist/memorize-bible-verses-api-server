@@ -1,9 +1,9 @@
-# fly.toml app configuration file generated for memorize-scripture-api-server on 2025-06-17T15:19:09-05:00
+# fly.toml app configuration file generated for memorize-bible-verses-api-server on 2025-06-17T15:19:09-05:00
 #
 # See https://fly.io/docs/reference/configuration/ for information about how to use this file.
 #
 
-app = 'memorize-scripture-api-server'
+app = 'memorize-bible-verses-api-server'
 primary_region = 'ord'
 
 [build]
