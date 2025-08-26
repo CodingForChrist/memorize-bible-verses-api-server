@@ -20,10 +20,10 @@ Create an [API.Bible developer account](https://docs.api.bible/getting-started/s
    ```
    git clone https://github.com/CodingForChrist/memorize-bible-verses-api-server.git
    ```
-2. Create a `.env` file based on the `.env.sample` file at the root of this repository:
+2. Create a `.env` file based on the `.env.example` file at the root of this repository:
    ```bash
    cd memorize-bible-verses-api-server
-   cp .env.sample .env
+   cp .env.example .env
    ```
 3. Install dependencies and start the server:
    ```bash
