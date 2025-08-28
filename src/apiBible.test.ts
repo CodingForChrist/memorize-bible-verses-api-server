@@ -1,6 +1,12 @@
 import { beforeEach, describe, expect, test, vi } from "vitest";
 
-import { getBibles, getVerse, searchForVerses, cache } from "./apiBible";
+import {
+  getBibles,
+  getBooks,
+  getVerse,
+  searchForVerses,
+  cache,
+} from "./apiBible";
 
 function createFetchResponse(data: Record<string, unknown>) {
   return {
@@ -76,6 +82,91 @@ describe("getBibles()", () => {
     // should read value from cache instead of fetching from api
     expect(cache.get(requestURL)).toEqual(mockResponseData);
     await getBibles();
+
+    expect(mockedFetch).toHaveBeenCalledTimes(0);
+  });
+});
+
+describe("getBooks()", () => {
+  beforeEach(() => {
+    vi.clearAllMocks();
+    global.fetch = vi.fn();
+    cache.store.clear();
+  });
+
+  test("uses default values", async () => {
+    const mockedFetch = vi.mocked(global.fetch);
+    mockedFetch.mockResolvedValue(createFetchResponse({}));
+
+    await getBooks({
+      bibleId: "de4e12af7f28f599-02",
+    });
+
+    expect(mockedFetch).toBeCalledWith(
+      "https://rest.api.bible/v1/bibles/de4e12af7f28f599-02/books?include-chapters=false&include-chapters-and-sections=false",
+      expect.any(Object),
+    );
+  });
+
+  test("uses optional input instead of default values", async () => {
+    const mockedFetch = vi.mocked(global.fetch);
+    mockedFetch.mockResolvedValue(createFetchResponse({}));
+
+    await getBooks({
+      bibleId: "de4e12af7f28f599-02",
+      includeChapters: true,
+      includeChaptersAndSections: true,
+    });
+
+    expect(mockedFetch).toBeCalledWith(
+      "https://rest.api.bible/v1/bibles/de4e12af7f28f599-02/books?include-chapters=true&include-chapters-and-sections=true",
+      expect.any(Object),
+    );
+  });
+
+  test("throws an error for a non-200 status code", async () => {
+    const mockedFetch = vi.mocked(global.fetch);
+    const errorResponse = {
+      ok: false,
+      status: 400,
+      statusText: "Bad Request",
+    } as Response;
+
+    mockedFetch.mockResolvedValue(errorResponse);
+
+    await expect(() =>
+      getBooks({
+        bibleId: "de4e12af7f28f599-02",
+      }),
+    ).rejects.toThrowError(
+      "Request failed with status code 400 Bad Request: https://rest.api.bible/v1/bibles/de4e12af7f28f599-02/books?include-chapters=false&include-chapters-and-sections=false",
+    );
+  });
+
+  test("caches successful responses", async () => {
+    const mockResponseData = {};
+    const requestURL =
+      "https://rest.api.bible/v1/bibles/de4e12af7f28f599-02/books?include-chapters=false&include-chapters-and-sections=false";
+
+    const mockedFetch = vi.mocked(global.fetch);
+    mockedFetch.mockResolvedValue(createFetchResponse(mockResponseData));
+
+    expect(cache.get(requestURL)).toBeUndefined();
+
+    await getBooks({
+      bibleId: "de4e12af7f28f599-02",
+    });
+
+    expect(mockedFetch).toBeCalledWith(requestURL, expect.any(Object));
+
+    mockedFetch.mockClear();
+
+    // should read value from cache instead of fetching from api
+    expect(cache.get(requestURL)).toEqual(mockResponseData);
+
+    await getBooks({
+      bibleId: "de4e12af7f28f599-02",
+    });
 
     expect(mockedFetch).toHaveBeenCalledTimes(0);
   });

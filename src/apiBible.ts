@@ -55,6 +55,53 @@ export async function getBibles(getBiblesInput: GetBiblesInput = {}) {
   return data;
 }
 
+type GetBooksInput = {
+  bibleId: string;
+  includeChapters?: boolean;
+  includeChaptersAndSections?: boolean;
+};
+
+export async function getBooks(getBooksInput: GetBooksInput) {
+  const { bibleId, ...queryParamInput } = getBooksInput;
+  const url = new URL(`${baseUrl}/bibles/${bibleId}/books`);
+
+  const defaultValues = {
+    includeChapters: false,
+    includeChaptersAndSections: false,
+  };
+
+  url.search = getQueryStringFromObject({
+    ...defaultValues,
+    ...queryParamInput,
+  });
+
+  const urlString = url.toString();
+  const cacheValue = cache.get(urlString);
+
+  logger.debug({ url: urlString }, "getBooks");
+
+  if (cacheValue) {
+    return cacheValue;
+  }
+
+  const response = await fetch(urlString, {
+    method: "GET",
+    headers: {
+      "api-key": bibleApiKey,
+      accept: "application/json",
+    },
+  });
+
+  if (!response.ok) {
+    throw new HTTPError(response, url);
+  }
+
+  const data = await response.json();
+  cache.set(urlString, data);
+
+  return data;
+}
+
 type GetVerseInput = {
   bibleId: string;
   verseId: string;
