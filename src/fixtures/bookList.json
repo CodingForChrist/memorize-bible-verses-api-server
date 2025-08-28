@@ -1,0 +1,466 @@
+{
+  "data": [
+    {
+      "id": "GEN",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Gen",
+      "name": "Genesis",
+      "nameLong": "Genesis"
+    },
+    {
+      "id": "EXO",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Exo",
+      "name": "Exodus",
+      "nameLong": "Exodus"
+    },
+    {
+      "id": "LEV",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Lev",
+      "name": "Leviticus",
+      "nameLong": "Leviticus"
+    },
+    {
+      "id": "NUM",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Num",
+      "name": "Numbers",
+      "nameLong": "Numbers"
+    },
+    {
+      "id": "DEU",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Deu",
+      "name": "Deuteronomy",
+      "nameLong": "Deuteronomy"
+    },
+    {
+      "id": "JOS",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Jos",
+      "name": "Joshua",
+      "nameLong": "The Book of Joshua"
+    },
+    {
+      "id": "JDG",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Jdg",
+      "name": "Judges",
+      "nameLong": "The Book of Judges"
+    },
+    {
+      "id": "RUT",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Rut",
+      "name": "Ruth",
+      "nameLong": "The Book of Ruth"
+    },
+    {
+      "id": "1SA",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "1Sa",
+      "name": "1 Samuel",
+      "nameLong": "The First Book of Samuel"
+    },
+    {
+      "id": "2SA",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "2Sa",
+      "name": "2 Samuel",
+      "nameLong": "The Second Book of Samuel"
+    },
+    {
+      "id": "1KI",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "1Ki",
+      "name": "1 Kings",
+      "nameLong": "The First Book of the Kings"
+    },
+    {
+      "id": "2KI",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "2Ki",
+      "name": "2 Kings",
+      "nameLong": "The Second Book of the Kings"
+    },
+    {
+      "id": "1CH",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "1Ch",
+      "name": "1 Chronicles",
+      "nameLong": "The First Book of the Chronicles"
+    },
+    {
+      "id": "2CH",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "2Ch",
+      "name": "2 Chronicles",
+      "nameLong": "The Second Book of the Chronicles"
+    },
+    {
+      "id": "EZR",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Ezr",
+      "name": "Ezra",
+      "nameLong": "The Book of Ezra"
+    },
+    {
+      "id": "NEH",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Neh",
+      "name": "Nehemiah",
+      "nameLong": "The Book of Nehemiah"
+    },
+    {
+      "id": "EST",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Est",
+      "name": "Esther",
+      "nameLong": "The Book of Esther"
+    },
+    {
+      "id": "JOB",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Job",
+      "name": "Job",
+      "nameLong": "The Book of Job"
+    },
+    {
+      "id": "PSA",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Psa",
+      "name": "Psalms",
+      "nameLong": "The Psalms"
+    },
+    {
+      "id": "PRO",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Pro",
+      "name": "Proverbs",
+      "nameLong": "The Proverbs"
+    },
+    {
+      "id": "ECC",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Ecc",
+      "name": "Ecclesiastes",
+      "nameLong": "The Book of Ecclesiates"
+    },
+    {
+      "id": "SNG",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Sng",
+      "name": "Song of Solomon",
+      "nameLong": "The Song of Solomon"
+    },
+    {
+      "id": "ISA",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Isa",
+      "name": "Isaiah",
+      "nameLong": "The Book of Isaiah"
+    },
+    {
+      "id": "JER",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Jer",
+      "name": "Jeremiah",
+      "nameLong": "The Book of Jeremiah"
+    },
+    {
+      "id": "LAM",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Lam",
+      "name": "Lamentations",
+      "nameLong": "The Lamentations of Jeremiah"
+    },
+    {
+      "id": "EZK",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Ezk",
+      "name": "Ezekiel",
+      "nameLong": "The Book of Ezekiel"
+    },
+    {
+      "id": "DAN",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Dan",
+      "name": "Daniel",
+      "nameLong": "The Book of Daniel"
+    },
+    {
+      "id": "HOS",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Hos",
+      "name": "Hosea",
+      "nameLong": "The Book of Hosea"
+    },
+    {
+      "id": "JOL",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Jol",
+      "name": "Joel",
+      "nameLong": "The Book of Joel"
+    },
+    {
+      "id": "AMO",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Amo",
+      "name": "Amos",
+      "nameLong": "The Book of Amos"
+    },
+    {
+      "id": "OBA",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Oba",
+      "name": "Obadiah",
+      "nameLong": "The Book of Obadiah"
+    },
+    {
+      "id": "JON",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Jon",
+      "name": "Jonah",
+      "nameLong": "The Book of Jonah"
+    },
+    {
+      "id": "MIC",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Mic",
+      "name": "Micah",
+      "nameLong": "The Book of Micah"
+    },
+    {
+      "id": "NAM",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Nam",
+      "name": "Nahum",
+      "nameLong": "The Book of Nahum"
+    },
+    {
+      "id": "HAB",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Hab",
+      "name": "Habakkuk",
+      "nameLong": "The Book of Habakkuk"
+    },
+    {
+      "id": "ZEP",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Zep",
+      "name": "Zephaniah",
+      "nameLong": "The Book of Zephaniah"
+    },
+    {
+      "id": "HAG",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Hag",
+      "name": "Haggai",
+      "nameLong": "The Book of Haggai"
+    },
+    {
+      "id": "ZEC",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Zec",
+      "name": "Zechariah",
+      "nameLong": "The Book of Zechariah"
+    },
+    {
+      "id": "MAL",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Mal",
+      "name": "Malachi",
+      "nameLong": "The Book of Malachi"
+    },
+    {
+      "id": "MAT",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Mat",
+      "name": "Matthew",
+      "nameLong": "The Gospel According to Matthew"
+    },
+    {
+      "id": "MRK",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Mrk",
+      "name": "Mark",
+      "nameLong": "The Gospel According to Mark"
+    },
+    {
+      "id": "LUK",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Luk",
+      "name": "Luke",
+      "nameLong": "The Gospel According to Luke"
+    },
+    {
+      "id": "JHN",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Jhn",
+      "name": "John",
+      "nameLong": "The Gospel According to John"
+    },
+    {
+      "id": "ACT",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Act",
+      "name": "Acts",
+      "nameLong": "The Acts of the Apostles"
+    },
+    {
+      "id": "ROM",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Rom",
+      "name": "Romans",
+      "nameLong": "The Letter of Paul to the Romans"
+    },
+    {
+      "id": "1CO",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "1Co",
+      "name": "1 Corinthians",
+      "nameLong": "The First Letter of Paul to the Corinthians"
+    },
+    {
+      "id": "2CO",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "2Co",
+      "name": "2 Corinthians",
+      "nameLong": "The Second Letter of Paul to the Corinthians"
+    },
+    {
+      "id": "GAL",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Gal",
+      "name": "Galatians",
+      "nameLong": "The Letter of Paul to the Galatians"
+    },
+    {
+      "id": "EPH",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Eph",
+      "name": "Ephesians",
+      "nameLong": "The Letter of Paul to the Ephesians"
+    },
+    {
+      "id": "PHP",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Php",
+      "name": "Philippians",
+      "nameLong": "The Letter of Paul to the Philippians"
+    },
+    {
+      "id": "COL",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Col",
+      "name": "Colossians",
+      "nameLong": "The Letter of Paul to the Colossians"
+    },
+    {
+      "id": "1TH",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "1Th",
+      "name": "1 Thessalonians",
+      "nameLong": "The First Letter of Paul to the Thessalonians"
+    },
+    {
+      "id": "2TH",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "2Th",
+      "name": "2 Thessalonians",
+      "nameLong": "The Second Letter of Paul to the Thessalonians"
+    },
+    {
+      "id": "1TI",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "1Ti",
+      "name": "1 Timothy",
+      "nameLong": "The First Letter of Paul to Timothy"
+    },
+    {
+      "id": "2TI",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "2Ti",
+      "name": "2 Timothy",
+      "nameLong": "The Second Letter of Paul to Timothy"
+    },
+    {
+      "id": "TIT",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Tit",
+      "name": "Titus",
+      "nameLong": "The Letter of Paul to Titus"
+    },
+    {
+      "id": "PHM",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Phm",
+      "name": "Philemon",
+      "nameLong": "The Letter of Paul to Philemon"
+    },
+    {
+      "id": "HEB",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Heb",
+      "name": "Hebrews",
+      "nameLong": "The Letter to the Hebrews"
+    },
+    {
+      "id": "JAS",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Jas",
+      "name": "James",
+      "nameLong": "The Letter of James"
+    },
+    {
+      "id": "1PE",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "1Pe",
+      "name": "1 Peter",
+      "nameLong": "The First Letter of Peter"
+    },
+    {
+      "id": "2PE",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "2Pe",
+      "name": "2 Peter",
+      "nameLong": "The Second Letter of Peter"
+    },
+    {
+      "id": "1JN",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "1Jn",
+      "name": "1 John",
+      "nameLong": "The First Letter of John"
+    },
+    {
+      "id": "2JN",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "2Jn",
+      "name": "2 John",
+      "nameLong": "The Second Letter of John"
+    },
+    {
+      "id": "3JN",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "3Jn",
+      "name": "3 John",
+      "nameLong": "The Third Letter of John"
+    },
+    {
+      "id": "JUD",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Jud",
+      "name": "Jude",
+      "nameLong": "The Letter of Jude"
+    },
+    {
+      "id": "REV",
+      "bibleId": "b8ee27bcd1cae43a-01",
+      "abbreviation": "Rev",
+      "name": "Revelation",
+      "nameLong": "The Revelation to John"
+    }
+  ]
+}

@@ -33,7 +33,7 @@ Create an [API.Bible developer account](https://docs.api.bible/getting-started/s
 
 ## API Endpoints
 
-This server wraps 3 API endpoints provided by API.Bible:
+This server wraps 4 API endpoints provided by API.Bible:
 
 1. [Get Bibles](https://scripture.api.bible/livedocs#/Bibles/getBibles)
 
@@ -46,7 +46,18 @@ This server wraps 3 API endpoints provided by API.Bible:
    --header "Application-User-Id: <YOUR_APP_USER_ID>"
    ```
 
-2. [Get Verse](https://scripture.api.bible/livedocs#/Verses/getVerse)
+2. [Get Books](https://scripture.api.bible/livedocs#/Books/getBooks)
+
+   Here's an example API call to get the books of the bible for the World English Bible translation:
+
+   ```bash
+   curl http://localhost:4000/api/v1/bibles/32664dc3288a28df-02/books --request POST \
+   --data '{"includeChapters": true}' \
+   --header "Content-Type: application/json" \
+   --header "Application-User-Id: <YOUR_APP_USER_ID>"
+   ```
+
+3. [Get Verse](https://scripture.api.bible/livedocs#/Verses/getVerse)
 
    Here's an example API call to get the World English Bible version of Galatians 2:20:
 
@@ -57,7 +68,7 @@ This server wraps 3 API endpoints provided by API.Bible:
    --header "Application-User-Id: <YOUR_APP_USER_ID>"
    ```
 
-3. [Search](https://scripture.api.bible/livedocs#/Search/searchBible)
+4. [Search](https://scripture.api.bible/livedocs#/Search/searchBible)
 
    Here's an example API call to search the World English Bible version for for the bible verse range "John 3:1-16":
 
