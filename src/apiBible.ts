@@ -119,7 +119,7 @@ export async function getVerse(getVerseInput: GetVerseInput) {
   const url = new URL(`${baseUrl}/bibles/${bibleId}/verses/${verseId}`);
 
   const defaultValues = {
-    contentType: "json",
+    contentType: "html",
     includeNotes: false,
     includeTitles: false,
     includeChapterNumbers: false,
@@ -137,6 +137,65 @@ export async function getVerse(getVerseInput: GetVerseInput) {
   const cacheValue = cache.get(urlString);
 
   logger.debug({ url: urlString }, "getVerse");
+
+  if (cacheValue) {
+    return cacheValue;
+  }
+
+  const response = await fetch(urlString, {
+    method: "GET",
+    headers: {
+      "api-key": bibleApiKey,
+      accept: "application/json",
+    },
+  });
+
+  if (!response.ok) {
+    throw new HTTPError(response, url);
+  }
+
+  const data = await response.json();
+  cache.set(urlString, data);
+
+  return data;
+}
+
+type GetPassageInput = {
+  bibleId: string;
+  passageId: string;
+  contentType?: "html" | "json" | "text";
+  includeNotes?: boolean;
+  includeTitles?: boolean;
+  includeChapterNumbers?: boolean;
+  includeVerseNumbers?: boolean;
+  includeVerseSpans?: boolean;
+  parallels?: string;
+  useOrgId?: boolean;
+};
+
+export async function getPassage(getPassageInput: GetPassageInput) {
+  const { bibleId, passageId, ...queryParamInput } = getPassageInput;
+  const url = new URL(`${baseUrl}/bibles/${bibleId}/passages/${passageId}`);
+
+  const defaultValues = {
+    contentType: "html",
+    includeNotes: false,
+    includeTitles: false,
+    includeChapterNumbers: false,
+    includeVerseNumbers: true,
+    includeVerseSpans: false,
+    useOrgId: false,
+  };
+
+  url.search = getQueryStringFromObject({
+    ...defaultValues,
+    ...queryParamInput,
+  });
+
+  const urlString = url.toString();
+  const cacheValue = cache.get(urlString);
+
+  logger.debug({ url: urlString }, "getPassage");
 
   if (cacheValue) {
     return cacheValue;
