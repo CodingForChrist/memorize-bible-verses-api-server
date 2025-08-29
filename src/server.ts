@@ -4,10 +4,25 @@ import { z } from "zod/v4";
 
 import "dotenv/config";
 
-import { getBibles, getBooks, getVerse, searchForVerses } from "./apiBible";
+import {
+  getBibles,
+  getBooks,
+  getVerse,
+  getPassage,
+  searchForVerses,
+} from "./apiBible";
+import {
+  transformVerseReferenceToVerseId,
+  transformVerseReferenceToPassageId,
+} from "./bibleVerseReferenceHelper";
 import authorizationMiddleware from "./authorizationMiddleware";
 import errorMiddleware from "./errorMiddleware";
 import logger from "./logger";
+
+import type {
+  SingleVerseReference,
+  VerseReferenceRange,
+} from "./bibleVerseReferenceHelper";
 
 const app = express();
 
@@ -57,20 +72,40 @@ app.post(
 );
 
 app.post(
-  "/api/v1/bibles/:bibleId/verses/:verseId",
+  "/api/v1/bibles/:bibleId/verses/verse-reference",
   authorizationMiddleware,
   async (req: Request, res: Response) => {
-    const schema = z.object({
-      bibleId: z.string().min(4).max(40),
-      verseId: z.string().min(4).max(40),
-      contentType: z.enum(["html", "json", "text"]).optional(),
-      includeNotes: z.boolean().optional(),
-      includeTitles: z.boolean().optional(),
-      includeChapterNumbers: z.boolean().optional(),
-      includeVerseNumbers: z.boolean().optional(),
-      includeVerseSpans: z.boolean().optional(),
-      useOrgId: z.boolean().optional(),
-    });
+    const schema = z
+      .object({
+        bibleId: z.string().min(4).max(40),
+        verseReference: z
+          .string()
+          .min(6)
+          .max(40)
+          .superRefine((value, context) => {
+            try {
+              transformVerseReferenceToVerseId(value as SingleVerseReference);
+            } catch (error) {
+              context.addIssue(String(error as Error));
+            }
+          }),
+        contentType: z.enum(["html", "json", "text"]).optional(),
+        includeNotes: z.boolean().optional(),
+        includeTitles: z.boolean().optional(),
+        includeChapterNumbers: z.boolean().optional(),
+        includeVerseNumbers: z.boolean().optional(),
+        includeVerseSpans: z.boolean().optional(),
+        useOrgId: z.boolean().optional(),
+      })
+      .transform(({ verseReference, ...rest }) => {
+        const verseId = transformVerseReferenceToVerseId(
+          verseReference as SingleVerseReference,
+        );
+        return {
+          ...rest,
+          verseId,
+        };
+      });
 
     const trustedInput = schema.parse({
       ...req.params,
@@ -78,6 +113,55 @@ app.post(
     });
 
     const results = await getVerse(trustedInput);
+    res.status(200).json(results);
+  },
+);
+
+app.post(
+  "/api/v1/bibles/:bibleId/passages/verse-reference",
+  authorizationMiddleware,
+  async (req: Request, res: Response) => {
+    const schema = z
+      .object({
+        bibleId: z.string().min(4).max(40),
+        verseReference: z
+          .string()
+          .min(6)
+          .max(40)
+          .superRefine((value, context) => {
+            try {
+              transformVerseReferenceToPassageId(
+                value as SingleVerseReference | VerseReferenceRange,
+              );
+            } catch (error) {
+              context.addIssue(String(error as Error));
+            }
+          }),
+        contentType: z.enum(["html", "json", "text"]).optional(),
+        includeNotes: z.boolean().optional(),
+        includeTitles: z.boolean().optional(),
+        includeChapterNumbers: z.boolean().optional(),
+        includeVerseNumbers: z.boolean().optional(),
+        includeVerseSpans: z.boolean().optional(),
+        useOrgId: z.boolean().optional(),
+        parallels: z.string().optional(),
+      })
+      .transform(({ verseReference, ...rest }) => {
+        const passageId = transformVerseReferenceToPassageId(
+          verseReference as SingleVerseReference,
+        );
+        return {
+          ...rest,
+          passageId,
+        };
+      });
+
+    const trustedInput = schema.parse({
+      ...req.params,
+      ...req.body,
+    });
+
+    const results = await getPassage(trustedInput);
     res.status(200).json(results);
   },
 );

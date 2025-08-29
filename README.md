@@ -33,7 +33,7 @@ Create an [API.Bible developer account](https://docs.api.bible/getting-started/s
 
 ## API Endpoints
 
-This server wraps 4 API endpoints provided by API.Bible:
+This server wraps the following API endpoints provided by API.Bible:
 
 1. [Get Bibles](https://scripture.api.bible/livedocs#/Bibles/getBibles)
 
@@ -59,21 +59,32 @@ This server wraps 4 API endpoints provided by API.Bible:
 
 3. [Get Verse](https://scripture.api.bible/livedocs#/Verses/getVerse)
 
-   Here's an example API call to get the World English Bible version of Galatians 2:20:
+   This endpoint provides functionality to find a single bible verse by a verse reference. Here's an example API call to get the World English Bible version of Galatians 2:20:
 
    ```bash
-   curl http://localhost:4000/api/v1/bibles/32664dc3288a28df-02/verses/GAL.2.20 --request POST \
-   --data '{"contentType": "json"}' \
+   curl http://localhost:4000/api/v1/bibles/32664dc3288a28df-02/verses/verse-reference --request POST \
+   --data '{"verseReference": "Galatians 2:20"}' \
    --header "Content-Type: application/json" \
    --header "Application-User-Id: <YOUR_APP_USER_ID>"
    ```
 
-4. [Search](https://scripture.api.bible/livedocs#/Search/searchBible)
+4. [Get Passage](https://scripture.api.bible/livedocs#/Passages/getPassage)
+
+   This endpoint provides functionality to find a single bible verse or multiple bible verses by a verse reference. Here's an example API call to get the World English Bible version of Psalm 23:1-6:
+
+   ```bash
+   curl http://localhost:4000/api/v1/bibles/32664dc3288a28df-02/passages/verse-reference --request POST \
+   --data '{"verseReference": "Psalm 23:1-6"}' \
+   --header "Content-Type: application/json" \
+   --header "Application-User-Id: <YOUR_APP_USER_ID>"
+   ```
+
+5. [Search](https://scripture.api.bible/livedocs#/Search/searchBible)
 
    Here's an example API call to search the World English Bible version for for the bible verse range "John 3:1-16":
 
    ```bash
-   curl http://localhost:4000/api/v1/bibles/32664dc3288a28df-02/search/verse-reference --request POST \
+   curl http://localhost:4000/api/v1/bibles/32664dc3288a28df-02/search --request POST \
    --data '{"query": "John 3:1-16"}' \
    --header "Content-Type: application/json" \
    --header "Application-User-Id: <YOUR_APP_USER_ID>"
