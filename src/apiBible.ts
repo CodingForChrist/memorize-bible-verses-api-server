@@ -11,30 +11,19 @@ const inMemoryMode = process.env.API_CLIENT_BEHAVIOR_IN_MEMORY_MODE as string;
 const ONE_HOUR_IN_MILLISECONDS = 60 * 60 * 1000;
 export const cache = new Cache(ONE_HOUR_IN_MILLISECONDS);
 
-type GetBiblesInput = {
-  language?: string;
-  abbreviation?: string;
-  name?: string;
-  ids?: string;
-  includeFullDetails?: boolean;
+type RequestInput = {
+  url: URL;
+  label: string;
 };
 
-export async function getBibles(getBiblesInput: GetBiblesInput = {}) {
-  const url = new URL(`${baseUrl}/bibles`);
-  url.search = getQueryStringFromObject(getBiblesInput);
-
+async function request({ url, label }: RequestInput) {
   const urlString = url.toString();
   const cacheValue = cache.get(urlString);
 
-  logger.debug({ url: urlString }, "getBibles");
+  logger.debug({ url: urlString }, label);
 
   if (cacheValue) {
     return cacheValue;
-  }
-
-  if (inMemoryMode === "true") {
-    logger.debug("bible list loaded from fixture data");
-    return bibleListFixtureData;
   }
 
   const response = await fetch(urlString, {
@@ -52,6 +41,27 @@ export async function getBibles(getBiblesInput: GetBiblesInput = {}) {
   const data = await response.json();
   cache.set(urlString, data);
 
+  return data as Record<string, any>;
+}
+
+type GetBiblesInput = {
+  language?: string;
+  abbreviation?: string;
+  name?: string;
+  ids?: string;
+  includeFullDetails?: boolean;
+};
+
+export async function getBibles(getBiblesInput: GetBiblesInput = {}) {
+  const url = new URL(`${baseUrl}/bibles`);
+  url.search = getQueryStringFromObject(getBiblesInput);
+
+  if (inMemoryMode === "true") {
+    logger.debug("bible list loaded from fixture data");
+    return bibleListFixtureData;
+  }
+
+  const data = await request({ url, label: "getBibles" });
   return data;
 }
 
@@ -75,30 +85,7 @@ export async function getBooks(getBooksInput: GetBooksInput) {
     ...queryParamInput,
   });
 
-  const urlString = url.toString();
-  const cacheValue = cache.get(urlString);
-
-  logger.debug({ url: urlString }, "getBooks");
-
-  if (cacheValue) {
-    return cacheValue;
-  }
-
-  const response = await fetch(urlString, {
-    method: "GET",
-    headers: {
-      "api-key": bibleApiKey,
-      accept: "application/json",
-    },
-  });
-
-  if (!response.ok) {
-    throw new HTTPError(response, url);
-  }
-
-  const data = await response.json();
-  cache.set(urlString, data);
-
+  const data = await request({ url, label: "getBooks" });
   return data;
 }
 
@@ -133,30 +120,7 @@ export async function getVerse(getVerseInput: GetVerseInput) {
     ...queryParamInput,
   });
 
-  const urlString = url.toString();
-  const cacheValue = cache.get(urlString);
-
-  logger.debug({ url: urlString }, "getVerse");
-
-  if (cacheValue) {
-    return cacheValue;
-  }
-
-  const response = await fetch(urlString, {
-    method: "GET",
-    headers: {
-      "api-key": bibleApiKey,
-      accept: "application/json",
-    },
-  });
-
-  if (!response.ok) {
-    throw new HTTPError(response, url);
-  }
-
-  const data = await response.json();
-  cache.set(urlString, data);
-
+  const data = await request({ url, label: "getVerse" });
   return data;
 }
 
@@ -180,7 +144,7 @@ export async function getPassage(getPassageInput: GetPassageInput) {
   const defaultValues = {
     contentType: "html",
     includeNotes: false,
-    includeTitles: false,
+    includeTitles: true,
     includeChapterNumbers: false,
     includeVerseNumbers: true,
     includeVerseSpans: false,
@@ -192,30 +156,7 @@ export async function getPassage(getPassageInput: GetPassageInput) {
     ...queryParamInput,
   });
 
-  const urlString = url.toString();
-  const cacheValue = cache.get(urlString);
-
-  logger.debug({ url: urlString }, "getPassage");
-
-  if (cacheValue) {
-    return cacheValue;
-  }
-
-  const response = await fetch(urlString, {
-    method: "GET",
-    headers: {
-      "api-key": bibleApiKey,
-      accept: "application/json",
-    },
-  });
-
-  if (!response.ok) {
-    throw new HTTPError(response, url);
-  }
-
-  const data = await response.json();
-  cache.set(urlString, data);
-
+  const data = await request({ url, label: "getPassage" });
   return data;
 }
 
@@ -234,32 +175,11 @@ export async function searchForVerses(searchForVersesInput: SearchInput) {
   const url = new URL(`${baseUrl}/bibles/${bibleId}/search`);
   url.search = getQueryStringFromObject(queryParamInput);
 
-  const urlString = url.toString();
-  const cacheValue = cache.get(urlString);
-
-  logger.debug({ url: urlString }, "searchForVerses");
-
-  if (cacheValue) {
-    return cacheValue;
-  }
-
-  const response = await fetch(urlString, {
-    method: "GET",
-    headers: {
-      "api-key": bibleApiKey,
-      accept: "application/json",
-    },
-  });
-
-  if (!response.ok) {
-    throw new HTTPError(response, url);
-  }
-
-  const data = await response.json();
-  cache.set(urlString, data);
-
+  const data = await request({ url, label: "search" });
   return data;
 }
+
+function fetchHelper() {}
 
 type GetQueryStringFromObjectInput = {
   [key: string]: string | string[] | number | boolean | undefined;
