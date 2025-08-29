@@ -81,11 +81,11 @@ This server wraps the following API endpoints provided by API.Bible:
 
 5. [Search](https://scripture.api.bible/livedocs#/Search/searchBible)
 
-   Here's an example API call to search the World English Bible version for for the bible verse range "John 3:1-16":
+   Here's an example API call to search the World English Bible version for the phrase "make diciples of all nations":
 
    ```bash
    curl http://localhost:4000/api/v1/bibles/32664dc3288a28df-02/search --request POST \
-   --data '{"query": "John 3:1-16"}' \
+   --data '{"query": "make diciples of all nations"}' \
    --header "Content-Type: application/json" \
    --header "Application-User-Id: <YOUR_APP_USER_ID>"
    ```

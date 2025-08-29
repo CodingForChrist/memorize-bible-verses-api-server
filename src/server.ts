@@ -167,25 +167,12 @@ app.post(
 );
 
 app.post(
-  "/api/v1/bibles/:bibleId/search/verse-reference",
+  "/api/v1/bibles/:bibleId/search",
   authorizationMiddleware,
   async (req: Request, res: Response) => {
     const schema = z.object({
       bibleId: z.string().min(4).max(40),
-      query: z
-        .string()
-        .min(4)
-        .max(40)
-        .refine(
-          (value) => {
-            const characterCount = value.match(/:/g)?.length;
-            return characterCount === 1;
-          },
-          {
-            message:
-              "bible verse reference must include a single colon character to separate the chapter from the verse (e.g. John 3:16)",
-          },
-        ),
+      query: z.string().min(4).max(40),
       limit: z.number().optional(),
       offset: z.number().optional(),
       contentType: z.enum(["relevance", "relevance", "canonical"]).optional(),
