@@ -144,7 +144,7 @@ export async function getPassage(getPassageInput: GetPassageInput) {
   const defaultValues = {
     contentType: "html",
     includeNotes: false,
-    includeTitles: false,
+    includeTitles: true,
     includeChapterNumbers: false,
     includeVerseNumbers: true,
     includeVerseSpans: false,
