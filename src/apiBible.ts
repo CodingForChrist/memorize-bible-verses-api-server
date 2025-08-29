@@ -179,8 +179,6 @@ export async function searchForVerses(searchForVersesInput: SearchInput) {
   return data;
 }
 
-function fetchHelper() {}
-
 type GetQueryStringFromObjectInput = {
   [key: string]: string | string[] | number | boolean | undefined;
 };
