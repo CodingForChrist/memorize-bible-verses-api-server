@@ -20,7 +20,7 @@ beforeEach(() => {
   vi.stubEnv("PINO_LOG_LEVEL", "error");
   vi.stubEnv("BIBLE_API_KEY", "test-value");
 
-  cache.store.clear();
+  cache.clear();
   global.fetch = vi.fn();
 });
 

@@ -1,6 +1,6 @@
+import TTLCache from "@isaacs/ttlcache";
 import { HTTPError } from "./HTTPError";
 import logger from "./logger";
-import Cache from "./cache";
 
 import bibleListFixtureData from "./fixtures/bibleList.json";
 
@@ -8,8 +8,11 @@ const baseUrl = "https://rest.api.bible/v1";
 const bibleApiKey = process.env.BIBLE_API_KEY as string;
 const inMemoryMode = process.env.API_CLIENT_BEHAVIOR_IN_MEMORY_MODE as string;
 
-const ONE_HOUR_IN_MILLISECONDS = 60 * 60 * 1000;
-export const cache = new Cache(ONE_HOUR_IN_MILLISECONDS);
+const ONE_DAY_IN_MILLISECONDS = 24 * 60 * 60 * 1000;
+export const cache = new TTLCache<string, Record<string, unknown>>({
+  max: 10000,
+  ttl: ONE_DAY_IN_MILLISECONDS,
+});
 
 type RequestInput = {
   url: URL;
@@ -20,7 +23,7 @@ async function request({ url, label }: RequestInput) {
   const urlString = url.toString();
   const cacheValue = cache.get(urlString);
 
-  logger.debug({ url: urlString }, label);
+  logger.debug({ url: urlString, foundInCache: Boolean(cacheValue) }, label);
 
   if (cacheValue) {
     return cacheValue;
