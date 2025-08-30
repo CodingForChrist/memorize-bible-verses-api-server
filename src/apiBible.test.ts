@@ -15,13 +15,16 @@ function createFetchResponse(data: Record<string, unknown>) {
   } as Response;
 }
 
-describe("getBibles()", () => {
-  beforeEach(() => {
-    vi.clearAllMocks();
-    global.fetch = vi.fn();
-    cache.store.clear();
-  });
+beforeEach(() => {
+  vi.clearAllMocks();
+  vi.stubEnv("PINO_LOG_LEVEL", "error");
+  vi.stubEnv("BIBLE_API_KEY", "test-value");
 
+  cache.store.clear();
+  global.fetch = vi.fn();
+});
+
+describe("getBibles()", () => {
   test("does not require any input", async () => {
     const mockedFetch = vi.mocked(global.fetch);
     mockedFetch.mockResolvedValue(createFetchResponse({}));
@@ -88,12 +91,6 @@ describe("getBibles()", () => {
 });
 
 describe("getBooks()", () => {
-  beforeEach(() => {
-    vi.clearAllMocks();
-    global.fetch = vi.fn();
-    cache.store.clear();
-  });
-
   test("uses default values", async () => {
     const mockedFetch = vi.mocked(global.fetch);
     mockedFetch.mockResolvedValue(createFetchResponse({}));
@@ -173,12 +170,6 @@ describe("getBooks()", () => {
 });
 
 describe("getVerse()", () => {
-  beforeEach(() => {
-    vi.clearAllMocks();
-    global.fetch = vi.fn();
-    cache.store.clear();
-  });
-
   test("uses default values", async () => {
     const mockedFetch = vi.mocked(global.fetch);
     mockedFetch.mockResolvedValue(createFetchResponse({}));
@@ -263,12 +254,6 @@ describe("getVerse()", () => {
 });
 
 describe("searchForVerses()", () => {
-  beforeEach(() => {
-    vi.clearAllMocks();
-    global.fetch = vi.fn();
-    cache.store.clear();
-  });
-
   test("only requires bibleId and query", async () => {
     const mockedFetch = vi.mocked(global.fetch);
     mockedFetch.mockResolvedValue(createFetchResponse({}));
