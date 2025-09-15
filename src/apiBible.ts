@@ -2,7 +2,7 @@ import TTLCache from "@isaacs/ttlcache";
 import { HTTPError } from "./HTTPError";
 import logger from "./logger";
 
-import bibleListFixtureData from "./fixtures/bibleList.json";
+import bibleListFixtureData from "./data/bibleList.json";
 
 const baseUrl = "https://rest.api.bible/v1";
 const bibleApiKey = process.env.BIBLE_API_KEY as string;

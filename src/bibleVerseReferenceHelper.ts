@@ -1,4 +1,4 @@
-import { data as books } from "./fixtures/bookList.json";
+import { data as books } from "./data/bookList.json";
 
 export type VerseId = `${string}.${number}.${number}`;
 export type PassageId = `${VerseId}-${VerseId}` | VerseId;
