@@ -204,29 +204,33 @@ app.listen({ port, hostname }, (error) => {
   }
 });
 
-app.get(
+app.post(
   "/api/v1/bibles/:bibleId/verse-of-the-day",
   authorizationMiddleware,
   async (req: Request, res: Response) => {
     const schema = z.object({
       bibleId: z.string().min(4).max(40),
+      date: z.iso.datetime().optional(),
     });
 
-    const trustedInput = schema.parse(req.params);
+    const { bibleId, date } = schema.parse({
+      ...req.params,
+      ...req.body,
+    });
 
-    const date = new Date();
-    const verseReference = getVerseReferenceOfTheDay(date);
+    const verseOfTheDayDate = date ? new Date(date) : new Date();
+    const verseReference = getVerseReferenceOfTheDay(verseOfTheDayDate);
     const passageId = transformVerseReferenceToPassageId(
       verseReference as SingleVerseReference | VerseReferenceRange,
     );
 
     const results = await getPassage({
-      ...trustedInput,
+      bibleId,
       passageId,
     });
     res.status(200).json({
       ...results,
-      date: date.toISOString(),
+      date: verseOfTheDayDate.toISOString(),
     });
   },
 );
