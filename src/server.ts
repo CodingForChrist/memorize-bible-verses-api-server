@@ -18,6 +18,7 @@ import {
 import authorizationMiddleware from "./authorizationMiddleware";
 import errorMiddleware from "./errorMiddleware";
 import logger from "./logger";
+import { getVerseReferenceOfTheDay } from "./verseOfTheDay";
 
 import type {
   SingleVerseReference,
@@ -148,7 +149,7 @@ app.post(
       })
       .transform(({ verseReference, ...rest }) => {
         const passageId = transformVerseReferenceToPassageId(
-          verseReference as SingleVerseReference,
+          verseReference as SingleVerseReference | VerseReferenceRange,
         );
         return {
           ...rest,
@@ -202,3 +203,30 @@ app.listen({ port, hostname }, (error) => {
     logger.error(error, "API server failed to start");
   }
 });
+
+app.get(
+  "/api/v1/bibles/:bibleId/verse-of-the-day",
+  authorizationMiddleware,
+  async (req: Request, res: Response) => {
+    const schema = z.object({
+      bibleId: z.string().min(4).max(40),
+    });
+
+    const trustedInput = schema.parse(req.params);
+
+    const date = new Date();
+    const verseReference = getVerseReferenceOfTheDay(date);
+    const passageId = transformVerseReferenceToPassageId(
+      verseReference as SingleVerseReference | VerseReferenceRange,
+    );
+
+    const results = await getPassage({
+      ...trustedInput,
+      passageId,
+    });
+    res.status(200).json({
+      ...results,
+      date: date.toISOString(),
+    });
+  },
+);
