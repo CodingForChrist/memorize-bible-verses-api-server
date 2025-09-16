@@ -205,7 +205,7 @@ app.post(
       ...req.body,
     });
 
-    const verseReference = getVerseReferenceOfTheDay(new Date(date));
+    const verseReference = getVerseReferenceOfTheDay(date);
     const passageId = transformVerseReferenceToPassageId(
       verseReference as SingleVerseReference | VerseReferenceRange,
     );
