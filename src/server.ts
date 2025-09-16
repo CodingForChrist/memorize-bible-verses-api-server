@@ -191,6 +191,36 @@ app.post(
   },
 );
 
+app.post(
+  "/api/v1/bibles/:bibleId/verse-of-the-day",
+  authorizationMiddleware,
+  async (req: Request, res: Response) => {
+    const schema = z.object({
+      bibleId: z.string().min(4).max(40),
+      date: z.iso.datetime({ offset: true }),
+    });
+
+    const { bibleId, date } = schema.parse({
+      ...req.params,
+      ...req.body,
+    });
+
+    const verseReference = getVerseReferenceOfTheDay(new Date(date));
+    const passageId = transformVerseReferenceToPassageId(
+      verseReference as SingleVerseReference | VerseReferenceRange,
+    );
+
+    const results = await getPassage({
+      bibleId,
+      passageId,
+    });
+    res.status(200).json({
+      ...results,
+      date,
+    });
+  },
+);
+
 app.use(errorMiddleware);
 
 const hostname = process.env.HOSTNAME ?? "localhost";
@@ -203,34 +233,3 @@ app.listen({ port, hostname }, (error) => {
     logger.error(error, "API server failed to start");
   }
 });
-
-app.post(
-  "/api/v1/bibles/:bibleId/verse-of-the-day",
-  authorizationMiddleware,
-  async (req: Request, res: Response) => {
-    const schema = z.object({
-      bibleId: z.string().min(4).max(40),
-      date: z.iso.datetime().optional(),
-    });
-
-    const { bibleId, date } = schema.parse({
-      ...req.params,
-      ...req.body,
-    });
-
-    const verseOfTheDayDate = date ? new Date(date) : new Date();
-    const verseReference = getVerseReferenceOfTheDay(verseOfTheDayDate);
-    const passageId = transformVerseReferenceToPassageId(
-      verseReference as SingleVerseReference | VerseReferenceRange,
-    );
-
-    const results = await getPassage({
-      bibleId,
-      passageId,
-    });
-    res.status(200).json({
-      ...results,
-      date: verseOfTheDayDate.toISOString(),
-    });
-  },
-);

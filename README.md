@@ -96,7 +96,7 @@ This server also provides an endpoint for returning the verse of the day using [
 
 ```bash
 curl http://localhost:4000/api/v1/bibles/32664dc3288a28df-02/verse-of-the-day --request POST \
---data '{"date": "2025-01-01T06:02:25.479Z"}' \
+--data '{"date": "2025-01-01T11:00:00+05:00"}' \
 --header "Content-Type: application/json" \
 --header "Application-User-Id: <YOUR_APP_USER_ID>"
 ```
