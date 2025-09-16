@@ -1,7 +1,9 @@
 import dayjs from "dayjs";
 import dayOfYear from "dayjs/plugin/dayOfYear";
+import localizedFormat from "dayjs/plugin/localizedFormat";
 
 dayjs.extend(dayOfYear);
+dayjs.extend(localizedFormat);
 
 import verseOfTheDayList from "./data/verseOfTheDayList.json";
 
