@@ -8,12 +8,22 @@ import verseOfTheDayList from "./data/verseOfTheDayList.json";
 export function getVerseReferenceOfTheDay(
   dateISOStringWithTimezoneOffset: string,
 ) {
-  const dayOfYearIndex = dayjs(dateISOStringWithTimezoneOffset).dayOfYear() - 1;
+  const dayOfTheYear = dayjs(dateISOStringWithTimezoneOffset).dayOfYear();
+  const dayOfTheYearIndex = dayOfTheYear - 1;
 
-  // TODO: add more verse references to get to 366
-  if (dayOfYearIndex >= verseOfTheDayList.length) {
-    return verseOfTheDayList[dayOfYearIndex - verseOfTheDayList.length];
+  let verseReference: string;
+
+  if (dayOfTheYearIndex < verseOfTheDayList.length) {
+    verseReference = verseOfTheDayList[dayOfTheYearIndex];
+  } else {
+    // TODO: add more verse references to get to 366
+    verseReference =
+      verseOfTheDayList[dayOfTheYearIndex - verseOfTheDayList.length];
   }
 
-  return verseOfTheDayList[dayOfYearIndex];
+  return {
+    verseReference,
+    dayOfTheYear,
+    formattedDate: dayjs(dateISOStringWithTimezoneOffset).format("LLL"),
+  };
 }

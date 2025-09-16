@@ -205,7 +205,8 @@ app.post(
       ...req.body,
     });
 
-    const verseReference = getVerseReferenceOfTheDay(date);
+    const { verseReference, dayOfTheYear, formattedDate } =
+      getVerseReferenceOfTheDay(date);
     const passageId = transformVerseReferenceToPassageId(
       verseReference as SingleVerseReference | VerseReferenceRange,
     );
@@ -216,7 +217,8 @@ app.post(
     });
     res.status(200).json({
       ...results,
-      date,
+      formattedDate,
+      dayOfTheYear,
     });
   },
 );
