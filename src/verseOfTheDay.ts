@@ -1,16 +1,23 @@
 import dayjs from "dayjs";
 import dayOfYear from "dayjs/plugin/dayOfYear";
 import localizedFormat from "dayjs/plugin/localizedFormat";
+import utc from "dayjs/plugin/utc";
 
 dayjs.extend(dayOfYear);
 dayjs.extend(localizedFormat);
+dayjs.extend(utc);
 
 import verseOfTheDayList from "./data/verseOfTheDayList.json";
 
 export function getVerseReferenceOfTheDay(
   dateISOStringWithTimezoneOffset: string,
 ) {
-  const dayOfTheYear = dayjs(dateISOStringWithTimezoneOffset).dayOfYear();
+  const originalTimezone = dateISOStringWithTimezoneOffset.slice(-6);
+  const dayjsDate = dayjs(dateISOStringWithTimezoneOffset).utcOffset(
+    originalTimezone,
+  );
+
+  const dayOfTheYear = dayjsDate.dayOfYear();
   const dayOfTheYearIndex = dayOfTheYear - 1;
 
   let verseReference: string;
@@ -26,6 +33,6 @@ export function getVerseReferenceOfTheDay(
   return {
     verseReference,
     dayOfTheYear,
-    formattedDate: dayjs(dateISOStringWithTimezoneOffset).format("LLL"),
+    formattedDate: dayjsDate.format("LLL"),
   };
 }
