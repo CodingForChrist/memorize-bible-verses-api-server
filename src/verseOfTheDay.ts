@@ -7,7 +7,7 @@ dayjs.extend(dayOfYear);
 dayjs.extend(localizedFormat);
 dayjs.extend(utc);
 
-import verseOfTheDayList from "./data/verseOfTheDayList.json";
+import verseOfTheDayList from "./data/verseOfTheDayList";
 
 export function getVerseReferenceOfTheDay(
   dateISOStringWithTimezoneOffset: string,

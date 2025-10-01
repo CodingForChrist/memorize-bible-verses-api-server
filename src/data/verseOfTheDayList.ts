@@ -1,7 +1,62 @@
-[
-  "Genesis 1:1-2",
-  "Genesis 1:3-5",
-  "Genesis 1:27",
+// Creation has 11 memory verses
+const creationVersesWithDescriptions = [
+  {
+    verse: "Genesis 1:1",
+    day: "Wednesday",
+  },
+  {
+    verse: "Genesis 1:2",
+    day: "Thursday",
+  },
+  {
+    verse: "Genesis 1:3",
+    day: "Friday",
+    description: "Day 1 - Light",
+  },
+  {
+    verse: "Genesis 1:4-5",
+    day: "Saturday",
+    description: "Day 1 - Light & Darkness",
+  },
+  {
+    verse: "Genesis 1:8",
+    day: "Sunday",
+    description: "Day 2 - Heavens",
+  },
+  {
+    verse: "Genesis 1:10-11",
+    day: "Monday",
+    description: "Day 3 - Land, Sea & Plants",
+  },
+  {
+    verse: "Genesis 1:16",
+    day: "Tuesday",
+    description: "Day 4 - Sun, Moon & Stars",
+  },
+  {
+    verse: "Genesis 1:20",
+    day: "Wednesday",
+    description: "Day 5 - Fish & Birds",
+  },
+  {
+    verse: "Genesis 1:24",
+    day: "Thursday",
+    description: "Day 6 - Animals",
+  },
+  {
+    verse: "Genesis 1:27",
+    day: "Friday",
+    description: "Day 6 - Man",
+  },
+  {
+    verse: "Genesis 2:3",
+    day: "Saturday",
+    description: "Day 7 - Day of Rest",
+  },
+];
+
+export default [
+  ...creationVersesWithDescriptions.map(({ verse }) => verse),
   "Genesis 9:2",
   "Exodus 20:3",
   "Exodus 20:4-6",
@@ -299,5 +354,5 @@
   "Revelation 21:8",
   "Revelation 22:3",
   "Revelation 22:17",
-  "Revelation 22:20-21"
-]
+  "Revelation 22:20-21",
+];
