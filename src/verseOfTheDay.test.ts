@@ -2,7 +2,7 @@ import { describe, expect, test, vi } from "vitest";
 
 import { getVerseReferenceOfTheDay } from "./verseOfTheDay";
 
-vi.mock("./data/verseOfTheDayList.json", () => {
+vi.mock("./data/verseOfTheDayList", () => {
   return {
     default: ["Genesis 1:1", "John 3:16", "Psalm 23:1"],
   };
