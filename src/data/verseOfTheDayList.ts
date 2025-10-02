@@ -121,6 +121,7 @@ export default [
   "Leviticus 19:18",
   "Numbers 1:3",
   "Numbers 23:19",
+  "Numbers 24:17",
   "Deuteronomy 6:5",
   "Deuteronomy 7:9",
   "Joshua 1:8",
