@@ -1,82 +1,132 @@
 // Creation has 11 memory verses
-const creationVersesWithDescriptions = [
+const versesForCreation = [
   {
     verse: "Genesis 1:1",
-    day: "Wednesday",
+    preferredDayOfWeek: "Wednesday",
   },
   {
     verse: "Genesis 1:2",
-    day: "Thursday",
+    preferredDayOfWeek: "Thursday",
   },
   {
     verse: "Genesis 1:3",
-    day: "Friday",
+    preferredDayOfWeek: "Friday",
     description: "Day 1 - Light",
   },
   {
     verse: "Genesis 1:4-5",
-    day: "Saturday",
+    preferredDayOfWeek: "Saturday",
     description: "Day 1 - Light & Darkness",
   },
   {
     verse: "Genesis 1:8",
-    day: "Sunday",
+    preferredDayOfWeek: "Sunday",
     description: "Day 2 - Heavens",
   },
   {
     verse: "Genesis 1:10-11",
-    day: "Monday",
+    preferredDayOfWeek: "Monday",
     description: "Day 3 - Land, Sea & Plants",
   },
   {
     verse: "Genesis 1:16",
-    day: "Tuesday",
+    preferredDayOfWeek: "Tuesday",
     description: "Day 4 - Sun, Moon & Stars",
   },
   {
     verse: "Genesis 1:20",
-    day: "Wednesday",
+    preferredDayOfWeek: "Wednesday",
     description: "Day 5 - Fish & Birds",
   },
   {
     verse: "Genesis 1:24",
-    day: "Thursday",
+    preferredDayOfWeek: "Thursday",
     description: "Day 6 - Animals",
   },
   {
     verse: "Genesis 1:27",
-    day: "Friday",
+    preferredDayOfWeek: "Friday",
     description: "Day 6 - Man",
   },
   {
     verse: "Genesis 2:3",
-    day: "Saturday",
+    preferredDayOfWeek: "Saturday",
     description: "Day 7 - Day of Rest",
   },
 ];
 
+// 10 Commandments over 7 days
+const versesForTheTenCommandments = [
+  {
+    verse: "Exodus 20:3",
+    description: "Day 1 - 1st Commandment",
+  },
+  {
+    verse: "Exodus 20:4-6",
+    description: "Day 2 - 2nd Commandment",
+  },
+  {
+    verse: "Exodus 20:7",
+    description: "Day 3 - 3rd Commandment",
+  },
+  {
+    verse: "Exodus 20:8-11",
+    description: "Day 4 - 4th Commandment",
+  },
+  {
+    verse: "Exodus 20:12",
+    description: "Day 5 - 5th Commandment",
+  },
+  {
+    verse: "Exodus 20:13-15",
+    description: "Day 6 - 6th, 7th, and 8th Commandments",
+  },
+  {
+    verse: "Exodus 20:16-17",
+    description: "Day 7 - 9th and 10th Commandments",
+  },
+];
+
+// Beatitudes over 5 days
+const versesForTheBeatitudes = [
+  {
+    verse: "Matthew 5:3-4",
+    description: "Day 1 - first pair",
+  },
+  {
+    verse: "Matthew 5:5-6",
+    description: "Day 2 - second pair",
+  },
+  {
+    verse: "Matthew 5:7-8",
+    description: "Day 3 - third pair",
+  },
+  {
+    verse: "Matthew 5:9-10",
+    description: "Day 4 - fourth pair",
+  },
+  {
+    verse: "Matthew 5:11-12",
+    description: "Day 5 - fifth pair",
+  },
+];
+
 export default [
-  ...creationVersesWithDescriptions.map(({ verse }) => verse),
+  ...versesForCreation.map(({ verse }) => verse),
   "Genesis 9:2",
-  "Exodus 20:3",
-  "Exodus 20:4-6",
-  "Exodus 20:7",
-  "Exodus 20:8-11",
-  "Exodus 20:12",
-  "Exodus 20:13",
-  "Exodus 20:14",
-  "Exodus 20:15",
-  "Exodus 20:16",
-  "Exodus 20:17",
+  "Genesis 50:20",
+  "Exodus 3:14",
+  ...versesForTheTenCommandments.map(({ verse }) => verse),
   "Leviticus 11:45",
-  "Leviticus 15:16",
+  "Leviticus 19:18",
   "Numbers 1:3",
   "Numbers 23:19",
-  "Deuteronomy 6:5-7",
+  "Deuteronomy 6:5",
+  "Deuteronomy 7:9",
   "Joshua 1:8",
   "Judges 21:25",
   "Ruth 1:16-17",
-  "I Samuel 12:23",
+  "1 Samuel 12:23",
   "2 Samuel 7:16",
   "1 Kings 7:23",
   "2 Kings 20:11",
@@ -89,16 +139,14 @@ export default [
   "Job 19:25-26",
   "Psalm 1:1-3",
   "Psalm 5:3",
+  "Psalm 9:10",
   "Psalm 19:1",
   "Psalm 22:1-3",
   "Psalm 22:4-5",
   "Psalm 22:13",
-  "Psalm 23:1",
-  "Psalm 23:2",
-  "Psalm 23:3",
-  "Psalm 23:4",
-  "Psalm 23:5",
-  "Psalm 23:6",
+  "Psalm 23:1-2",
+  "Psalm 23:3-4",
+  "Psalm 23:5-6",
   "Psalm 27:1",
   "Psalm 37:5",
   "Psalm 119:9-11",
@@ -158,16 +206,7 @@ export default [
   "Zechariah 12:10",
   "Malachi 3:1-3",
   "Malachi 4:5-6",
-  "Matthew 5:3",
-  "Matthew 5:4",
-  "Matthew 5:5",
-  "Matthew 5:6",
-  "Matthew 5:7",
-  "Matthew 5:8",
-  "Matthew 5:9",
-  "Matthew 5:10",
-  "Matthew 5:11",
-  "Matthew 5:12",
+  ...versesForTheBeatitudes.map(({ verse }) => verse),
   "Matthew 6:33-34",
   "Matthew 7:1",
   "Matthew 7:7-8",
