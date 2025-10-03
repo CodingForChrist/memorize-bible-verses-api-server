@@ -26,46 +26,56 @@ describe("parseVerseReferenceIntoParts()", () => {
       verseNumberEnd: 17,
       verseNumberStart: 17,
     });
+
+    expect(parseVerseReferenceIntoParts("Song of Solomon 2:1")).toEqual({
+      bookName: "Song of Solomon",
+      bookNumber: undefined,
+      chapter: 2,
+      fullBookName: "Song of Solomon",
+      verseCount: 1,
+      verseNumberEnd: 1,
+      verseNumberStart: 1,
+    });
+
+    expect(parseVerseReferenceIntoParts("3 John 1:7-8")).toEqual({
+      bookName: "John",
+      bookNumber: 3,
+      chapter: 1,
+      fullBookName: "3 John",
+      verseCount: 2,
+      verseNumberEnd: 8,
+      verseNumberStart: 7,
+    });
   });
 
   test("should throw an error for an invalid verse reference", () => {
-    expect(() =>
-      // @ts-expect-error invalid input
-      parseVerseReferenceIntoParts("111"),
-    ).toThrowError(/Book number must be a single digit followed by a space/);
+    expect(() => parseVerseReferenceIntoParts("111")).toThrowError(
+      /Book number must be a single digit followed by a space/,
+    );
 
     expect(() => parseVerseReferenceIntoParts("4 John 1:1")).toThrowError(
       /Invalid book number "4"/,
     );
 
-    expect(() =>
-      // @ts-expect-error invalid input
-      parseVerseReferenceIntoParts("1 11"),
-    ).toThrowError(/Failed to parse book name out of the verse reference/);
+    expect(() => parseVerseReferenceIntoParts("1 11")).toThrowError(
+      /Failed to parse book name out of the verse reference/,
+    );
 
-    expect(() =>
-      // @ts-expect-error invalid input
-      parseVerseReferenceIntoParts("invalid-data"),
-    ).toThrowError(
+    expect(() => parseVerseReferenceIntoParts("invalid-data")).toThrowError(
       /Must include a single space to separate the book name from the chapter/,
     );
 
-    expect(() =>
-      // @ts-expect-error invalid input
-      parseVerseReferenceIntoParts("invalid data"),
-    ).toThrowError(
-      /Must include a single colon character to separate the chapter from the verse/,
+    expect(() => parseVerseReferenceIntoParts("invalid data")).toThrowError(
+      /Must include a single space to separate the book name from the chapter/,
     );
 
-    expect(() =>
-      // @ts-expect-error invalid input
-      parseVerseReferenceIntoParts("Genesis A:1"),
-    ).toThrowError(/Chapter must be a number/);
+    expect(() => parseVerseReferenceIntoParts("Genesis 1A:1")).toThrowError(
+      /Chapter must be a number/,
+    );
 
-    expect(() =>
-      // @ts-expect-error invalid input
-      parseVerseReferenceIntoParts("Genesis 1:A"),
-    ).toThrowError(/Verse must be a number/);
+    expect(() => parseVerseReferenceIntoParts("Genesis 1:A")).toThrowError(
+      /Verse must be a number/,
+    );
   });
 });
 

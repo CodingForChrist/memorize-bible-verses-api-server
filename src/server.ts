@@ -20,11 +20,6 @@ import errorMiddleware from "./errorMiddleware";
 import logger from "./logger";
 import { getVerseReferenceOfTheDay } from "./verseOfTheDay";
 
-import type {
-  SingleVerseReference,
-  VerseReferenceRange,
-} from "./bibleVerseReferenceHelper";
-
 const app = express();
 
 app.use(cors());
@@ -85,7 +80,7 @@ app.post(
           .max(40)
           .superRefine((value, context) => {
             try {
-              transformVerseReferenceToVerseId(value as SingleVerseReference);
+              transformVerseReferenceToVerseId(value);
             } catch (error) {
               context.addIssue(String(error as Error));
             }
@@ -99,9 +94,7 @@ app.post(
         useOrgId: z.boolean().optional(),
       })
       .transform(({ verseReference, ...rest }) => {
-        const verseId = transformVerseReferenceToVerseId(
-          verseReference as SingleVerseReference,
-        );
+        const verseId = transformVerseReferenceToVerseId(verseReference);
         return {
           ...rest,
           verseId,
@@ -131,9 +124,7 @@ app.post(
           .max(40)
           .superRefine((value, context) => {
             try {
-              transformVerseReferenceToPassageId(
-                value as SingleVerseReference | VerseReferenceRange,
-              );
+              transformVerseReferenceToPassageId(value);
             } catch (error) {
               context.addIssue(String(error as Error));
             }
@@ -148,9 +139,7 @@ app.post(
         parallels: z.string().optional(),
       })
       .transform(({ verseReference, ...rest }) => {
-        const passageId = transformVerseReferenceToPassageId(
-          verseReference as SingleVerseReference | VerseReferenceRange,
-        );
+        const passageId = transformVerseReferenceToPassageId(verseReference);
         return {
           ...rest,
           passageId,
@@ -207,9 +196,7 @@ app.post(
 
     const { verseReference, dayOfTheYear, formattedDate } =
       getVerseReferenceOfTheDay(date);
-    const passageId = transformVerseReferenceToPassageId(
-      verseReference as SingleVerseReference | VerseReferenceRange,
-    );
+    const passageId = transformVerseReferenceToPassageId(verseReference);
 
     const results = await getPassage({
       bibleId,

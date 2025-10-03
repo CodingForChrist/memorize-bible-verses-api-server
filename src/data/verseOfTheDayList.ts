@@ -111,6 +111,196 @@ const versesForTheBeatitudes = [
   },
 ];
 
+// Psalm 23 over 3 days
+const versesForPsalm23 = [
+  {
+    verse: "Psalm 23:1-2",
+    description: "Day 1 - first pair",
+  },
+  {
+    verse: "Psalm 23:3-4",
+    description: "Day 2 - second pair",
+  },
+  {
+    verse: "Psalm 23:5-6",
+    description: "Day 3 - third pair",
+  },
+];
+
+// Lord's prayer over 4 days
+const versesForTheLordsPrayer = [
+  {
+    verse: "Matthew 6:9",
+    description: "Day 1",
+  },
+  {
+    verse: "Matthew 6:10",
+    description: "Day 2",
+  },
+  {
+    verse: "Matthew 6:11-12",
+    description: "Day 3",
+  },
+  {
+    verse: "Matthew 6:13",
+    description: "Day 4",
+  },
+];
+
+const versesForJohn14JesusComfortsDiciples = [
+  {
+    verse: "John 14:2-3",
+    description: "Day 1",
+  },
+  {
+    verse: "John 14:4-5",
+    description: "Day 2",
+  },
+  {
+    verse: "John 14:6",
+    description: "Day 3",
+  },
+];
+
+const versesForTheRomansRoad = [
+  {
+    verse: "Romans 1:16-17",
+    description: "Day 1",
+  },
+  {
+    verse: "Romans 3:10",
+    description: "Day 2",
+  },
+  {
+    verse: "Romans 3:20",
+    description: "Day 3",
+  },
+  {
+    verse: "Romans 3:23",
+    description: "Day 4",
+  },
+  {
+    verse: "Romans 5:8",
+    description: "Day 5",
+  },
+  {
+    verse: "Romans 6:23",
+    description: "Day 6",
+  },
+  {
+    verse: "Romans 10:13",
+    description: "Day 7",
+  },
+];
+
+const versesForRomans6Sanctification = [
+  {
+    verse: "Romans 6:1-2",
+    description: "Day 1",
+  },
+  {
+    verse: "Romans 6:3-4",
+    description: "Day 2",
+  },
+  {
+    verse: "Romans 6:5",
+    description: "Day 3",
+  },
+  {
+    verse: "Romans 6:6",
+    description: "Day 4",
+  },
+  {
+    verse: "Romans 6:7-8",
+    description: "Day 5",
+  },
+  {
+    verse: "Romans 6:9-10",
+    description: "Day 6",
+  },
+  {
+    verse: "Romans 6:11-12",
+    description: "Day 7",
+  },
+];
+
+const versesForRomans8Witnessing = [
+  {
+    verse: "Romans 8:28",
+    description: "Day 1",
+  },
+  {
+    verse: "Romans 8:29",
+    description: "Day 2",
+  },
+  {
+    verse: "Romans 8:30",
+    description: "Day 3",
+  },
+  {
+    verse: "Romans 8:31",
+    description: "Day 4",
+  },
+  {
+    verse: "Romans 8:32",
+    description: "Day 5",
+  },
+];
+
+const versesForFirstCorithians13Love = [
+  {
+    verse: "1 Corinthians 13:1-2",
+    description: "Day 1",
+  },
+  {
+    verse: "1 Corinthians 13:3-4",
+    description: "Day 2",
+  },
+  {
+    verse: "1 Corinthians 13:5-7",
+    description: "Day 3",
+  },
+  {
+    verse: "1 Corinthians 13:8",
+    description: "Day 4",
+  },
+  {
+    verse: "1 Corinthians 13:9-10",
+    description: "Day 5",
+  },
+  {
+    verse: "1 Corinthians 13:11-12",
+    description: "Day 6",
+  },
+  {
+    verse: "1 Corinthians 13:13",
+    description: "Day 7",
+  },
+];
+
+const versesForPhilippians2Kenosis = [
+  {
+    verse: "Philippians 2:5",
+    description: "Day 1",
+  },
+  {
+    verse: "Philippians 2:6-7",
+    description: "Day 2",
+  },
+  {
+    verse: "Philippians 2:8",
+    description: "Day 3",
+  },
+  {
+    verse: "Philippians 2:9",
+    description: "Day 4",
+  },
+  {
+    verse: "Philippians 2:10-11",
+    description: "Day 5",
+  },
+];
+
 export default [
   ...versesForCreation.map(({ verse }) => verse),
   "Genesis 9:2",
@@ -145,14 +335,13 @@ export default [
   "Psalm 22:1-3",
   "Psalm 22:4-5",
   "Psalm 22:13",
-  "Psalm 23:1-2",
-  "Psalm 23:3-4",
-  "Psalm 23:5-6",
+  ...versesForPsalm23.map(({ verse }) => verse),
   "Psalm 27:1",
   "Psalm 37:5",
   "Psalm 119:9-11",
   "Psalm 126:5-6",
   "Psalm 127:3",
+  "Psalm 139:14",
   "Proverbs 3:5-6",
   "Proverbs 11:11",
   "Proverbs 12:24",
@@ -193,7 +382,7 @@ export default [
   "Joel 2:25",
   "Joel 2:28-29",
   "Amos 3:2-3",
-  "Obadiah 4",
+  "Obadiah 1:4",
   "Jonah 2:9",
   "Micah 4:3-4",
   "Micah 5:2",
@@ -208,6 +397,7 @@ export default [
   "Malachi 3:1-3",
   "Malachi 4:5-6",
   ...versesForTheBeatitudes.map(({ verse }) => verse),
+  ...versesForTheLordsPrayer.map(({ verse }) => verse),
   "Matthew 6:33-34",
   "Matthew 7:1",
   "Matthew 7:7-8",
@@ -240,8 +430,10 @@ export default [
   "John 8:31-32",
   "John 10:9-11",
   "John 10:27-30",
+  ...versesForJohn14JesusComfortsDiciples.map(({ verse }) => verse),
   "John 14:15",
-  "John 15:12-13",
+  "John 15:12",
+  "John 15:13",
   "John 16:13",
   "John 16:24",
   "John 20:21",
@@ -251,20 +443,15 @@ export default [
   "Acts 4:12 ",
   "Acts 16:30-31",
   "Acts 17:2",
-  "Romans 1:16-17 ",
-  "Romans 3:9-10 ",
-  "Romans 3:20",
-  "Romans 3:23",
+  ...versesForTheRomansRoad.map(({ verse }) => verse),
   "Romans 4:5",
   "Romans 5:1",
-  "Romans 5:8 ",
+  ...versesForRomans6Sanctification.map(({ verse }) => verse),
   "Romans 6:14",
-  "Romans 6:23 ",
   "Romans 8:1",
   "Romans 8:6",
-  "Romans 8:28-32",
+  ...versesForRomans8Witnessing.map(({ verse }) => verse),
   "Romans 10:9-10 ",
-  "Romans 10:13-15",
   "Romans 12:1-2",
   "Romans 14:23",
   "1 Corinthians 2:2",
@@ -275,6 +462,7 @@ export default [
   "1 Corinthians 6:19-20",
   "1 Corinthians 10:13",
   "1 Corinthians 10:31 ",
+  ...versesForFirstCorithians13Love.map(({ verse }) => verse),
   "1 Corinthians 14:33",
   "1 Corinthians 15:3-4",
   "1 Corinthians 15:55-58 ",
@@ -294,7 +482,7 @@ export default [
   "Galatians 4:4-6",
   "Galatians 5:1",
   "Galatians 5:16 ",
-  "Galatians 5:22-24 ",
+  "Galatians 5:22-24",
   "Galatians 6:7-9",
   "Ephesians 1:7",
   "Ephesians 2:8-10 ",
@@ -307,6 +495,7 @@ export default [
   "Ephesians 6:10",
   "Philippians 1:6",
   "Philippians 1:21 ",
+  ...versesForPhilippians2Kenosis.map(({ verse }) => verse),
   "Philippians 3:10",
   "Philippians 3:14 ",
   "Philippians 3:20-21",
@@ -341,7 +530,7 @@ export default [
   "2 Timothy 4:2",
   "Titus 2:11-14",
   "Titus 3:5",
-  "Philemon 14",
+  "Philemon 1:14",
   "Hebrews 1:1-2",
   "Hebrews 4:12-16",
   "Hebrews 7:25",
@@ -377,11 +566,11 @@ export default [
   "1 John 5:4",
   "1 John 5:7",
   "1 John 5:10-14",
-  "2 John 8",
-  "3 John 7-8",
-  "Jude 3",
-  "Jude 9",
-  "Jude 14",
+  "2 John 1:8",
+  "3 John 1:7-8",
+  "Jude 1:3",
+  "Jude 1:9",
+  "Jude 1:14",
   "Revelation 3:20",
   "Revelation 4:8",
   "Revelation 5:9-10",

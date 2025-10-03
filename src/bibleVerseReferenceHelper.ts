@@ -3,17 +3,7 @@ import { data as books } from "./data/bookList.json";
 export type VerseId = `${string}.${number}.${number}`;
 export type PassageId = `${VerseId}-${VerseId}` | VerseId;
 
-export type SingleVerseReference =
-  | `${string} ${number}:${number}`
-  | `${number} ${string} ${number}:${number}`;
-
-export type VerseReferenceRange =
-  | `${string} ${number}:${number}-${number}`
-  | `${number} ${string} ${number}:${number}-${number}`;
-
-export function parseVerseReferenceIntoParts(
-  verseReference: SingleVerseReference | VerseReferenceRange,
-) {
+export function parseVerseReferenceIntoParts(verseReference: string) {
   let bookNumber;
   let verseReferenceWithoutBookNumber = verseReference;
 
@@ -23,10 +13,8 @@ export function parseVerseReferenceIntoParts(
       throw new Error("Book number must be a single digit followed by a space");
     }
 
-    if (Object.keys(["1", "2", "3"]).includes(verseReference.charAt(0))) {
-      verseReferenceWithoutBookNumber = verseReference
-        .substring(1)
-        .trim() as SingleVerseReference;
+    if (["1", "2", "3"].includes(verseReference.charAt(0))) {
+      verseReferenceWithoutBookNumber = verseReference.substring(1).trim();
       bookNumber = Number(verseReference.charAt(0));
     } else {
       throw new Error(`Invalid book number "${verseReference.charAt(0)}"`);
@@ -35,11 +23,11 @@ export function parseVerseReferenceIntoParts(
 
   // get book name
   const bookNameRegExpMatchArray =
-    verseReferenceWithoutBookNumber.match(/[a-zA-Z]+/);
+    verseReferenceWithoutBookNumber.match(/[a-zA-Z ]+/);
   if (!bookNameRegExpMatchArray) {
     throw new Error("Failed to parse book name out of the verse reference");
   }
-  const bookName = bookNameRegExpMatchArray[0];
+  const bookName = bookNameRegExpMatchArray[0].trim();
   const fullBookName = bookNumber ? `${bookNumber} ${bookName}` : bookName;
 
   const spaceIndex = verseReference.indexOf(fullBookName) + fullBookName.length;
@@ -89,9 +77,7 @@ export function parseVerseReferenceIntoParts(
   };
 }
 
-export function transformVerseReferenceToVerseId(
-  verseReference: SingleVerseReference,
-) {
+export function transformVerseReferenceToVerseId(verseReference: string) {
   const { fullBookName, chapter, verseNumberStart } =
     parseVerseReferenceIntoParts(verseReference);
 
@@ -101,9 +87,7 @@ export function transformVerseReferenceToVerseId(
   return verseId;
 }
 
-export function transformVerseReferenceToPassageId(
-  verseReference: SingleVerseReference | VerseReferenceRange,
-) {
+export function transformVerseReferenceToPassageId(verseReference: string) {
   const {
     fullBookName,
     chapter,
