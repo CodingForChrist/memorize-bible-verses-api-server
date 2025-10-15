@@ -1,8 +1,8 @@
 import { describe, expect, test } from "vitest";
 
-import verseOfTheDayList from "./verseOfTheDayList";
-import { data as books } from "./bookList.json";
-import { parseVerseReferenceIntoParts } from "../bibleVerseReferenceHelper";
+import verseOfTheDayList from "./verseOfTheDayList.ts";
+import bookList from "./bookList.json" with { type: "json" };
+import { parseVerseReferenceIntoParts } from "../bibleVerseReferenceHelper.ts";
 
 describe("verseOfTheDayList", () => {
   test("should not contain duplicates", () => {
@@ -16,7 +16,7 @@ describe("verseOfTheDayList", () => {
 
 describe.for(verseOfTheDayList)("validate verse %s", (verse) => {
   test("should spell bible book name correctly", () => {
-    const bookNames = ["Psalm", ...books.map(({ name }) => name)];
+    const bookNames = ["Psalm", ...bookList.data.map(({ name }) => name)];
     const foundBook = bookNames.find((name) => {
       return verse.startsWith(name);
     });

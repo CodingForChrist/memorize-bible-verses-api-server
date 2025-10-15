@@ -6,7 +6,7 @@ import {
   getVerse,
   searchForVerses,
   cache,
-} from "./apiBible";
+} from "./apiBible.ts";
 
 function createFetchResponse(data: Record<string, unknown>) {
   return {

@@ -1,5 +1,5 @@
 import { z, ZodError } from "zod/v4";
-import { HTTPError } from "./HTTPError";
+import { HTTPError } from "./HTTPError.ts";
 import type { Request, Response, NextFunction } from "express";
 
 export default async function errorMiddleware(

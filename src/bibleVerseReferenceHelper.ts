@@ -1,4 +1,4 @@
-import { data as books } from "./data/bookList.json";
+import bookList from "./data/bookList.json" with { type: "json" };
 
 export type VerseId = `${string}.${number}.${number}`;
 export type PassageId = `${VerseId}-${VerseId}` | VerseId;
@@ -114,7 +114,7 @@ function normalizeBookName(bookName: string) {
 }
 
 function findBookIdByBookName(bookName: string) {
-  const foundBook = books.find((book) => {
+  const foundBook = bookList.data.find((book) => {
     return book.name === normalizeBookName(bookName);
   });
 
