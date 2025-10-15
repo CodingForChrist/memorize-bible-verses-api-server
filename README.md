@@ -92,6 +92,7 @@ This server wraps the following API endpoints provided by API.Bible:
 
 ### Verse of the Day Endpoint
 
+TODO: fix this link
 This server also provides an endpoint for returning the verse of the day using [this collection of verse references](./src/data/verseOfTheDayList.json). For example, here's the verse of the day for January 1st using the World English Bible translation:
 
 ```bash
