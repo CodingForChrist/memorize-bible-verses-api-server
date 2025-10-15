@@ -1,4 +1,4 @@
-import express, { Request, Response } from "express";
+import express from "express";
 import cors from "cors";
 import { z } from "zod/v4";
 
@@ -10,15 +10,17 @@ import {
   getVerse,
   getPassage,
   searchForVerses,
-} from "./apiBible";
+} from "./apiBible.ts";
 import {
   transformVerseReferenceToVerseId,
   transformVerseReferenceToPassageId,
-} from "./bibleVerseReferenceHelper";
-import authorizationMiddleware from "./authorizationMiddleware";
-import errorMiddleware from "./errorMiddleware";
-import logger from "./logger";
-import { getVerseReferenceOfTheDay } from "./verseOfTheDay";
+} from "./bibleVerseReferenceHelper.ts";
+import authorizationMiddleware from "./authorizationMiddleware.ts";
+import errorMiddleware from "./errorMiddleware.ts";
+import logger from "./logger.ts";
+import { getVerseReferenceOfTheDay } from "./verseOfTheDay.ts";
+
+import type { Request, Response } from "express";
 
 const app = express();
 

@@ -1,18 +1,19 @@
 {
   "name": "memorize-bible-verses-api-server",
   "version": "0.1.0",
+  "type": "module",
   "private": true,
   "description": "Node.js Express server that wraps API.Bible",
   "main": "src/server.ts",
   "scripts": {
-    "build": "rm -rf dist && tsc",
-    "check-node-version": "tsx src/checkNodeVersion.ts",
+    "build": "tsc",
+    "check-node-version": "node src/tasks/checkNodeVersion.ts",
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "test": "vitest",
     "dev": "npm start",
-    "start": "npm run check-node-version && tsx --watch src/server.ts | pino-pretty",
-    "start-production": "node dist/src/server.js"
+    "start": "npm run check-node-version && node --watch src/server.ts | pino-pretty",
+    "start-production": "node src/server.ts"
   },
   "license": "MIT",
   "dependencies": {
@@ -33,7 +34,6 @@
     "pino-pretty": "^13.1.2",
     "prettier": "^3.6.2",
     "semver": "^7.7.3",
-    "tsx": "^4.20.6",
     "typescript": "^5.9.3",
     "vitest": "^3.2.4"
   }

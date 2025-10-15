@@ -1,13 +1,13 @@
 import dayjs from "dayjs";
-import dayOfYear from "dayjs/plugin/dayOfYear";
-import localizedFormat from "dayjs/plugin/localizedFormat";
-import utc from "dayjs/plugin/utc";
+import dayOfYear from "dayjs/plugin/dayOfYear.js";
+import localizedFormat from "dayjs/plugin/localizedFormat.js";
+import utc from "dayjs/plugin/utc.js";
 
 dayjs.extend(dayOfYear);
 dayjs.extend(localizedFormat);
 dayjs.extend(utc);
 
-import verseOfTheDayList from "./data/verseOfTheDayList";
+import verseOfTheDayList from "./data/verseOfTheDayList.ts";
 
 export function getVerseReferenceOfTheDay(
   dateISOStringWithTimezoneOffset: string,
