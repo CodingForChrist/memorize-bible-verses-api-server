@@ -1,4 +1,4 @@
-import bookList from "./data/bookList.json"  with { type: "json" };
+import bookList from "./data/bookList.json" with { type: "json" };
 
 export type VerseId = `${string}.${number}.${number}`;
 export type PassageId = `${VerseId}-${VerseId}` | VerseId;

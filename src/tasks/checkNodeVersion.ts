@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 import { join } from "node:path";
 import { satisfies } from "semver";
 
-const __dirname = import.meta.dirname
+const __dirname = import.meta.dirname;
 
 const minimumNodeVersion = readFileSync(
   join(__dirname, "../../", ".nvmrc"),
