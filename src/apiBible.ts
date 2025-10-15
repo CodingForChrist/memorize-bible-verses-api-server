@@ -6,7 +6,7 @@ import bibleListFixtureData from "./data/bibleList.json";
 
 const baseUrl = "https://rest.api.bible/v1";
 const bibleApiKey = process.env.BIBLE_API_KEY as string;
-const inMemoryMode = process.env.API_CLIENT_BEHAVIOR_IN_MEMORY_MODE as string;
+const inMemoryMode = process.env.API_CLIENT_BEHAVIOR_IN_MEMORY_MODE === "true";
 
 const ONE_DAY_IN_MILLISECONDS = 24 * 60 * 60 * 1000;
 export const cache = new TTLCache<string, Record<string, unknown>>({
@@ -59,7 +59,7 @@ export async function getBibles(getBiblesInput: GetBiblesInput = {}) {
   const url = new URL(`${baseUrl}/bibles`);
   url.search = getQueryStringFromObject(getBiblesInput);
 
-  if (inMemoryMode === "true") {
+  if (inMemoryMode) {
     logger.debug("bible list loaded from fixture data");
     return bibleListFixtureData;
   }
