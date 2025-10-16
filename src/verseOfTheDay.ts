@@ -3,11 +3,12 @@ import dayOfYear from "dayjs/plugin/dayOfYear.js";
 import localizedFormat from "dayjs/plugin/localizedFormat.js";
 import utc from "dayjs/plugin/utc.js";
 
+import verseOfTheDayList2025 from "./data/verseOfTheDay/verseOfTheDayList2025.json" with { type: "json" };
+import verseOfTheDayList2026 from "./data/verseOfTheDay/verseOfTheDayList2026.json" with { type: "json" };
+
 dayjs.extend(dayOfYear);
 dayjs.extend(localizedFormat);
 dayjs.extend(utc);
-
-import verseOfTheDayList from "./data/verseOfTheDayList.ts";
 
 export function getVerseReferenceOfTheDay(
   dateISOStringWithTimezoneOffset: string,
@@ -17,18 +18,27 @@ export function getVerseReferenceOfTheDay(
     originalTimezone,
   );
 
+  if (dayjsDate.isValid() === false) {
+    throw new Error(
+      `Invalid date. Received: ${dateISOStringWithTimezoneOffset}`,
+    );
+  }
+
+  const year = dayjsDate.year();
+
+  if ([2025, 2026].includes(year) === false) {
+    throw new Error(
+      `Only years 2025 and 2026 are supported. Received: ${year}`,
+    );
+  }
+
+  const verseOfTheDayList =
+    year === 2025 ? verseOfTheDayList2025 : verseOfTheDayList2026;
+
   const dayOfTheYear = dayjsDate.dayOfYear();
   const dayOfTheYearIndex = dayOfTheYear - 1;
 
-  let verseReference: string;
-
-  if (dayOfTheYearIndex < verseOfTheDayList.length) {
-    verseReference = verseOfTheDayList[dayOfTheYearIndex];
-  } else {
-    // TODO: add more verse references to get to 366
-    verseReference =
-      verseOfTheDayList[dayOfTheYearIndex - verseOfTheDayList.length];
-  }
+  const verseReference = verseOfTheDayList[dayOfTheYearIndex].verse;
 
   return {
     verseReference,
