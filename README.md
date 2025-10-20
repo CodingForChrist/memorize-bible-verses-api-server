@@ -4,8 +4,9 @@ Node.js Express server that wraps [API.Bible](https://scripture.api.bible/). Thi
 
 ## API Features
 
-- Caches API results in memory
-- Validates API input
+- Find verses using a verse reference (e.g., John 3:16-17)
+- Cache API results in memory
+- Validate API input
 - Built for a client-side apps to consume
   - Keeps the API key private on the server-side
   - Uses an Application-User-Id request header to authenticate client-side apps
