@@ -208,6 +208,7 @@ app.post(
       ...results,
       formattedDate,
       dayOfTheYear,
+      verseReference,
     });
   },
 );
