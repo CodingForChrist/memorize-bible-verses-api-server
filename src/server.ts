@@ -20,12 +20,14 @@ import errorMiddleware from "./errorMiddleware.ts";
 import logger from "./logger.ts";
 import { getVerseReferenceOfTheDay } from "./verseOfTheDay.ts";
 
-import type { Request, Response } from "express";
+import type { Request, Response, NextFunction } from "express";
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+app.disable("x-powered-by");
 
 app.get("/health", (_req: Request, res: Response) => {
   res.status(200).send("OK");
@@ -214,6 +216,12 @@ app.post(
 );
 
 app.use(errorMiddleware);
+
+app.use((_req: Request, res: Response, _next: NextFunction) => {
+  res.status(404).json({
+    error: "404 Not Found",
+  });
+});
 
 const hostname = process.env.HOSTNAME ?? "localhost";
 const port = process.env.PORT ?? 4000;
