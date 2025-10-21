@@ -1,4 +1,4 @@
-import { writeFileSync } from "node:fs";
+import { writeFile } from "node:fs/promises";
 import "dotenv/config";
 
 import { getBibles } from "../apiBible.ts";
@@ -42,11 +42,16 @@ const bibleList = await getBibles({
 
 const __dirname = import.meta.dirname;
 
-writeFileSync(
-  `${__dirname}/../data/bibleList.json`,
-  JSON.stringify(bibleList, null, 2),
-  { encoding: "utf-8" },
-);
+try {
+  await writeFile(
+    `${__dirname}/../data/bibleList.json`,
+    JSON.stringify(bibleList, null, 2),
+    { encoding: "utf-8" },
+  );
 
-console.log("✅  Bible list has been updated");
-process.exitCode = 0;
+  console.log("✅  Bible list has been updated");
+  process.exitCode = 0;
+} catch (error) {
+  console.error("Error writing bible list file:", error);
+  process.exitCode = 1;
+}
