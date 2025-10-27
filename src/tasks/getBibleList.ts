@@ -32,6 +32,10 @@ const biblesIds = [
     id: "63097d2a0a2f7db3-01",
     abbreviationLocal: "NKJV",
   },
+  {
+    id: "d6e14a625393b4da-01",
+    abbreviationLocal: "NLT",
+  },
 ];
 
 const bibleList = await getBibles({
