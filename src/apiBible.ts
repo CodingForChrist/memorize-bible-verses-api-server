@@ -1,4 +1,4 @@
-import TTLCache from "@isaacs/ttlcache";
+import { TTLCache } from "@isaacs/ttlcache";
 import { HTTPError } from "./HTTPError.ts";
 import logger from "./logger.ts";
 
