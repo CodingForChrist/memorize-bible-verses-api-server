@@ -36,6 +36,22 @@ const biblesIds = [
     id: "d6e14a625393b4da-01",
     abbreviationLocal: "NLT",
   },
+  {
+    id: "78a9f6124f344018-01",
+    abbreviationLocal: "NLT",
+  },
+  {
+    id: "a556c5305ee15c3f-01",
+    abbreviationLocal: "CSB",
+  },
+  {
+    id: "555fef9a6cb31151-01",
+    abbreviationLocal: "CEV",
+  },
+  {
+    id: "61fd76eafa1577c2-02",
+    abbreviationLocal: "GNT",
+  },
 ];
 
 const bibleList = await getBibles({
