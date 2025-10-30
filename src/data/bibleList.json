@@ -156,6 +156,111 @@
       "audioBibles": []
     },
     {
+      "id": "a556c5305ee15c3f-01",
+      "dblId": "a556c5305ee15c3f",
+      "relatedDbl": null,
+      "name": "Christian Standard Bible",
+      "nameLocal": "Christian Standard Bible",
+      "abbreviation": "CSB",
+      "abbreviationLocal": "CSB",
+      "description": "Protestant",
+      "descriptionLocal": "Protestant",
+      "language": {
+        "id": "eng",
+        "name": "English",
+        "nameLocal": "English",
+        "script": "Latin",
+        "scriptDirection": "LTR"
+      },
+      "countries": [
+        {
+          "id": "US",
+          "name": "United States of America",
+          "nameLocal": "United States of America"
+        },
+        {
+          "id": "VI",
+          "name": "Virgin Islands, U.S.",
+          "nameLocal": "Virgin Islands, U.S."
+        },
+        {
+          "id": "UM",
+          "name": "United States Minor Outlying Islands",
+          "nameLocal": "United States Minor Outlying Islands"
+        },
+        {
+          "id": "GB",
+          "name": "United Kingdom of Great Britain and Northern Ireland",
+          "nameLocal": "United Kingdom of Great Britain and Northern Ireland"
+        }
+      ],
+      "type": "text",
+      "updatedAt": "2025-10-15T20:34:45.000Z",
+      "copyright": "© 2017 Holman Bible Publishers",
+      "info": "<p>The Christian Standard Bible aims to draw readers into a deeper, more meaningful relationship with God. By translating Scripture into the clearest possible modern English, the CSB allows readers to experience God’s Word at its fullest. Developed by 100 scholars from 17 denominations, the Christian Standard Bible faithfully and accurately captures the Bible’s original meaning without compromising readability. The CSB was created using Optimal Equivalence, a translation philosophy that balances linguistic precision to the original languages and readability in contemporary English. In the many places throughout Scripture where a word-for- word rendering is clearly understandable, a literal translation is used. When a word- for-word rendering might obscure the meaning for a modern audience, a more dynamic translation is used. This process assures that both the words and thoughts contained in the original text are conveyed as accurately as possible for today’s readers. The CSB provides a highly accurate text for sermon preparation and serious study, translated from the biblical languages by scholars who love God’s Word. Yet it doesn’t compromise readability and clarity for those who may be less familiar with the traditional (and sometimes difficult) vocabulary retained in some translations. Research shows the CSB is both highly literal to the original languages and highly readable, achieving an optimal balance of the two. Pastors and laypeople can read and share the Christian Standard Bible with confidence, knowing truth of God’s Word will be communicated effectively. For a more information, visit CSBible.com</p>",
+      "audioBibles": []
+    },
+    {
+      "id": "555fef9a6cb31151-01",
+      "dblId": "555fef9a6cb31151",
+      "relatedDbl": null,
+      "name": "Contemporary English Version",
+      "nameLocal": "Contemporary English Version",
+      "abbreviation": "CEV",
+      "abbreviationLocal": "CEV",
+      "description": "Contemporary English Version Protestant Bible",
+      "descriptionLocal": "Contemporary English Version Protestant Bible",
+      "language": {
+        "id": "eng",
+        "name": "English",
+        "nameLocal": "English",
+        "script": "Latin",
+        "scriptDirection": "LTR"
+      },
+      "countries": [
+        {
+          "id": "US",
+          "name": "United States of America",
+          "nameLocal": "United States of America"
+        }
+      ],
+      "type": "text",
+      "updatedAt": "2025-09-28T08:56:45.000Z",
+      "copyright": "Contemporary English Version, Second Edition (CEV®) © 2006 American Bible Society. All rights reserved.",
+      "info": "<h3>Contemporary English Version (US Version)</h3> <p>Uncompromising simplicity marked the American Bible Society's translation of the Contemporary English Version that was first published in 1995. The text is easily read by grade schoolers, second language readers, and those who prefer the more contemporized form. The CEV is not a paraphrase; it is an accurate and faithful translation of the original manuscripts.</p> <p>After 200 years of ongoing ministry, American Bible Society invites people to experience the life-changing message of the Bible. Offering an increasing range of innovative ministries to address core life questions and struggles, the Bible Society partners with Christian churches and national Bible societies to share God’s Word both in the United States and around the globe.</p> <p>For more information, visit www.americanbible.org.</p> <p>To purchase a copy of this translation, visit www.bibles.com.</p>",
+      "audioBibles": []
+    },
+    {
+      "id": "61fd76eafa1577c2-02",
+      "dblId": "61fd76eafa1577c2",
+      "relatedDbl": null,
+      "name": "Good News Translation",
+      "nameLocal": "Good News Translation",
+      "abbreviation": "GNT",
+      "abbreviationLocal": "GNT",
+      "description": "Protestant Bible",
+      "descriptionLocal": "Protestant Bible",
+      "language": {
+        "id": "eng",
+        "name": "English",
+        "nameLocal": "English",
+        "script": "Latin",
+        "scriptDirection": "LTR"
+      },
+      "countries": [
+        {
+          "id": "US",
+          "name": "United States",
+          "nameLocal": "United States"
+        }
+      ],
+      "type": "text",
+      "updatedAt": "2025-09-28T16:56:25.000Z",
+      "copyright": "Good News Translation® (Today’s English Version, Second Edition) © 1992 American Bible Society. All rights reserved. Bible text from the Good News Translation (GNT) is not to be reproduced in copies or otherwise by any means except as permitted in writing by American Bible Society, 101 North Independence Mall East, Floor 8, Philadelphia, PA 19106-2155 (www.americanbible.org). LICENSEE shall reproduce the following trademark and trademark notice on the copyright page of each copy of the Licensed Products: ®",
+      "info": "<p>Good News Translation (GNT)(US Version)</p> <p>The Good News Translation, formerly called the Good News Bible or Today's English Version, was first published as a full Bible in 1976 by American Bible Society as a \"common language\" Bible. It provides a clear and simple modern translation.</p> <p>After 200 years of ongoing ministry, American Bible Society invites people to experience the life-changing message of the Bible. Offering an increasing range of innovative ministries to address core life questions and struggles, the Bible Society partners with Christian churches and national Bible societies to share God’s Word both in the United States and around the globe.</p> <p>For more information, visit www.americanbible.org.</p> <p>To purchase a copy of this translation, visit www.bibles.com.</p>",
+      "audioBibles": []
+    },
+    {
       "id": "de4e12af7f28f599-02",
       "dblId": "de4e12af7f28f599",
       "relatedDbl": null,
@@ -246,6 +351,36 @@
       "audioBibles": []
     },
     {
+      "id": "78a9f6124f344018-01",
+      "dblId": "78a9f6124f344018",
+      "relatedDbl": null,
+      "name": "New International Version 2011",
+      "nameLocal": "New International Version",
+      "abbreviation": "NIV11",
+      "abbreviationLocal": "NIV",
+      "description": "Holy Bible",
+      "descriptionLocal": "Holy Bible",
+      "language": {
+        "id": "eng",
+        "name": "English",
+        "nameLocal": "English",
+        "script": "Latin",
+        "scriptDirection": "LTR"
+      },
+      "countries": [
+        {
+          "id": "US",
+          "name": "United States of America",
+          "nameLocal": "United States of America"
+        }
+      ],
+      "type": "text",
+      "updatedAt": "2025-10-17T17:59:01.000Z",
+      "copyright": "The Holy Bible, New International Version® NIV® Copyright © 1973, 1978, 1984, 2011 by Biblica, Inc.® Used by Permission of Biblica, Inc.® All rights reserved worldwide.",
+      "info": "<h3>About Biblica</h3> <p>Biblica is a global ministry innovating new ways to reach people with the Bible. Now in its third century of mission, Biblica continues to produce Bible translations and resources that power hundreds of Gospel ministries worldwide — all so that more people can discover the love of Jesus Christ.</p> <p>To learn more, visit <a href=\"http://biblica.com\">biblica.com</a> and <a href=\"http://facebook.com/Biblica\">facebook.com/Biblica</a>.</p>",
+      "audioBibles": []
+    },
+    {
       "id": "63097d2a0a2f7db3-01",
       "dblId": "63097d2a0a2f7db3",
       "relatedDbl": null,
@@ -270,7 +405,7 @@
         }
       ],
       "type": "text",
-      "updatedAt": "2025-10-10T13:17:44.000Z",
+      "updatedAt": "2025-10-28T16:18:52.000Z",
       "copyright": "New King James Version®, Copyright© 1982, Thomas Nelson. All rights reserved.",
       "info": "<p>Scripture taken from the New King James Version®. Copyright ©</p> <p>1982 by Thomas Nelson. Used by permission. All rights reserved.</p>",
       "audioBibles": []
