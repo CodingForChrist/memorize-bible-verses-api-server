@@ -1,4 +1,4 @@
-import bookList from "./data/bookList.json" with { type: "json" };
+import bookList from "./data/book-list.json" with { type: "json" };
 
 export type VerseId = `${string}.${number}.${number}`;
 export type PassageId = `${VerseId}-${VerseId}` | VerseId;
@@ -14,7 +14,7 @@ export function parseVerseReferenceIntoParts(verseReference: string) {
     }
 
     if (["1", "2", "3"].includes(verseReference.charAt(0))) {
-      verseReferenceWithoutBookNumber = verseReference.substring(1).trim();
+      verseReferenceWithoutBookNumber = verseReference.slice(1).trim();
       bookNumber = Number(verseReference.charAt(0));
     } else {
       throw new Error(`Invalid book number "${verseReference.charAt(0)}"`);
@@ -54,14 +54,14 @@ export function parseVerseReferenceIntoParts(verseReference: string) {
     : [verseResult, verseResult];
 
   if (!Number.isInteger(Number(chapter))) {
-    throw new Error("Chapter must be a number");
+    throw new TypeError("Chapter must be a number");
   }
 
   if (
     !Number.isInteger(Number(verseNumberStart)) ||
     !Number.isInteger(Number(verseNumberEnd))
   ) {
-    throw new Error("Verse must be a number");
+    throw new TypeError("Verse must be a number");
   }
 
   const verseCount = 1 + Number(verseNumberEnd) - Number(verseNumberStart);

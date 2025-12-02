@@ -1,11 +1,11 @@
 import { z } from "zod/v4";
-import { getVerse } from "../apiBible.ts";
-import { transformVerseReferenceToVerseId } from "../bibleVerseReferenceHelper.ts";
+import { getVerse } from "../api-bible.ts";
+import { transformVerseReferenceToVerseId } from "../bible-verse-reference-helper.ts";
 import type { Request, Response } from "express";
 
 export default async function singleVerseRouteHandler(
-  req: Request,
-  res: Response,
+  request: Request,
+  response: Response,
 ) {
   const schema = z
     .object({
@@ -38,10 +38,10 @@ export default async function singleVerseRouteHandler(
     });
 
   const trustedInput = schema.parse({
-    ...req.params,
-    ...req.body,
+    ...request.params,
+    ...request.body,
   });
 
   const results = await getVerse(trustedInput);
-  res.status(200).json(results);
+  response.status(200).json(results);
 }

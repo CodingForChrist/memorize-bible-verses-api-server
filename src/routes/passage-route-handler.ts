@@ -1,9 +1,12 @@
 import { z } from "zod/v4";
-import { getPassage } from "../apiBible.ts";
-import { transformVerseReferenceToPassageId } from "../bibleVerseReferenceHelper.ts";
+import { getPassage } from "../api-bible.ts";
+import { transformVerseReferenceToPassageId } from "../bible-verse-reference-helper.ts";
 import type { Request, Response } from "express";
 
-export default async function passageRouteHandler(req: Request, res: Response) {
+export default async function passageRouteHandler(
+  request: Request,
+  response: Response,
+) {
   const schema = z
     .object({
       bibleId: z.string().min(4).max(40),
@@ -36,10 +39,10 @@ export default async function passageRouteHandler(req: Request, res: Response) {
     });
 
   const trustedInput = schema.parse({
-    ...req.params,
-    ...req.body,
+    ...request.params,
+    ...request.body,
   });
 
   const results = await getPassage(trustedInput);
-  res.status(200).json(results);
+  response.status(200).json(results);
 }

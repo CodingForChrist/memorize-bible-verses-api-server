@@ -4,7 +4,7 @@ import {
   parseVerseReferenceIntoParts,
   transformVerseReferenceToVerseId,
   transformVerseReferenceToPassageId,
-} from "./bibleVerseReferenceHelper.ts";
+} from "./bible-verse-reference-helper.ts";
 
 describe("parseVerseReferenceIntoParts()", () => {
   test("should get parts for valid verse reference", () => {

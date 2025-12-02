@@ -1,8 +1,11 @@
 import { z } from "zod/v4";
-import { searchForVerses } from "../apiBible.ts";
+import { searchForVerses } from "../api-bible.ts";
 import type { Request, Response } from "express";
 
-export default async function searchRouteHandler(req: Request, res: Response) {
+export default async function searchRouteHandler(
+  request: Request,
+  response: Response,
+) {
   const schema = z.object({
     bibleId: z.string().min(4).max(40),
     query: z.string().min(4).max(40),
@@ -14,10 +17,10 @@ export default async function searchRouteHandler(req: Request, res: Response) {
   });
 
   const trustedInput = schema.parse({
-    ...req.params,
-    ...req.body,
+    ...request.params,
+    ...request.body,
   });
 
   const results = await searchForVerses(trustedInput);
-  res.status(200).json(results);
+  response.status(200).json(results);
 }

@@ -1,8 +1,8 @@
 import { TTLCache } from "@isaacs/ttlcache";
-import { HTTPError } from "./HTTPError.ts";
+import { HTTPError } from "./http-error.ts";
 import logger from "./logger.ts";
 
-import bibleListFixtureData from "./data/bibleList.json" with { type: "json" };
+import bibleListFixtureData from "./data/bible-list.json" with { type: "json" };
 
 const baseUrl = "https://rest.api.bible/v1";
 const bibleApiKey = process.env.BIBLE_API_KEY as string;
@@ -10,7 +10,7 @@ const inMemoryMode = process.env.API_CLIENT_BEHAVIOR_IN_MEMORY_MODE === "true";
 
 const ONE_DAY_IN_MILLISECONDS = 24 * 60 * 60 * 1000;
 export const cache = new TTLCache<string, Record<string, unknown>>({
-  max: 10000,
+  max: 10_000,
   ttl: ONE_DAY_IN_MILLISECONDS,
 });
 
@@ -44,7 +44,7 @@ async function request({ url, label }: RequestInput) {
   const data = await response.json();
   cache.set(urlString, data);
 
-  return data as Record<string, any>;
+  return data as Record<string, unknown>;
 }
 
 type GetBiblesInput = {
@@ -75,7 +75,7 @@ type GetBooksInput = {
 };
 
 export async function getBooks(getBooksInput: GetBooksInput) {
-  const { bibleId, ...queryParamInput } = getBooksInput;
+  const { bibleId, ...queryParameterInput } = getBooksInput;
   const url = new URL(`${baseUrl}/bibles/${bibleId}/books`);
 
   const defaultValues = {
@@ -85,7 +85,7 @@ export async function getBooks(getBooksInput: GetBooksInput) {
 
   url.search = getQueryStringFromObject({
     ...defaultValues,
-    ...queryParamInput,
+    ...queryParameterInput,
   });
 
   const data = await request({ url, label: "getBooks" });
@@ -105,7 +105,7 @@ type GetVerseInput = {
 };
 
 export async function getVerse(getVerseInput: GetVerseInput) {
-  const { bibleId, verseId, ...queryParamInput } = getVerseInput;
+  const { bibleId, verseId, ...queryParameterInput } = getVerseInput;
   const url = new URL(`${baseUrl}/bibles/${bibleId}/verses/${verseId}`);
 
   const defaultValues = {
@@ -120,7 +120,7 @@ export async function getVerse(getVerseInput: GetVerseInput) {
 
   url.search = getQueryStringFromObject({
     ...defaultValues,
-    ...queryParamInput,
+    ...queryParameterInput,
   });
 
   const data = await request({ url, label: "getVerse" });
@@ -141,7 +141,7 @@ type GetPassageInput = {
 };
 
 export async function getPassage(getPassageInput: GetPassageInput) {
-  const { bibleId, passageId, ...queryParamInput } = getPassageInput;
+  const { bibleId, passageId, ...queryParameterInput } = getPassageInput;
   const url = new URL(`${baseUrl}/bibles/${bibleId}/passages/${passageId}`);
 
   const defaultValues = {
@@ -156,7 +156,7 @@ export async function getPassage(getPassageInput: GetPassageInput) {
 
   url.search = getQueryStringFromObject({
     ...defaultValues,
-    ...queryParamInput,
+    ...queryParameterInput,
   });
 
   const data = await request({ url, label: "getPassage" });
@@ -174,9 +174,9 @@ type SearchInput = {
 };
 
 export async function searchForVerses(searchForVersesInput: SearchInput) {
-  const { bibleId, ...queryParamInput } = searchForVersesInput;
+  const { bibleId, ...queryParameterInput } = searchForVersesInput;
   const url = new URL(`${baseUrl}/bibles/${bibleId}/search`);
-  url.search = getQueryStringFromObject(queryParamInput);
+  url.search = getQueryStringFromObject(queryParameterInput);
 
   const data = await request({ url, label: "search" });
   return data;
@@ -186,31 +186,28 @@ type GetQueryStringFromObjectInput = {
   [key: string]: string | string[] | number | boolean | undefined;
 };
 
-function getQueryStringFromObject(params: GetQueryStringFromObjectInput) {
-  const approvedParams: { [key: string]: string } = {};
+function getQueryStringFromObject(parameters: GetQueryStringFromObjectInput) {
+  const approvedParameters: { [key: string]: string } = {};
 
-  for (const [key, value] of Object.entries(params)) {
+  for (const [key, value] of Object.entries(parameters)) {
     if (value === undefined) {
       continue;
     }
 
     const kebabCaseKey = camelCaseToKebabCase(key);
-    approvedParams[kebabCaseKey] = String(value);
+    approvedParameters[kebabCaseKey] = String(value);
   }
 
-  const urlSearchParams = new URLSearchParams(approvedParams);
-  return urlSearchParams.toString();
+  const urlSearchParameters = new URLSearchParams(approvedParameters);
+  return urlSearchParameters.toString();
 }
 
 function camelCaseToKebabCase(camelCaseString: string) {
-  return camelCaseString
-    .split("")
+  return [...camelCaseString]
     .map((letter, id) => {
-      if (letter.toUpperCase() === letter) {
-        return `${id !== 0 ? "-" : ""}${letter.toLowerCase()}`;
-      } else {
-        return letter;
-      }
+      return letter.toUpperCase() === letter
+        ? `${id === 0 ? "" : "-"}${letter.toLowerCase()}`
+        : letter;
     })
     .join("");
 }

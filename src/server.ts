@@ -3,7 +3,7 @@ import cors from "cors";
 
 import "dotenv/config";
 
-import errorMiddleware from "./errorMiddleware.ts";
+import errorMiddleware from "./error-middleware.ts";
 import logger from "./logger.ts";
 import routes from "./routes/index.ts";
 
@@ -17,14 +17,14 @@ app.use(cors());
 app.use(express.json());
 app.use(routes);
 
-app.get("/health", (_req: Request, res: Response) => {
-  res.status(200).send("OK");
+app.get("/health", (request_: Request, response: Response) => {
+  response.status(200).send("OK");
 });
 
 app.use(errorMiddleware);
 
-app.use((_req: Request, res: Response, _next: NextFunction) => {
-  res.status(404).json({
+app.use((request_: Request, response: Response, _next: NextFunction) => {
+  response.status(404).json({
     error: "404 Not Found",
   });
 });

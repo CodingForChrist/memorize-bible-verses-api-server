@@ -3,11 +3,11 @@ import dayjs from "dayjs";
 import isLeapYear from "dayjs/plugin/isLeapYear.js";
 import dayOfYear from "dayjs/plugin/dayOfYear.js";
 
-import { parseVerseReferenceIntoParts } from "../../bibleVerseReferenceHelper.ts";
+import { parseVerseReferenceIntoParts } from "../../bible-verse-reference-helper.ts";
 
-import verseOfTheDayList2025 from "./verseOfTheDayList2025.json" with { type: "json" };
-import verseOfTheDayList2026 from "./verseOfTheDayList2026.json" with { type: "json" };
-import bookList from "../bookList.json" with { type: "json" };
+import verseOfTheDayList2025 from "./verse-of-the-day-list-2025.json" with { type: "json" };
+import verseOfTheDayList2026 from "./verse-of-the-day-list-2026.json" with { type: "json" };
+import bookList from "../book-list.json" with { type: "json" };
 
 dayjs.extend(isLeapYear);
 dayjs.extend(dayOfYear);

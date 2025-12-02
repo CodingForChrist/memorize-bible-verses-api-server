@@ -2,12 +2,12 @@ import { beforeEach, describe, expect, test, vi } from "vitest";
 import request from "supertest";
 import express from "express";
 
-import bookRouteHandler from "./bookRouteHandler.ts";
-import errorMiddleware from "../errorMiddleware.ts";
+import bookRouteHandler from "./book-route-handler.ts";
+import errorMiddleware from "../error-middleware.ts";
 
 import type { Express } from "express";
 
-vi.mock("../apiBible.ts", () => ({
+vi.mock("../api-bible.ts", () => ({
   getBooks: vi.fn(() =>
     Promise.resolve({
       data: [
