@@ -1,7 +1,7 @@
 import { writeFile } from "node:fs/promises";
 import "dotenv/config";
 
-import { getBibles } from "../apiBible.ts";
+import { getBibles } from "../api-bible.ts";
 
 const biblesIds = [
   {
@@ -64,9 +64,9 @@ const __dirname = import.meta.dirname;
 
 try {
   await writeFile(
-    `${__dirname}/../data/bibleList.json`,
-    JSON.stringify(bibleList, null, 2),
-    { encoding: "utf-8" },
+    `${__dirname}/../data/bible-list.json`,
+    JSON.stringify(bibleList, undefined, 2),
+    { encoding: "utf8" },
   );
 
   console.log("✅  Bible list has been updated");

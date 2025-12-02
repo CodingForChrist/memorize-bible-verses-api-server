@@ -3,8 +3,8 @@ import dayOfYear from "dayjs/plugin/dayOfYear.js";
 import localizedFormat from "dayjs/plugin/localizedFormat.js";
 import utc from "dayjs/plugin/utc.js";
 
-import verseOfTheDayList2025 from "./data/verseOfTheDay/verseOfTheDayList2025.json" with { type: "json" };
-import verseOfTheDayList2026 from "./data/verseOfTheDay/verseOfTheDayList2026.json" with { type: "json" };
+import verseOfTheDayList2025 from "./data/verse-of-the-day/verse-of-the-day-list-2025.json" with { type: "json" };
+import verseOfTheDayList2026 from "./data/verse-of-the-day/verse-of-the-day-list-2026.json" with { type: "json" };
 
 dayjs.extend(dayOfYear);
 dayjs.extend(localizedFormat);

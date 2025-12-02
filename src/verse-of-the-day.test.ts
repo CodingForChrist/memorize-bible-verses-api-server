@@ -1,8 +1,8 @@
 import { describe, expect, test, vi } from "vitest";
 
-import { getVerseReferenceOfTheDay } from "./verseOfTheDay.ts";
+import { getVerseReferenceOfTheDay } from "./verse-of-the-day.ts";
 
-vi.mock("./data/verseOfTheDay/verseOfTheDayList2025.json", () => {
+vi.mock("./data/verse-of-the-day/verse-of-the-day-list-2025.json", () => {
   return {
     default: [
       {

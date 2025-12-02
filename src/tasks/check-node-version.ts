@@ -1,13 +1,13 @@
 import { readFile } from "node:fs/promises";
-import { join } from "node:path";
+import path from "node:path";
 import { satisfies } from "semver";
 
 const __dirname = import.meta.dirname;
 
 try {
   const minimumNodeVersion = await readFile(
-    join(__dirname, "../../", ".nvmrc"),
-    "utf-8",
+    path.join(__dirname, "../../", ".nvmrc"),
+    "utf8",
   );
 
   const isValidNodeVersion = satisfies(
