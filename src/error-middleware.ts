@@ -4,7 +4,7 @@ import type { Request, Response, NextFunction } from "express";
 
 export default async function errorMiddleware(
   error: Error,
-  request_: Request,
+  _request: Request,
   response: Response,
   _next: NextFunction,
 ) {

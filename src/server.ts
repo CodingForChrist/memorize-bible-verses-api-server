@@ -17,13 +17,13 @@ app.use(cors());
 app.use(express.json());
 app.use(routes);
 
-app.get("/health", (request_: Request, response: Response) => {
+app.get("/health", (_request: Request, response: Response) => {
   response.status(200).send("OK");
 });
 
 app.use(errorMiddleware);
 
-app.use((request_: Request, response: Response, _next: NextFunction) => {
+app.use((_request: Request, response: Response, _next: NextFunction) => {
   response.status(404).json({
     error: "404 Not Found",
   });
