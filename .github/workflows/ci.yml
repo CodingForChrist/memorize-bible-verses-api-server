@@ -29,6 +29,9 @@ jobs:
       - name: 🧹 Check code formatting with Prettier
         run: npm run format:check
 
+      - name: 🧹 Lint code
+        run: npm run lint
+
       - name: 🧪 Run tests
         run: npm test
 
