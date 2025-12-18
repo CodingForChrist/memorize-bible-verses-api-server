@@ -91,13 +91,22 @@ This server wraps the following API endpoints provided by API.Bible:
    --header "Application-User-Id: <YOUR_APP_USER_ID>"
    ```
 
-### Verse of the Day Endpoint
+### Verse of the Day Endpoints
 
 This server also provides an endpoint for returning the verse of the day using [this collection of verse references](./src/data/verse-of-the-day/verse-of-the-day-list-2026.json). For example, here's the verse of the day for January 1st using the World English Bible translation:
 
 ```bash
 curl http://localhost:4000/api/v1/bibles/32664dc3288a28df-02/verse-of-the-day --request POST \
 --data '{"date": "2026-01-01T11:00:00+05:00"}' \
+--header "Content-Type: application/json" \
+--header "Application-User-Id: <YOUR_APP_USER_ID>"
+```
+
+This verse-list endpoint will return the full list of verse references for each day of the year.
+
+```bash
+curl http://localhost:4000/api/v1/verse-of-the-day/verse-list --request POST \
+--data '{"year": "2026"}' \
 --header "Content-Type: application/json" \
 --header "Application-User-Id: <YOUR_APP_USER_ID>"
 ```

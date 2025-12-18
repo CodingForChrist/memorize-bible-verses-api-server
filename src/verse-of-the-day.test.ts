@@ -46,10 +46,14 @@ describe("getVerseReferenceOfTheDay()", () => {
   test("should throw an error for an invalid date", () => {
     expect(() =>
       getVerseReferenceOfTheDay("2024-01-01T00:00:00+05:00"),
-    ).toThrowError(/Only years 2025 and 2026 are supported. Received: 2024/);
+    ).toThrowError(
+      /Invalid year. Supported years are 2025, 2026. Received: 2024/,
+    );
     expect(() =>
       getVerseReferenceOfTheDay("2027-12-31T00:00:00+05:00"),
-    ).toThrowError(/Only years 2025 and 2026 are supported. Received: 2027/);
+    ).toThrowError(
+      /Invalid year. Supported years are 2025, 2026. Received: 2027/,
+    );
     expect(() => getVerseReferenceOfTheDay("some bad value")).toThrowError(
       /Invalid date/,
     );

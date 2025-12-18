@@ -6,6 +6,7 @@ import singleVerseRouteHandler from "./single-verse-route-handler.ts";
 import passageRouteHandler from "./passage-route-handler.ts";
 import searchRouteHandler from "./search-route-handler.ts";
 import verseOfTheDayRouteHandler from "./verse-of-the-day-route-handler.ts";
+import verseOfTheDayVerseListRouteHandler from "./verse-of-the-day-verse-list-route-handler.ts";
 
 import authorizationMiddleware from "../authorization-middleware.ts";
 
@@ -27,6 +28,10 @@ router.post(
 router.post(
   "/api/v1/bibles/:bibleId/verse-of-the-day",
   verseOfTheDayRouteHandler,
+);
+router.post(
+  "/api/v1/verse-of-the-day/verse-list",
+  verseOfTheDayVerseListRouteHandler,
 );
 
 export default router;
