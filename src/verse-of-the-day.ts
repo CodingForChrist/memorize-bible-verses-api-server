@@ -10,6 +10,8 @@ dayjs.extend(dayOfYear);
 dayjs.extend(localizedFormat);
 dayjs.extend(utc);
 
+const supportedYears = [2025, 2026];
+
 export function getVerseReferenceOfTheDay(
   dateISOStringWithTimezoneOffset: string,
 ) {
@@ -26,9 +28,9 @@ export function getVerseReferenceOfTheDay(
 
   const year = dayjsDate.year();
 
-  if ([2025, 2026].includes(year) === false) {
+  if (supportedYears.includes(year) === false) {
     throw new Error(
-      `Only years 2025 and 2026 are supported. Received: ${year}`,
+      `Invalid year. Supported years are ${supportedYears.join(", ")}. Received: ${year}`,
     );
   }
 
@@ -45,4 +47,17 @@ export function getVerseReferenceOfTheDay(
     dayOfTheYear,
     formattedDate: dayjsDate.format("LLL"),
   };
+}
+
+export function getVerseList(year: number) {
+  if (supportedYears.includes(year) === false) {
+    throw new Error(
+      `Invalid year. Supported years are ${supportedYears.join(", ")}. Received: ${year}`,
+    );
+  }
+
+  const verseOfTheDayList =
+    year === 2025 ? verseOfTheDayList2025 : verseOfTheDayList2026;
+
+  return verseOfTheDayList;
 }
