@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.1](https://github.com/CodingForChrist/memorize-bible-verses-api-server/compare/v1.0.0...v1.0.1) (2025-12-19)
+
+
+### Bug Fixes
+
+* normalize the book name Revelation ([#66](https://github.com/CodingForChrist/memorize-bible-verses-api-server/issues/66)) ([c283c8d](https://github.com/CodingForChrist/memorize-bible-verses-api-server/commit/c283c8d97cbaee850faccf8780834082198b669d))
+
 ## 1.0.0 (2025-12-18)
 
 
