@@ -81,7 +81,14 @@ describe("parseVerseReferenceIntoParts()", () => {
 
 describe("transformVerseReferenceToVerseId()", () => {
   test("should get verseId for valid verse reference", () => {
+    expect(transformVerseReferenceToVerseId("Psalms 23:1")).toBe("PSA.23.1");
     expect(transformVerseReferenceToVerseId("Psalm 23:1")).toBe("PSA.23.1");
+    expect(transformVerseReferenceToVerseId("Revelation 3:20")).toBe(
+      "REV.3.20",
+    );
+    expect(transformVerseReferenceToVerseId("Revelations 3:20")).toBe(
+      "REV.3.20",
+    );
     expect(transformVerseReferenceToVerseId("Galatians 2:20")).toBe("GAL.2.20");
     expect(transformVerseReferenceToVerseId("2 Corinthians 5:17")).toBe(
       "2CO.5.17",
