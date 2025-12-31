@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/CodingForChrist/memorize-bible-verses-api-server/compare/v1.1.0...v1.1.1) (2025-12-31)
+
+
+### Bug Fixes
+
+* exclude titles from verse of the day passages ([#78](https://github.com/CodingForChrist/memorize-bible-verses-api-server/issues/78)) ([29944e9](https://github.com/CodingForChrist/memorize-bible-verses-api-server/commit/29944e90a3312a001847df975c79d68037e533b0))
+
 ## [1.1.0](https://github.com/CodingForChrist/memorize-bible-verses-api-server/compare/v1.0.2...v1.1.0) (2025-12-31)
 
 
