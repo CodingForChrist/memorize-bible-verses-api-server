@@ -25,6 +25,7 @@ export default async function verseOfTheDayRouteHandler(
   const results = await getPassage({
     bibleId,
     passageId,
+    includeTitles: false,
   });
   response.status(200).json({
     ...results,
