@@ -29,7 +29,14 @@ describe.for([
     const verses = verseOfTheDayList.map(({ verse }) => verse);
 
     test("should not contain duplicate verses", () => {
-      expect(verses.length).toBe(new Set(verses).size);
+      const duplicates = verses.filter((verse, index) => {
+        return verses.indexOf(verse) !== index;
+      });
+
+      expect(
+        duplicates.length,
+        `found duplicates: ${duplicates.toString()}`,
+      ).toBe(0);
     });
 
     test("should have one verse for each day of the year", () => {
