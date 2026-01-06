@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/CodingForChrist/memorize-bible-verses-api-server/compare/v1.1.1...v1.2.0) (2026-01-06)
+
+
+### Features
+
+* update verses for verse of the day list for holidays ([#83](https://github.com/CodingForChrist/memorize-bible-verses-api-server/issues/83)) ([9621416](https://github.com/CodingForChrist/memorize-bible-verses-api-server/commit/9621416d12571b43fef6d79ed52715685c622721))
+
 ## [1.1.1](https://github.com/CodingForChrist/memorize-bible-verses-api-server/compare/v1.1.0...v1.1.1) (2025-12-31)
 
 
