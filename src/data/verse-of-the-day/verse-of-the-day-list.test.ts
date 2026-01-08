@@ -20,6 +20,15 @@ type VerseOfTheDayList = {
   description?: string;
 }[];
 
+function getBibleBookNames() {
+  return bookList.data.map(({ name }) => {
+    if (name === "Psalms") {
+      return "Psalm";
+    }
+    return name;
+  });
+}
+
 describe.for([
   ["2025", verseOfTheDayList2025],
   ["2026", verseOfTheDayList2026],
@@ -47,6 +56,24 @@ describe.for([
       }
     });
 
+    test("should have at least one verse from each book", () => {
+      const missingBooks: string[] = [];
+      for (const bookName of getBibleBookNames()) {
+        const foundBook = verseOfTheDayList.find(({ verse }) => {
+          return verse.startsWith(bookName);
+        });
+
+        if (!foundBook) {
+          missingBooks.push(bookName);
+        }
+      }
+
+      expect(
+        missingBooks.length,
+        `no verses found for the following books: ${missingBooks.toString()}`,
+      ).toBe(0);
+    });
+
     test("date should match array index for day of year", () => {
       for (const [
         index,
@@ -60,8 +87,7 @@ describe.for([
 
     describe.for(verses)("validate verse %s", (verse) => {
       test("should spell bible book name correctly", () => {
-        const bookNames = ["Psalm", ...bookList.data.map(({ name }) => name)];
-        const foundBook = bookNames.find((name) => {
+        const foundBook = getBibleBookNames().find((name) => {
           return verse.startsWith(name);
         });
 
