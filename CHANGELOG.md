@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/CodingForChrist/memorize-bible-verses-api-server/compare/v1.3.0...v1.4.0) (2026-01-09)
+
+
+### Features
+
+* add task for reviewing verses by book category ([#87](https://github.com/CodingForChrist/memorize-bible-verses-api-server/issues/87)) ([248e3d1](https://github.com/CodingForChrist/memorize-bible-verses-api-server/commit/248e3d1c6ec77262d9da95a95243c75152e10fa2))
+
 ## [1.3.0](https://github.com/CodingForChrist/memorize-bible-verses-api-server/compare/v1.2.0...v1.3.0) (2026-01-08)
 
 
