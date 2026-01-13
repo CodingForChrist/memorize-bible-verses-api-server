@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://github.com/CodingForChrist/memorize-bible-verses-api-server/compare/v1.4.0...v1.5.0) (2026-01-13)
+
+
+### Features
+
+* use json as the default contentType ([#94](https://github.com/CodingForChrist/memorize-bible-verses-api-server/issues/94)) ([af640b5](https://github.com/CodingForChrist/memorize-bible-verses-api-server/commit/af640b5108315ef61bbc2025eca4cb5deac44b31))
+
 ## [1.4.0](https://github.com/CodingForChrist/memorize-bible-verses-api-server/compare/v1.3.0...v1.4.0) (2026-01-09)
 
 
