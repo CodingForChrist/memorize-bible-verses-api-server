@@ -180,7 +180,7 @@ describe("getVerse()", () => {
     });
 
     expect(mockedFetch).toBeCalledWith(
-      "https://rest.api.bible/v1/bibles/de4e12af7f28f599-02/verses/1JN.1.9?content-type=html&include-notes=false&include-titles=false&include-chapter-numbers=false&include-verse-numbers=false&include-verse-spans=false&use-org-id=false",
+      "https://rest.api.bible/v1/bibles/de4e12af7f28f599-02/verses/1JN.1.9?content-type=json&include-notes=false&include-titles=false&include-chapter-numbers=false&include-verse-numbers=false&include-verse-spans=false&use-org-id=false",
       expect.any(Object),
     );
   });
@@ -218,14 +218,14 @@ describe("getVerse()", () => {
         verseId: "1JN.1.9",
       }),
     ).rejects.toThrowError(
-      "Request failed with status code 400 Bad Request: https://rest.api.bible/v1/bibles/de4e12af7f28f599-02/verses/1JN.1.9?content-type=html&include-notes=false&include-titles=false&include-chapter-numbers=false&include-verse-numbers=false&include-verse-spans=false&use-org-id=false",
+      "Request failed with status code 400 Bad Request: https://rest.api.bible/v1/bibles/de4e12af7f28f599-02/verses/1JN.1.9?content-type=json&include-notes=false&include-titles=false&include-chapter-numbers=false&include-verse-numbers=false&include-verse-spans=false&use-org-id=false",
     );
   });
 
   test("caches successful responses", async () => {
     const mockResponseData = {};
     const requestURL =
-      "https://rest.api.bible/v1/bibles/de4e12af7f28f599-02/verses/1JN.1.9?content-type=html&include-notes=false&include-titles=false&include-chapter-numbers=false&include-verse-numbers=false&include-verse-spans=false&use-org-id=false";
+      "https://rest.api.bible/v1/bibles/de4e12af7f28f599-02/verses/1JN.1.9?content-type=json&include-notes=false&include-titles=false&include-chapter-numbers=false&include-verse-numbers=false&include-verse-spans=false&use-org-id=false";
 
     const mockedFetch = vi.mocked(globalThis.fetch);
     mockedFetch.mockResolvedValue(createFetchResponse(mockResponseData));

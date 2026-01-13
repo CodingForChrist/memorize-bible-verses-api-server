@@ -109,7 +109,7 @@ export async function getVerse(getVerseInput: GetVerseInput) {
   const url = new URL(`${baseUrl}/bibles/${bibleId}/verses/${verseId}`);
 
   const defaultValues = {
-    contentType: "html",
+    contentType: "json",
     includeNotes: false,
     includeTitles: false,
     includeChapterNumbers: false,
@@ -145,7 +145,7 @@ export async function getPassage(getPassageInput: GetPassageInput) {
   const url = new URL(`${baseUrl}/bibles/${bibleId}/passages/${passageId}`);
 
   const defaultValues = {
-    contentType: "html",
+    contentType: "json",
     includeNotes: false,
     includeTitles: true,
     includeChapterNumbers: false,
