@@ -1,6 +1,6 @@
 {
   "name": "memorize-bible-verses-api-server",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "type": "module",
   "private": true,
   "description": "Node.js Express server that wraps API.Bible",
