@@ -32,7 +32,7 @@ describe("getBibles()", () => {
     await getBibles();
 
     expect(mockedFetch).toBeCalledWith(
-      "https://rest.api.bible/v1/bibles",
+      "https://rest.api.bible/v1/bibles?language=eng&include-full-details=false",
       expect.any(Object),
     );
   });
@@ -48,7 +48,7 @@ describe("getBibles()", () => {
     });
 
     expect(mockedFetch).toBeCalledWith(
-      "https://rest.api.bible/v1/bibles?language=eng&ids=de4e12af7f28f599-02%2C32664dc3288a28df-02&include-full-details=true",
+      "https://rest.api.bible/v1/bibles?language=eng&include-full-details=true&ids=de4e12af7f28f599-02%2C32664dc3288a28df-02",
       expect.any(Object),
     );
   });
@@ -70,7 +70,8 @@ describe("getBibles()", () => {
 
   test("caches successful responses", async () => {
     const mockResponseData = {};
-    const requestURL = "https://rest.api.bible/v1/bibles";
+    const requestURL =
+      "https://rest.api.bible/v1/bibles?language=eng&include-full-details=false";
 
     const mockedFetch = vi.mocked(globalThis.fetch);
     mockedFetch.mockResolvedValue(createFetchResponse(mockResponseData));
