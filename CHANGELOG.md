@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.6.0](https://github.com/CodingForChrist/memorize-bible-verses-api-server/compare/v1.5.0...v1.6.0) (2026-01-17)
+
+
+### Features
+
+* remove unused content from bible list fixture ([#97](https://github.com/CodingForChrist/memorize-bible-verses-api-server/issues/97)) ([f297887](https://github.com/CodingForChrist/memorize-bible-verses-api-server/commit/f297887dc60cf5882041afbb3e7d79cbf43e3f8f))
+
 ## [1.5.0](https://github.com/CodingForChrist/memorize-bible-verses-api-server/compare/v1.4.0...v1.5.0) (2026-01-13)
 
 
