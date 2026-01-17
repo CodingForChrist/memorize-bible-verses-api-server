@@ -56,13 +56,22 @@ type GetBiblesInput = {
 };
 
 export async function getBibles(getBiblesInput: GetBiblesInput = {}) {
-  const url = new URL(`${baseUrl}/bibles`);
-  url.search = getQueryStringFromObject(getBiblesInput);
-
   if (inMemoryMode) {
     logger.debug("bible list loaded from fixture data");
     return bibleListFixtureData;
   }
+
+  const url = new URL(`${baseUrl}/bibles`);
+
+  const defaultValues = {
+    language: "eng",
+    includeFullDetails: false,
+  };
+
+  url.search = getQueryStringFromObject({
+    ...defaultValues,
+    ...getBiblesInput,
+  });
 
   const data = await request({ url, label: "getBibles" });
   return data;
