@@ -55,7 +55,7 @@ const biblesIds = [
 ];
 
 const bibleList = await getBibles({
-  includeFullDetails: true,
+  includeFullDetails: false,
   language: "eng",
   ids: biblesIds.map((b) => b.id).join(","),
 });
