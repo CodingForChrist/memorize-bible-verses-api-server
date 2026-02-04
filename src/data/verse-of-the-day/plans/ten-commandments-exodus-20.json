@@ -15,23 +15,28 @@
     "description": "Day 3 - 3rd Commandment"
   },
   {
-    "verse": "Exodus 20:8-11",
+    "verse": "Exodus 20:8-10",
     "plan": "10 Commandments",
-    "description": "Day 4 - 4th Commandment"
+    "description": "Day 4 - 4th Commandment Part 1"
+  },
+  {
+    "verse": "Exodus 20:11",
+    "plan": "10 Commandments",
+    "description": "Day 5 - 4th Commandment Part 2"
   },
   {
     "verse": "Exodus 20:12",
     "plan": "10 Commandments",
-    "description": "Day 5 - 5th Commandment"
+    "description": "Day 6 - 5th Commandment"
   },
   {
     "verse": "Exodus 20:13-15",
     "plan": "10 Commandments",
-    "description": "Day 6 - 6th, 7th, and 8th Commandments"
+    "description": "Day 7 - 6th, 7th, and 8th Commandments"
   },
   {
     "verse": "Exodus 20:16-17",
     "plan": "10 Commandments",
-    "description": "Day 7 - 9th and 10th Commandments"
+    "description": "Day 8 - 9th and 10th Commandments"
   }
 ]
