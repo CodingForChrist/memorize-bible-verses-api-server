@@ -199,45 +199,47 @@
     "description": "Day 3 - 3rd Commandment"
   },
   {
-    "verse": "Exodus 20:8-11",
+    "verse": "Exodus 20:8-10",
     "date": "2026-02-04",
     "formattedDate": "Wednesday, February 4, 2026",
     "plan": "10 Commandments",
-    "description": "Day 4 - 4th Commandment"
+    "description": "Day 4 - 4th Commandment Part 1"
   },
   {
-    "verse": "Exodus 20:12",
+    "verse": "Exodus 20:11",
     "date": "2026-02-05",
     "formattedDate": "Thursday, February 5, 2026",
     "plan": "10 Commandments",
-    "description": "Day 5 - 5th Commandment"
+    "description": "Day 5 - 4th Commandment Part 2"
   },
   {
-    "verse": "Exodus 20:13-15",
+    "verse": "Exodus 20:12",
     "date": "2026-02-06",
     "formattedDate": "Friday, February 6, 2026",
     "plan": "10 Commandments",
-    "description": "Day 6 - 6th, 7th, and 8th Commandments"
+    "description": "Day 6 - 5th Commandment"
   },
   {
-    "verse": "Exodus 20:16-17",
+    "verse": "Exodus 20:13-15",
     "date": "2026-02-07",
     "formattedDate": "Saturday, February 7, 2026",
     "plan": "10 Commandments",
-    "description": "Day 7 - 9th and 10th Commandments"
+    "description": "Day 7 - 6th, 7th, and 8th Commandments"
+  },
+  {
+    "verse": "Exodus 20:16-17",
+    "date": "2026-02-08",
+    "formattedDate": "Sunday, February 8, 2026",
+    "plan": "10 Commandments",
+    "description": "Day 8 - 9th and 10th Commandments"
   },
   {
     "verse": "Joshua 1:8",
-    "date": "2026-02-08",
-    "formattedDate": "Sunday, February 8, 2026"
-  },
-  {
-    "verse": "1 Kings 2:3",
     "date": "2026-02-09",
     "formattedDate": "Monday, February 9, 2026"
   },
   {
-    "verse": "James 1:22",
+    "verse": "1 Kings 2:3",
     "date": "2026-02-10",
     "formattedDate": "Tuesday, February 10, 2026"
   },
@@ -268,32 +270,32 @@
     "formattedDate": "Sunday, February 15, 2026"
   },
   {
-    "verse": "Mark 10:45",
+    "verse": "James 1:22",
     "date": "2026-02-16",
     "formattedDate": "Monday, February 16, 2026"
   },
   {
-    "verse": "John 8:31-32",
+    "verse": "Mark 10:45",
     "date": "2026-02-17",
     "formattedDate": "Tuesday, February 17, 2026"
   },
   {
-    "verse": "1 Corinthians 4:1-2",
+    "verse": "John 8:31-32",
     "date": "2026-02-18",
     "formattedDate": "Wednesday, February 18, 2026"
   },
   {
-    "verse": "Romans 8:6",
+    "verse": "1 Corinthians 4:1-2",
     "date": "2026-02-19",
     "formattedDate": "Thursday, February 19, 2026"
   },
   {
-    "verse": "Acts 4:12",
+    "verse": "Romans 8:6",
     "date": "2026-02-20",
     "formattedDate": "Friday, February 20, 2026"
   },
   {
-    "verse": "Psalm 9:10",
+    "verse": "Acts 4:12",
     "date": "2026-02-21",
     "formattedDate": "Saturday, February 21, 2026"
   },
@@ -333,39 +335,53 @@
     "formattedDate": "Saturday, February 28, 2026"
   },
   {
-    "verse": "Psalm 127:3",
+    "verse": "Romans 1:16-17",
     "date": "2026-03-01",
-    "formattedDate": "Sunday, March 1, 2026"
+    "formattedDate": "Sunday, March 1, 2026",
+    "plan": "The Romans Road",
+    "description": "Day 1"
   },
   {
-    "verse": "Psalm 139:14",
+    "verse": "Romans 3:10",
     "date": "2026-03-02",
-    "formattedDate": "Monday, March 2, 2026"
+    "formattedDate": "Monday, March 2, 2026",
+    "plan": "The Romans Road",
+    "description": "Day 2"
   },
   {
-    "verse": "Proverbs 3:5-6",
+    "verse": "Romans 3:20",
     "date": "2026-03-03",
-    "formattedDate": "Tuesday, March 3, 2026"
+    "formattedDate": "Tuesday, March 3, 2026",
+    "plan": "The Romans Road",
+    "description": "Day 3"
   },
   {
-    "verse": "Proverbs 11:11",
+    "verse": "Romans 3:23",
     "date": "2026-03-04",
-    "formattedDate": "Wednesday, March 4, 2026"
+    "formattedDate": "Wednesday, March 4, 2026",
+    "plan": "The Romans Road",
+    "description": "Day 4"
   },
   {
-    "verse": "Proverbs 12:24",
+    "verse": "Romans 5:8",
     "date": "2026-03-05",
-    "formattedDate": "Thursday, March 5, 2026"
+    "formattedDate": "Thursday, March 5, 2026",
+    "plan": "The Romans Road",
+    "description": "Day 5"
   },
   {
-    "verse": "Proverbs 13:4",
+    "verse": "Romans 6:23",
     "date": "2026-03-06",
-    "formattedDate": "Friday, March 6, 2026"
+    "formattedDate": "Friday, March 6, 2026",
+    "plan": "The Romans Road",
+    "description": "Day 6"
   },
   {
-    "verse": "Proverbs 15:1",
+    "verse": "Romans 10:13",
     "date": "2026-03-07",
-    "formattedDate": "Saturday, March 7, 2026"
+    "formattedDate": "Saturday, March 7, 2026",
+    "plan": "The Romans Road",
+    "description": "Day 7"
   },
   {
     "verse": "Psalm 37:5",
@@ -912,53 +928,39 @@
     "formattedDate": "Saturday, June 20, 2026"
   },
   {
-    "verse": "Romans 1:16-17",
+    "verse": "Psalm 127:3",
     "date": "2026-06-21",
-    "formattedDate": "Sunday, June 21, 2026",
-    "plan": "The Romans Road",
-    "description": "Day 1"
+    "formattedDate": "Sunday, June 21, 2026"
   },
   {
-    "verse": "Romans 3:10",
+    "verse": "Psalm 139:14",
     "date": "2026-06-22",
-    "formattedDate": "Monday, June 22, 2026",
-    "plan": "The Romans Road",
-    "description": "Day 2"
+    "formattedDate": "Monday, June 22, 2026"
   },
   {
-    "verse": "Romans 3:20",
+    "verse": "Proverbs 3:5-6",
     "date": "2026-06-23",
-    "formattedDate": "Tuesday, June 23, 2026",
-    "plan": "The Romans Road",
-    "description": "Day 3"
+    "formattedDate": "Tuesday, June 23, 2026"
   },
   {
-    "verse": "Romans 3:23",
+    "verse": "Proverbs 11:11",
     "date": "2026-06-24",
-    "formattedDate": "Wednesday, June 24, 2026",
-    "plan": "The Romans Road",
-    "description": "Day 4"
+    "formattedDate": "Wednesday, June 24, 2026"
   },
   {
-    "verse": "Romans 5:8",
+    "verse": "Proverbs 12:24",
     "date": "2026-06-25",
-    "formattedDate": "Thursday, June 25, 2026",
-    "plan": "The Romans Road",
-    "description": "Day 5"
+    "formattedDate": "Thursday, June 25, 2026"
   },
   {
-    "verse": "Romans 6:23",
+    "verse": "Proverbs 13:4",
     "date": "2026-06-26",
-    "formattedDate": "Friday, June 26, 2026",
-    "plan": "The Romans Road",
-    "description": "Day 6"
+    "formattedDate": "Friday, June 26, 2026"
   },
   {
-    "verse": "Romans 10:13",
+    "verse": "Proverbs 15:1",
     "date": "2026-06-27",
-    "formattedDate": "Saturday, June 27, 2026",
-    "plan": "The Romans Road",
-    "description": "Day 7"
+    "formattedDate": "Saturday, June 27, 2026"
   },
   {
     "verse": "Romans 4:5",
