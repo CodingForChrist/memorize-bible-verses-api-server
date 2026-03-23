@@ -100,7 +100,9 @@ describe.for([
         try {
           parseVerseReferenceIntoParts(verse);
         } catch (error) {
-          throw new Error(`Invalid verse format for "${verse}", ${error}`);
+          throw new Error(`Invalid verse format for "${verse}"`, {
+            cause: error,
+          });
         }
       });
 
