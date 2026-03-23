@@ -504,7 +504,7 @@
     "formattedDate": "Tuesday, March 31, 2026"
   },
   {
-    "verse": "Jeremiah 45:5",
+    "verse": "Micah 6:8",
     "date": "2026-04-01",
     "formattedDate": "Wednesday, April 1, 2026"
   },
@@ -514,12 +514,13 @@
     "formattedDate": "Thursday, April 2, 2026"
   },
   {
-    "verse": "Ezekiel 33:8",
+    "verse": "Matthew 27:45-46",
     "date": "2026-04-03",
-    "formattedDate": "Friday, April 3, 2026"
+    "formattedDate": "Friday, April 3, 2026",
+    "description": "Good Friday (Holiday)"
   },
   {
-    "verse": "Ezekiel 33:11",
+    "verse": "Isaiah 52:14",
     "date": "2026-04-04",
     "formattedDate": "Saturday, April 4, 2026"
   },
@@ -550,7 +551,7 @@
     "formattedDate": "Thursday, April 9, 2026"
   },
   {
-    "verse": "Isaiah 26:3",
+    "verse": "Revelation 22:17",
     "date": "2026-04-10",
     "formattedDate": "Friday, April 10, 2026"
   },
@@ -580,7 +581,7 @@
     "formattedDate": "Wednesday, April 15, 2026"
   },
   {
-    "verse": "Micah 6:8",
+    "verse": "Jeremiah 45:5",
     "date": "2026-04-16",
     "formattedDate": "Thursday, April 16, 2026"
   },
@@ -753,7 +754,7 @@
     "formattedDate": "Saturday, May 16, 2026"
   },
   {
-    "verse": "Isaiah 52:14",
+    "verse": "Ezekiel 33:11",
     "date": "2026-05-17",
     "formattedDate": "Sunday, May 17, 2026"
   },
@@ -1930,7 +1931,7 @@
     "formattedDate": "Tuesday, December 29, 2026"
   },
   {
-    "verse": "Revelation 22:17",
+    "verse": "Ezekiel 33:8",
     "date": "2026-12-30",
     "formattedDate": "Wednesday, December 30, 2026"
   },
