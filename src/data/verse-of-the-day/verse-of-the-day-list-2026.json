@@ -531,32 +531,32 @@
     "description": "Easter (Holiday)"
   },
   {
-    "verse": "Daniel 12:3",
+    "verse": "Romans 6:1-2",
     "date": "2026-04-06",
     "formattedDate": "Monday, April 6, 2026"
   },
   {
-    "verse": "Hosea 3:4-5",
+    "verse": "Romans 6:3-4",
     "date": "2026-04-07",
     "formattedDate": "Tuesday, April 7, 2026"
   },
   {
-    "verse": "Psalm 27:1",
+    "verse": "Romans 6:5",
     "date": "2026-04-08",
     "formattedDate": "Wednesday, April 8, 2026"
   },
   {
-    "verse": "Joel 2:25",
+    "verse": "Romans 6:6",
     "date": "2026-04-09",
     "formattedDate": "Thursday, April 9, 2026"
   },
   {
-    "verse": "Revelation 22:17",
+    "verse": "Romans 6:7-8",
     "date": "2026-04-10",
     "formattedDate": "Friday, April 10, 2026"
   },
   {
-    "verse": "Amos 3:2-3",
+    "verse": "Romans 6:9-10",
     "date": "2026-04-11",
     "formattedDate": "Saturday, April 11, 2026"
   },
@@ -566,17 +566,17 @@
     "formattedDate": "Sunday, April 12, 2026"
   },
   {
-    "verse": "Jeremiah 33:3",
+    "verse": "Romans 6:11-12",
     "date": "2026-04-13",
     "formattedDate": "Monday, April 13, 2026"
   },
   {
-    "verse": "Micah 4:3-4",
+    "verse": "Daniel 12:3",
     "date": "2026-04-14",
     "formattedDate": "Tuesday, April 14, 2026"
   },
   {
-    "verse": "Micah 5:2",
+    "verse": "Amos 3:2-3",
     "date": "2026-04-15",
     "formattedDate": "Wednesday, April 15, 2026"
   },
@@ -601,7 +601,7 @@
     "formattedDate": "Sunday, April 19, 2026"
   },
   {
-    "verse": "Zephaniah 1:7-8",
+    "verse": "Revelation 22:17",
     "date": "2026-04-20",
     "formattedDate": "Monday, April 20, 2026"
   },
@@ -631,39 +631,29 @@
     "formattedDate": "Saturday, April 25, 2026"
   },
   {
-    "verse": "Matthew 5:3-4",
+    "verse": "Mark 16:15-16",
     "date": "2026-04-26",
-    "formattedDate": "Sunday, April 26, 2026",
-    "plan": "Beatitudes",
-    "description": "Day 1 - first pair"
+    "formattedDate": "Sunday, April 26, 2026"
   },
   {
-    "verse": "Matthew 5:5-6",
+    "verse": "Luke 11:11-13",
     "date": "2026-04-27",
-    "formattedDate": "Monday, April 27, 2026",
-    "plan": "Beatitudes",
-    "description": "Day 2 - second pair"
+    "formattedDate": "Monday, April 27, 2026"
   },
   {
-    "verse": "Matthew 5:7-8",
+    "verse": "Isaiah 55:11",
     "date": "2026-04-28",
-    "formattedDate": "Tuesday, April 28, 2026",
-    "plan": "Beatitudes",
-    "description": "Day 3 - third pair"
+    "formattedDate": "Tuesday, April 28, 2026"
   },
   {
-    "verse": "Matthew 5:9-10",
+    "verse": "Luke 14:28",
     "date": "2026-04-29",
-    "formattedDate": "Wednesday, April 29, 2026",
-    "plan": "Beatitudes",
-    "description": "Day 4 - fourth pair"
+    "formattedDate": "Wednesday, April 29, 2026"
   },
   {
-    "verse": "Matthew 5:11-12",
+    "verse": "Psalm 19:1",
     "date": "2026-04-30",
-    "formattedDate": "Thursday, April 30, 2026",
-    "plan": "Beatitudes",
-    "description": "Day 5 - fifth pair"
+    "formattedDate": "Thursday, April 30, 2026"
   },
   {
     "verse": "Matthew 6:9",
@@ -759,29 +749,39 @@
     "formattedDate": "Sunday, May 17, 2026"
   },
   {
-    "verse": "Mark 16:15-16",
+    "verse": "Matthew 5:3-4",
     "date": "2026-05-18",
-    "formattedDate": "Monday, May 18, 2026"
+    "formattedDate": "Monday, May 18, 2026",
+    "plan": "Beatitudes",
+    "description": "Day 1 - first pair"
   },
   {
-    "verse": "Luke 11:11-13",
+    "verse": "Matthew 5:5-6",
     "date": "2026-05-19",
-    "formattedDate": "Tuesday, May 19, 2026"
+    "formattedDate": "Tuesday, May 19, 2026",
+    "plan": "Beatitudes",
+    "description": "Day 2 - second pair"
   },
   {
-    "verse": "Isaiah 55:11",
+    "verse": "Matthew 5:7-8",
     "date": "2026-05-20",
-    "formattedDate": "Wednesday, May 20, 2026"
+    "formattedDate": "Wednesday, May 20, 2026",
+    "plan": "Beatitudes",
+    "description": "Day 3 - third pair"
   },
   {
-    "verse": "Luke 14:28",
+    "verse": "Matthew 5:9-10",
     "date": "2026-05-21",
-    "formattedDate": "Thursday, May 21, 2026"
+    "formattedDate": "Thursday, May 21, 2026",
+    "plan": "Beatitudes",
+    "description": "Day 4 - fourth pair"
   },
   {
-    "verse": "Psalm 19:1",
+    "verse": "Matthew 5:11-12",
     "date": "2026-05-22",
-    "formattedDate": "Friday, May 22, 2026"
+    "formattedDate": "Friday, May 22, 2026",
+    "plan": "Beatitudes",
+    "description": "Day 5 - fifth pair"
   },
   {
     "verse": "Luke 19:10",
@@ -973,38 +973,39 @@
     "date": "2026-06-29",
     "formattedDate": "Monday, June 29, 2026"
   },
+
   {
-    "verse": "Romans 6:1-2",
+    "verse": "Micah 4:3-4",
     "date": "2026-06-30",
     "formattedDate": "Tuesday, June 30, 2026"
   },
   {
-    "verse": "Romans 6:3-4",
+    "verse": "Hosea 3:4-5",
     "date": "2026-07-01",
     "formattedDate": "Wednesday, July 1, 2026"
   },
   {
-    "verse": "Romans 6:5",
+    "verse": "Psalm 27:1",
     "date": "2026-07-02",
     "formattedDate": "Thursday, July 2, 2026"
   },
   {
-    "verse": "Romans 6:6",
+    "verse": "Joel 2:25",
     "date": "2026-07-03",
     "formattedDate": "Friday, July 3, 2026"
   },
   {
-    "verse": "Romans 6:7-8",
+    "verse": "Zephaniah 1:7-8",
     "date": "2026-07-04",
     "formattedDate": "Saturday, July 4, 2026"
   },
   {
-    "verse": "Romans 6:9-10",
+    "verse": "Micah 5:2",
     "date": "2026-07-05",
     "formattedDate": "Sunday, July 5, 2026"
   },
   {
-    "verse": "Romans 6:11-12",
+    "verse": "Jeremiah 33:3",
     "date": "2026-07-06",
     "formattedDate": "Monday, July 6, 2026"
   },
