@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.12.0](https://github.com/CodingForChrist/memorize-bible-verses-api-server/compare/v1.11.0...v1.12.0) (2026-04-04)
+
+
+### Features
+
+* update verses for April ([#144](https://github.com/CodingForChrist/memorize-bible-verses-api-server/issues/144)) ([535951e](https://github.com/CodingForChrist/memorize-bible-verses-api-server/commit/535951e4b76d974dc1df2dc830097621e6aad25f))
+
 ## [1.11.0](https://github.com/CodingForChrist/memorize-bible-verses-api-server/compare/v1.10.0...v1.11.0) (2026-03-24)
 
 
