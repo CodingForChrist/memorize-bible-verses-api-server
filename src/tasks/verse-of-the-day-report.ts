@@ -1,4 +1,5 @@
 import { parseVerseReferenceIntoParts } from "../bible-verse-reference-helper.ts";
+import bookList from "../data/book-list.json" with { type: "json" };
 
 import bookCategories from "../data/book-categories.json" with { type: "json" };
 import verseOfTheDayList2026 from "../data/verse-of-the-day/verse-of-the-day-list-2026.json" with { type: "json" };
@@ -73,6 +74,29 @@ function getVerseCountByCategory(verses: Verse[]) {
   return results;
 }
 
+function getVerseCountByBook(verses: Verse[]) {
+  const results: Record<string, number> = {};
+
+  for (const { verse } of verses) {
+    const { fullBookName } = parseVerseReferenceIntoParts(verse);
+    if (results[fullBookName]) {
+      results[fullBookName] += 1;
+    } else {
+      results[fullBookName] = 1;
+    }
+  }
+
+  const sortedResults: Record<string, number> = {};
+
+  for (const { name } of bookList.data) {
+    if (results[name]) {
+      sortedResults[name] = results[name];
+    }
+  }
+
+  return sortedResults;
+}
+
 function printReport() {
   const report = [];
   for (const [monthName, verses] of Object.entries(groupVersesByMonth())) {
@@ -80,6 +104,7 @@ function printReport() {
       monthName,
       ...getVerseCountByTestament(verses),
       ...getVerseCountByCategory(verses),
+      ...getVerseCountByBook(verses),
     });
   }
 
