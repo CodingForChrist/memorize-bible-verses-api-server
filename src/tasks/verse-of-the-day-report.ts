@@ -6,6 +6,18 @@ import verseOfTheDayList2026 from "../data/verse-of-the-day/verse-of-the-day-lis
 
 import dayjs from "dayjs";
 
+type BibleTestament = "oldTestament" | "newTestament";
+type BookCategory =
+  | "Law"
+  | "History"
+  | "Poetry"
+  | "Prophecy - Major Prophets"
+  | "Prophecy - Minor Prophets"
+  | "Gospels"
+  | "Pauline Epistles"
+  | "General Epistles"
+  | "Prophecy";
+
 type Verse = {
   verse: string;
   date: string;
@@ -18,7 +30,7 @@ function groupVersesByMonth() {
   return Object.groupBy(verseOfTheDayList2026, ({ date }) => {
     const dayjsDate = dayjs(date);
     return dayjsDate.format("MMMM");
-  });
+  }) as Record<string, Verse[]>;
 }
 
 function getVerseCountByTestament(verses: Verse[]) {
@@ -52,11 +64,18 @@ function getVerseCountByTestament(verses: Verse[]) {
 }
 
 function getVerseCountByCategory(verses: Verse[]) {
-  const results = {};
+  const results: Record<
+    BibleTestament,
+    Partial<Record<BookCategory, number>>
+  > = {
+    oldTestament: {},
+    newTestament: {},
+  };
 
-  for (const [testament, categories] of Object.entries(bookCategories)) {
-    results[testament] = [];
-
+  for (const [testament, categories] of Object.entries(bookCategories) as [
+    BibleTestament,
+    { categoryName: BookCategory; bookNames: string[] }[],
+  ][]) {
     for (const { verse } of verses) {
       const { fullBookName } = parseVerseReferenceIntoParts(verse);
       for (const { categoryName, bookNames } of categories) {

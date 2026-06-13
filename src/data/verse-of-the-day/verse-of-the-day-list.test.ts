@@ -59,11 +59,11 @@ describe.for([
     test("should have at least one verse from each book", () => {
       const missingBooks: string[] = [];
       for (const bookName of getBibleBookNames()) {
-        const foundBook = verseOfTheDayList.find(({ verse }) => {
+        const hasBook = verseOfTheDayList.some(({ verse }) => {
           return verse.startsWith(bookName);
         });
 
-        if (!foundBook) {
+        if (!hasBook) {
           missingBooks.push(bookName);
         }
       }
@@ -87,11 +87,11 @@ describe.for([
 
     describe.for(verses)("validate verse %s", (verse) => {
       test("should spell bible book name correctly", () => {
-        const foundBook = getBibleBookNames().find((name) => {
+        const hasBook = getBibleBookNames().some((name) => {
           return verse.startsWith(name);
         });
 
-        if (!foundBook) {
+        if (!hasBook) {
           throw new Error(`Unknown book name for verse "${verse}"`);
         }
       });
