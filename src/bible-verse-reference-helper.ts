@@ -8,7 +8,7 @@ export function parseVerseReferenceIntoParts(verseReference: string) {
   let verseReferenceWithoutBookNumber = verseReference;
 
   // get book number
-  if (Number.isInteger(Number(verseReference.charAt(0)))) {
+  if (Number.isSafeInteger(Number(verseReference.charAt(0)))) {
     if (verseReference.charAt(1) !== " ") {
       throw new Error("Book number must be a single digit followed by a space");
     }
@@ -53,13 +53,13 @@ export function parseVerseReferenceIntoParts(verseReference: string) {
     ? verseResult.split("-")
     : [verseResult, verseResult];
 
-  if (!Number.isInteger(Number(chapter))) {
+  if (!Number.isSafeInteger(Number(chapter))) {
     throw new TypeError("Chapter must be a number");
   }
 
   if (
-    !Number.isInteger(Number(verseNumberStart)) ||
-    !Number.isInteger(Number(verseNumberEnd))
+    !Number.isSafeInteger(Number(verseNumberStart)) ||
+    !Number.isSafeInteger(Number(verseNumberEnd))
   ) {
     throw new TypeError("Verse must be a number");
   }

@@ -49,31 +49,31 @@ describe("parseVerseReferenceIntoParts()", () => {
   });
 
   test("should throw an error for an invalid verse reference", () => {
-    expect(() => parseVerseReferenceIntoParts("111")).toThrowError(
+    expect(() => parseVerseReferenceIntoParts("111")).toThrow(
       /Book number must be a single digit followed by a space/,
     );
 
-    expect(() => parseVerseReferenceIntoParts("4 John 1:1")).toThrowError(
+    expect(() => parseVerseReferenceIntoParts("4 John 1:1")).toThrow(
       /Invalid book number "4"/,
     );
 
-    expect(() => parseVerseReferenceIntoParts("1 11")).toThrowError(
+    expect(() => parseVerseReferenceIntoParts("1 11")).toThrow(
       /Failed to parse book name out of the verse reference/,
     );
 
-    expect(() => parseVerseReferenceIntoParts("invalid-data")).toThrowError(
+    expect(() => parseVerseReferenceIntoParts("invalid-data")).toThrow(
       /Must include a single space to separate the book name from the chapter/,
     );
 
-    expect(() => parseVerseReferenceIntoParts("invalid data")).toThrowError(
+    expect(() => parseVerseReferenceIntoParts("invalid data")).toThrow(
       /Must include a single space to separate the book name from the chapter/,
     );
 
-    expect(() => parseVerseReferenceIntoParts("Genesis 1A:1")).toThrowError(
+    expect(() => parseVerseReferenceIntoParts("Genesis 1A:1")).toThrow(
       /Chapter must be a number/,
     );
 
-    expect(() => parseVerseReferenceIntoParts("Genesis 1:A")).toThrowError(
+    expect(() => parseVerseReferenceIntoParts("Genesis 1:A")).toThrow(
       /Verse must be a number/,
     );
   });
@@ -97,9 +97,9 @@ describe("transformVerseReferenceToVerseId()", () => {
 
   test("should throw an error for an invalid verse reference", () => {
     // Corthians is purposely misspelled and should be Corinthians
-    expect(() =>
-      transformVerseReferenceToVerseId("2 Corthians 5:17"),
-    ).toThrowError(/Failed to look up book name for "2 Corthians"/);
+    expect(() => transformVerseReferenceToVerseId("2 Corthians 5:17")).toThrow(
+      /Failed to look up book name for "2 Corthians"/,
+    );
   });
 });
 
@@ -117,6 +117,6 @@ describe("transformVerseReferenceToPassageId()", () => {
     // Corthians is purposely misspelled and should be Corinthians
     expect(() =>
       transformVerseReferenceToPassageId("2 Corthians 5:17"),
-    ).toThrowError(/Failed to look up book name for "2 Corthians"/);
+    ).toThrow(/Failed to look up book name for "2 Corthians"/);
   });
 });

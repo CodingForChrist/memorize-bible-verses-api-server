@@ -6,8 +6,11 @@ import utc from "dayjs/plugin/utc.js";
 import verseOfTheDayList2025 from "./data/verse-of-the-day/verse-of-the-day-list-2025.json" with { type: "json" };
 import verseOfTheDayList2026 from "./data/verse-of-the-day/verse-of-the-day-list-2026.json" with { type: "json" };
 
+// eslint-disable-next-line unicorn/no-top-level-side-effects
 dayjs.extend(dayOfYear);
+// eslint-disable-next-line unicorn/no-top-level-side-effects
 dayjs.extend(localizedFormat);
+// eslint-disable-next-line unicorn/no-top-level-side-effects
 dayjs.extend(utc);
 
 const supportedYears = [2025, 2026];
@@ -28,7 +31,7 @@ export function getVerseReferenceOfTheDay(
 
   const year = dayjsDate.year();
 
-  if (supportedYears.includes(year) === false) {
+  if (!supportedYears.includes(year)) {
     throw new Error(
       `Invalid year. Supported years are ${supportedYears.join(", ")}. Received: ${year}`,
     );
@@ -50,7 +53,7 @@ export function getVerseReferenceOfTheDay(
 }
 
 export function getVerseList(year: number) {
-  if (supportedYears.includes(year) === false) {
+  if (!supportedYears.includes(year)) {
     throw new Error(
       `Invalid year. Supported years are ${supportedYears.join(", ")}. Received: ${year}`,
     );

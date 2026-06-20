@@ -1,3 +1,5 @@
+/* eslint-disable unicorn/no-top-level-side-effects */
+
 import { Router } from "express";
 
 import bibleRouteHandler from "./bible-route-handler.ts";
