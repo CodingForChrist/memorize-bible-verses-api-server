@@ -5,9 +5,9 @@ export default async function errorMiddleware(
   response: Response,
   next: NextFunction,
 ) {
-  const applicationUserId = request.get("application-user-id") ?? "";
+  const appUserId = request.get("application-user-id") ?? "";
 
-  if (getAllowedApplicationUserIds().includes(applicationUserId)) {
+  if (getAllowedAppUserIds().includes(appUserId)) {
     return next();
   }
 
@@ -18,7 +18,7 @@ export default async function errorMiddleware(
   });
 }
 
-function getAllowedApplicationUserIds() {
-  const applicationUserIdsString = process.env.APPLICATION_USER_IDS ?? "";
-  return applicationUserIdsString.split(",");
+function getAllowedAppUserIds() {
+  const appUserIdsString = process.env.APPLICATION_USER_IDS ?? "";
+  return appUserIdsString.split(",");
 }

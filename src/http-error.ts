@@ -8,7 +8,7 @@ export class HTTPError extends Error {
     const status = `${code} ${title}`.trim();
     const reason = status ? `status code ${status}` : "an unknown error";
 
-    super(`Request failed with ${reason}: ${url.toString()}`);
+    super(`Request failed with ${reason}: ${url.href}`);
     this.name = "HTTPError";
     this.response = response;
   }

@@ -6,18 +6,6 @@ import verseOfTheDayList2026 from "../data/verse-of-the-day/verse-of-the-day-lis
 
 import dayjs from "dayjs";
 
-type BibleTestament = "oldTestament" | "newTestament";
-type BookCategory =
-  | "Law"
-  | "History"
-  | "Poetry"
-  | "Prophecy - Major Prophets"
-  | "Prophecy - Minor Prophets"
-  | "Gospels"
-  | "Pauline Epistles"
-  | "General Epistles"
-  | "Prophecy";
-
 type Verse = {
   verse: string;
   date: string;
@@ -25,6 +13,16 @@ type Verse = {
   plan?: string;
   description?: string;
 };
+
+const oldTestamentBookNames = new Set(
+  bookList.data.slice(0, 39).map(({ name }) => name),
+);
+oldTestamentBookNames.delete("Psalms");
+oldTestamentBookNames.add("Psalm");
+
+const newTestamentBookNames = new Set(
+  bookList.data.slice(39).map(({ name }) => name),
+);
 
 function groupVersesByMonth() {
   return Object.groupBy(verseOfTheDayList2026, ({ date }) => {
@@ -39,22 +37,11 @@ function getVerseCountByTestament(verses: Verse[]) {
     newTestamentCount: 0,
   };
 
-  let oldTestamentBookNames: string[] = [];
-  let newTestamentBookNames: string[] = [];
-
-  for (const { bookNames } of bookCategories.oldTestament) {
-    oldTestamentBookNames = [...oldTestamentBookNames, ...bookNames];
-  }
-
-  for (const { bookNames } of bookCategories.newTestament) {
-    newTestamentBookNames = [...newTestamentBookNames, ...bookNames];
-  }
-
   for (const { verse } of verses) {
     const { fullBookName } = parseVerseReferenceIntoParts(verse);
-    if (oldTestamentBookNames.includes(fullBookName)) {
+    if (oldTestamentBookNames.has(fullBookName)) {
       results.oldTestamentCount += 1;
-    } else if (newTestamentBookNames.includes(fullBookName)) {
+    } else if (newTestamentBookNames.has(fullBookName)) {
       results.newTestamentCount += 1;
     } else {
       throw new Error(`Book name not found for verse: ${verse}`);
@@ -64,52 +51,62 @@ function getVerseCountByTestament(verses: Verse[]) {
 }
 
 function getVerseCountByCategory(verses: Verse[]) {
-  const results: Record<
-    BibleTestament,
-    Partial<Record<BookCategory, number>>
-  > = {
-    oldTestament: {},
-    newTestament: {},
-  };
+  const oldTestamentCategoryCount = new Map<string, number>();
+  const newTestamentCategoryCount = new Map<string, number>();
 
-  for (const [testament, categories] of Object.entries(bookCategories) as [
-    BibleTestament,
-    { categoryName: BookCategory; bookNames: string[] }[],
-  ][]) {
-    for (const { verse } of verses) {
-      const { fullBookName } = parseVerseReferenceIntoParts(verse);
-      for (const { categoryName, bookNames } of categories) {
-        if (!results[testament][categoryName]) {
-          results[testament][categoryName] = 0;
+  for (const { verse } of verses) {
+    const { fullBookName } = parseVerseReferenceIntoParts(verse);
+
+    if (oldTestamentBookNames.has(fullBookName)) {
+      for (const { categoryName, bookNames } of bookCategories.oldTestament) {
+        if (!oldTestamentCategoryCount.has(categoryName)) {
+          oldTestamentCategoryCount.set(categoryName, 0);
         }
 
         if (bookNames.includes(fullBookName)) {
-          results[testament][categoryName] += 1;
+          const currentCount = oldTestamentCategoryCount.get(categoryName) || 0;
+          oldTestamentCategoryCount.set(categoryName, currentCount + 1);
+        }
+      }
+    } else {
+      for (const { categoryName, bookNames } of bookCategories.newTestament) {
+        if (!newTestamentCategoryCount.has(categoryName)) {
+          newTestamentCategoryCount.set(categoryName, 0);
+        }
+
+        if (bookNames.includes(fullBookName)) {
+          const currentCount = newTestamentCategoryCount.get(categoryName) || 0;
+          newTestamentCategoryCount.set(categoryName, currentCount + 1);
         }
       }
     }
   }
 
-  return results;
+  return {
+    oldTestamentCategoryCount: {
+      ...Object.fromEntries(oldTestamentCategoryCount),
+    },
+    newTestamentCategoryCount: {
+      ...Object.fromEntries(newTestamentCategoryCount),
+    },
+  };
 }
 
 function getVerseCountByBook(verses: Verse[]) {
-  const results: Record<string, number> = {};
+  const counterMap = new Map<string, number>();
 
   for (const { verse } of verses) {
     const { fullBookName } = parseVerseReferenceIntoParts(verse);
-    if (results[fullBookName]) {
-      results[fullBookName] += 1;
-    } else {
-      results[fullBookName] = 1;
-    }
+    const currentCount = counterMap.get(fullBookName) || 0;
+    counterMap.set(fullBookName, currentCount + 1);
   }
 
   const sortedResults: Record<string, number> = {};
 
   for (const { name } of bookList.data) {
-    if (results[name]) {
-      sortedResults[name] = results[name];
+    const bookCount = counterMap.get(name);
+    if (bookCount) {
+      sortedResults[name] = bookCount;
     }
   }
 

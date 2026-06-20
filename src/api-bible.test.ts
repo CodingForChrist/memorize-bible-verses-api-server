@@ -21,24 +21,24 @@ beforeEach(() => {
   vi.stubEnv("BIBLE_API_KEY", "test-value");
 
   cache.clear();
-  globalThis.fetch = vi.fn();
+  vi.stubGlobal("fetch", vi.fn());
 });
 
 describe("getBibles()", () => {
   test("does not require any input", async () => {
-    const mockedFetch = vi.mocked(globalThis.fetch);
+    const mockedFetch = vi.mocked(fetch);
     mockedFetch.mockResolvedValue(createFetchResponse({}));
 
     await getBibles();
 
-    expect(mockedFetch).toBeCalledWith(
+    expect(mockedFetch).toHaveBeenCalledWith(
       "https://rest.api.bible/v1/bibles?language=eng&include-full-details=false",
       expect.any(Object),
     );
   });
 
   test("formats optional input into kebab-case query string parameters", async () => {
-    const mockedFetch = vi.mocked(globalThis.fetch);
+    const mockedFetch = vi.mocked(fetch);
     mockedFetch.mockResolvedValue(createFetchResponse({}));
 
     await getBibles({
@@ -47,14 +47,14 @@ describe("getBibles()", () => {
       includeFullDetails: true,
     });
 
-    expect(mockedFetch).toBeCalledWith(
+    expect(mockedFetch).toHaveBeenCalledWith(
       "https://rest.api.bible/v1/bibles?language=eng&include-full-details=true&ids=de4e12af7f28f599-02%2C32664dc3288a28df-02",
       expect.any(Object),
     );
   });
 
   test("throws an error for a non-200 status code", async () => {
-    const mockedFetch = vi.mocked(globalThis.fetch);
+    const mockedFetch = vi.mocked(fetch);
     const errorResponse = {
       ok: false,
       status: 400,
@@ -63,7 +63,7 @@ describe("getBibles()", () => {
 
     mockedFetch.mockResolvedValue(errorResponse);
 
-    await expect(() => getBibles()).rejects.toThrowError(
+    await expect(() => getBibles()).rejects.toThrow(
       "Request failed with status code 400 Bad Request: https://rest.api.bible/v1/bibles",
     );
   });
@@ -73,13 +73,13 @@ describe("getBibles()", () => {
     const requestURL =
       "https://rest.api.bible/v1/bibles?language=eng&include-full-details=false";
 
-    const mockedFetch = vi.mocked(globalThis.fetch);
+    const mockedFetch = vi.mocked(fetch);
     mockedFetch.mockResolvedValue(createFetchResponse(mockResponseData));
 
     expect(cache.get(requestURL)).toBeUndefined();
     await getBibles();
 
-    expect(mockedFetch).toBeCalledWith(requestURL, expect.any(Object));
+    expect(mockedFetch).toHaveBeenCalledWith(requestURL, expect.any(Object));
 
     mockedFetch.mockClear();
 
@@ -93,21 +93,21 @@ describe("getBibles()", () => {
 
 describe("getBooks()", () => {
   test("uses default values", async () => {
-    const mockedFetch = vi.mocked(globalThis.fetch);
+    const mockedFetch = vi.mocked(fetch);
     mockedFetch.mockResolvedValue(createFetchResponse({}));
 
     await getBooks({
       bibleId: "de4e12af7f28f599-02",
     });
 
-    expect(mockedFetch).toBeCalledWith(
+    expect(mockedFetch).toHaveBeenCalledWith(
       "https://rest.api.bible/v1/bibles/de4e12af7f28f599-02/books?include-chapters=false&include-chapters-and-sections=false",
       expect.any(Object),
     );
   });
 
   test("uses optional input instead of default values", async () => {
-    const mockedFetch = vi.mocked(globalThis.fetch);
+    const mockedFetch = vi.mocked(fetch);
     mockedFetch.mockResolvedValue(createFetchResponse({}));
 
     await getBooks({
@@ -116,14 +116,14 @@ describe("getBooks()", () => {
       includeChaptersAndSections: true,
     });
 
-    expect(mockedFetch).toBeCalledWith(
+    expect(mockedFetch).toHaveBeenCalledWith(
       "https://rest.api.bible/v1/bibles/de4e12af7f28f599-02/books?include-chapters=true&include-chapters-and-sections=true",
       expect.any(Object),
     );
   });
 
   test("throws an error for a non-200 status code", async () => {
-    const mockedFetch = vi.mocked(globalThis.fetch);
+    const mockedFetch = vi.mocked(fetch);
     const errorResponse = {
       ok: false,
       status: 400,
@@ -136,7 +136,7 @@ describe("getBooks()", () => {
       getBooks({
         bibleId: "de4e12af7f28f599-02",
       }),
-    ).rejects.toThrowError(
+    ).rejects.toThrow(
       "Request failed with status code 400 Bad Request: https://rest.api.bible/v1/bibles/de4e12af7f28f599-02/books?include-chapters=false&include-chapters-and-sections=false",
     );
   });
@@ -146,7 +146,7 @@ describe("getBooks()", () => {
     const requestURL =
       "https://rest.api.bible/v1/bibles/de4e12af7f28f599-02/books?include-chapters=false&include-chapters-and-sections=false";
 
-    const mockedFetch = vi.mocked(globalThis.fetch);
+    const mockedFetch = vi.mocked(fetch);
     mockedFetch.mockResolvedValue(createFetchResponse(mockResponseData));
 
     expect(cache.get(requestURL)).toBeUndefined();
@@ -155,7 +155,7 @@ describe("getBooks()", () => {
       bibleId: "de4e12af7f28f599-02",
     });
 
-    expect(mockedFetch).toBeCalledWith(requestURL, expect.any(Object));
+    expect(mockedFetch).toHaveBeenCalledWith(requestURL, expect.any(Object));
 
     mockedFetch.mockClear();
 
@@ -172,7 +172,7 @@ describe("getBooks()", () => {
 
 describe("getVerse()", () => {
   test("uses default values", async () => {
-    const mockedFetch = vi.mocked(globalThis.fetch);
+    const mockedFetch = vi.mocked(fetch);
     mockedFetch.mockResolvedValue(createFetchResponse({}));
 
     await getVerse({
@@ -180,14 +180,14 @@ describe("getVerse()", () => {
       verseId: "1JN.1.9",
     });
 
-    expect(mockedFetch).toBeCalledWith(
+    expect(mockedFetch).toHaveBeenCalledWith(
       "https://rest.api.bible/v1/bibles/de4e12af7f28f599-02/verses/1JN.1.9?content-type=json&include-notes=false&include-titles=false&include-chapter-numbers=false&include-verse-numbers=false&include-verse-spans=false&use-org-id=false",
       expect.any(Object),
     );
   });
 
   test("uses optional input instead of default values", async () => {
-    const mockedFetch = vi.mocked(globalThis.fetch);
+    const mockedFetch = vi.mocked(fetch);
     mockedFetch.mockResolvedValue(createFetchResponse({}));
 
     await getVerse({
@@ -197,14 +197,14 @@ describe("getVerse()", () => {
       includeNotes: true,
     });
 
-    expect(mockedFetch).toBeCalledWith(
+    expect(mockedFetch).toHaveBeenCalledWith(
       "https://rest.api.bible/v1/bibles/de4e12af7f28f599-02/verses/1JN.1.9?content-type=html&include-notes=true&include-titles=false&include-chapter-numbers=false&include-verse-numbers=false&include-verse-spans=false&use-org-id=false",
       expect.any(Object),
     );
   });
 
   test("throws an error for a non-200 status code", async () => {
-    const mockedFetch = vi.mocked(globalThis.fetch);
+    const mockedFetch = vi.mocked(fetch);
     const errorResponse = {
       ok: false,
       status: 400,
@@ -218,7 +218,7 @@ describe("getVerse()", () => {
         bibleId: "de4e12af7f28f599-02",
         verseId: "1JN.1.9",
       }),
-    ).rejects.toThrowError(
+    ).rejects.toThrow(
       "Request failed with status code 400 Bad Request: https://rest.api.bible/v1/bibles/de4e12af7f28f599-02/verses/1JN.1.9?content-type=json&include-notes=false&include-titles=false&include-chapter-numbers=false&include-verse-numbers=false&include-verse-spans=false&use-org-id=false",
     );
   });
@@ -228,7 +228,7 @@ describe("getVerse()", () => {
     const requestURL =
       "https://rest.api.bible/v1/bibles/de4e12af7f28f599-02/verses/1JN.1.9?content-type=json&include-notes=false&include-titles=false&include-chapter-numbers=false&include-verse-numbers=false&include-verse-spans=false&use-org-id=false";
 
-    const mockedFetch = vi.mocked(globalThis.fetch);
+    const mockedFetch = vi.mocked(fetch);
     mockedFetch.mockResolvedValue(createFetchResponse(mockResponseData));
 
     expect(cache.get(requestURL)).toBeUndefined();
@@ -238,7 +238,7 @@ describe("getVerse()", () => {
       verseId: "1JN.1.9",
     });
 
-    expect(mockedFetch).toBeCalledWith(requestURL, expect.any(Object));
+    expect(mockedFetch).toHaveBeenCalledWith(requestURL, expect.any(Object));
 
     mockedFetch.mockClear();
 
@@ -256,7 +256,7 @@ describe("getVerse()", () => {
 
 describe("searchForVerses()", () => {
   test("only requires bibleId and query", async () => {
-    const mockedFetch = vi.mocked(globalThis.fetch);
+    const mockedFetch = vi.mocked(fetch);
     mockedFetch.mockResolvedValue(createFetchResponse({}));
 
     await searchForVerses({
@@ -264,14 +264,14 @@ describe("searchForVerses()", () => {
       query: "John 3",
     });
 
-    expect(mockedFetch).toBeCalledWith(
+    expect(mockedFetch).toHaveBeenCalledWith(
       "https://rest.api.bible/v1/bibles/de4e12af7f28f599-02/search?query=John+3",
       expect.any(Object),
     );
   });
 
   test("supports optional input", async () => {
-    const mockedFetch = vi.mocked(globalThis.fetch);
+    const mockedFetch = vi.mocked(fetch);
     mockedFetch.mockResolvedValue(createFetchResponse({}));
 
     await searchForVerses({
@@ -281,14 +281,14 @@ describe("searchForVerses()", () => {
       sort: "canonical",
     });
 
-    expect(mockedFetch).toBeCalledWith(
+    expect(mockedFetch).toHaveBeenCalledWith(
       "https://rest.api.bible/v1/bibles/de4e12af7f28f599-02/search?query=John+3&limit=3&sort=canonical",
       expect.any(Object),
     );
   });
 
   test("throws an error for a non-200 status code", async () => {
-    const mockedFetch = vi.mocked(globalThis.fetch);
+    const mockedFetch = vi.mocked(fetch);
     const errorResponse = {
       ok: false,
       status: 400,
@@ -302,7 +302,7 @@ describe("searchForVerses()", () => {
         bibleId: "de4e12af7f28f599-02",
         query: "John 3",
       }),
-    ).rejects.toThrowError(
+    ).rejects.toThrow(
       "Request failed with status code 400 Bad Request: https://rest.api.bible/v1/bibles/de4e12af7f28f599-02/search?query=John+3",
     );
   });
@@ -311,7 +311,7 @@ describe("searchForVerses()", () => {
     const mockResponseData = {};
     const requestURL =
       "https://rest.api.bible/v1/bibles/de4e12af7f28f599-02/search?query=John+3";
-    const mockedFetch = vi.mocked(globalThis.fetch);
+    const mockedFetch = vi.mocked(fetch);
     mockedFetch.mockResolvedValue(createFetchResponse(mockResponseData));
 
     expect(cache.get(requestURL)).toBeUndefined();
@@ -321,7 +321,7 @@ describe("searchForVerses()", () => {
       query: "John 3",
     });
 
-    expect(mockedFetch).toBeCalledWith(requestURL, expect.any(Object));
+    expect(mockedFetch).toHaveBeenCalledWith(requestURL, expect.any(Object));
 
     mockedFetch.mockClear();
 
