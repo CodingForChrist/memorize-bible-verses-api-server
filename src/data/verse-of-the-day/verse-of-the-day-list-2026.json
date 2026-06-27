@@ -970,7 +970,7 @@
     "formattedDate": "Tuesday, June 30, 2026"
   },
   {
-    "verse": "Hosea 3:4-5",
+    "verse": "Philippians 1:6",
     "date": "2026-07-01",
     "formattedDate": "Wednesday, July 1, 2026"
   },
@@ -980,14 +980,15 @@
     "formattedDate": "Thursday, July 2, 2026"
   },
   {
-    "verse": "Joel 2:25",
+    "verse": "Romans 6:14",
     "date": "2026-07-03",
     "formattedDate": "Friday, July 3, 2026"
   },
   {
-    "verse": "Zephaniah 1:7-8",
+    "verse": "Galatians 5:1",
     "date": "2026-07-04",
-    "formattedDate": "Saturday, July 4, 2026"
+    "formattedDate": "Saturday, July 4, 2026",
+    "description": "4th of July (Holiday)"
   },
   {
     "verse": "Micah 5:2",
@@ -995,37 +996,37 @@
     "formattedDate": "Sunday, July 5, 2026"
   },
   {
-    "verse": "Jeremiah 33:3",
+    "verse": "Philippians 3:10-11",
     "date": "2026-07-06",
     "formattedDate": "Monday, July 6, 2026"
   },
   {
-    "verse": "Romans 6:14",
+    "verse": "Judges 21:25",
     "date": "2026-07-07",
     "formattedDate": "Tuesday, July 7, 2026"
   },
   {
-    "verse": "Romans 8:1",
+    "verse": "1 John 1:6-7",
     "date": "2026-07-08",
     "formattedDate": "Wednesday, July 8, 2026"
   },
   {
-    "verse": "Psalm 1:1-3",
+    "verse": "Colossians 2:14-15",
     "date": "2026-07-09",
     "formattedDate": "Thursday, July 9, 2026"
   },
   {
-    "verse": "Romans 8:28",
+    "verse": "2 Timothy 1:7",
     "date": "2026-07-10",
     "formattedDate": "Friday, July 10, 2026"
   },
   {
-    "verse": "Romans 8:29",
+    "verse": "Titus 3:5",
     "date": "2026-07-11",
     "formattedDate": "Saturday, July 11, 2026"
   },
   {
-    "verse": "Romans 8:30",
+    "verse": "Hebrews 12:14",
     "date": "2026-07-12",
     "formattedDate": "Sunday, July 12, 2026"
   },
@@ -1040,12 +1041,12 @@
     "formattedDate": "Tuesday, July 14, 2026"
   },
   {
-    "verse": "Romans 10:9-10",
+    "verse": "Hebrews 9:27-28",
     "date": "2026-07-15",
     "formattedDate": "Wednesday, July 15, 2026"
   },
   {
-    "verse": "Judges 21:25",
+    "verse": "Joel 2:25",
     "date": "2026-07-16",
     "formattedDate": "Thursday, July 16, 2026"
   },
@@ -1060,27 +1061,27 @@
     "formattedDate": "Saturday, July 18, 2026"
   },
   {
-    "verse": "1 Corinthians 2:5",
+    "verse": "Revelation 3:20",
     "date": "2026-07-19",
     "formattedDate": "Sunday, July 19, 2026"
   },
   {
-    "verse": "Psalm 126:5-6",
+    "verse": "1 Thessalonians 4:16-17",
     "date": "2026-07-20",
     "formattedDate": "Monday, July 20, 2026"
   },
   {
-    "verse": "1 Corinthians 6:2",
+    "verse": "James 3:1",
     "date": "2026-07-21",
     "formattedDate": "Tuesday, July 21, 2026"
   },
   {
-    "verse": "1 Corinthians 6:9-11",
+    "verse": "Ephesians 4:32",
     "date": "2026-07-22",
     "formattedDate": "Wednesday, July 22, 2026"
   },
   {
-    "verse": "1 Corinthians 6:19-20",
+    "verse": "1 Peter 2:1-3",
     "date": "2026-07-23",
     "formattedDate": "Thursday, July 23, 2026"
   },
@@ -1090,58 +1091,58 @@
     "formattedDate": "Friday, July 24, 2026"
   },
   {
-    "verse": "1 Corinthians 10:31",
-    "date": "2026-07-25",
-    "formattedDate": "Saturday, July 25, 2026"
-  },
-  {
     "verse": "1 Corinthians 13:1-2",
-    "date": "2026-07-26",
-    "formattedDate": "Sunday, July 26, 2026",
+    "date": "2026-07-25",
+    "formattedDate": "Saturday, July 25, 2026",
     "plan": "Love - 1 Corinthians 13",
     "description": "Day 1"
   },
   {
     "verse": "1 Corinthians 13:3-4",
-    "date": "2026-07-27",
-    "formattedDate": "Monday, July 27, 2026",
+    "date": "2026-07-26",
+    "formattedDate": "Sunday, July 26, 2026",
     "plan": "Love - 1 Corinthians 13",
     "description": "Day 2"
   },
   {
     "verse": "1 Corinthians 13:5-7",
-    "date": "2026-07-28",
-    "formattedDate": "Tuesday, July 28, 2026",
+    "date": "2026-07-27",
+    "formattedDate": "Monday, July 27, 2026",
     "plan": "Love - 1 Corinthians 13",
     "description": "Day 3"
   },
   {
     "verse": "1 Corinthians 13:8",
-    "date": "2026-07-29",
-    "formattedDate": "Wednesday, July 29, 2026",
+    "date": "2026-07-28",
+    "formattedDate": "Tuesday, July 28, 2026",
     "plan": "Love - 1 Corinthians 13",
     "description": "Day 4"
   },
   {
     "verse": "1 Corinthians 13:9-10",
-    "date": "2026-07-30",
-    "formattedDate": "Thursday, July 30, 2026",
+    "date": "2026-07-29",
+    "formattedDate": "Wednesday, July 29, 2026",
     "plan": "Love - 1 Corinthians 13",
     "description": "Day 5"
   },
   {
     "verse": "1 Corinthians 13:11-12",
-    "date": "2026-07-31",
-    "formattedDate": "Friday, July 31, 2026",
+    "date": "2026-07-30",
+    "formattedDate": "Thursday, July 30, 2026",
     "plan": "Love - 1 Corinthians 13",
     "description": "Day 6"
   },
   {
     "verse": "1 Corinthians 13:13",
-    "date": "2026-08-01",
-    "formattedDate": "Saturday, August 1, 2026",
+    "date": "2026-07-31",
+    "formattedDate": "Friday, July 31, 2026",
     "plan": "Love - 1 Corinthians 13",
     "description": "Day 7"
+  },
+  {
+    "verse": "1 Corinthians 10:31",
+    "date": "2026-08-01",
+    "formattedDate": "Saturday, August 1, 2026"
   },
   {
     "verse": "1 Corinthians 14:33",
@@ -1229,7 +1230,7 @@
     "formattedDate": "Tuesday, August 18, 2026"
   },
   {
-    "verse": "Galatians 5:1",
+    "verse": "Zephaniah 1:7-8",
     "date": "2026-08-19",
     "formattedDate": "Wednesday, August 19, 2026"
   },
@@ -1264,7 +1265,7 @@
     "formattedDate": "Tuesday, August 25, 2026"
   },
   {
-    "verse": "Ephesians 3:20",
+    "verse": "Ephesians 3:20-21",
     "date": "2026-08-26",
     "formattedDate": "Wednesday, August 26, 2026"
   },
@@ -1274,7 +1275,7 @@
     "formattedDate": "Thursday, August 27, 2026"
   },
   {
-    "verse": "Ephesians 4:32",
+    "verse": "1 Corinthians 6:9-11",
     "date": "2026-08-28",
     "formattedDate": "Friday, August 28, 2026"
   },
@@ -1294,7 +1295,7 @@
     "formattedDate": "Monday, August 31, 2026"
   },
   {
-    "verse": "Philippians 1:6",
+    "verse": "Hosea 3:4-5",
     "date": "2026-09-01",
     "formattedDate": "Tuesday, September 1, 2026"
   },
@@ -1339,7 +1340,7 @@
     "description": "Day 5"
   },
   {
-    "verse": "Philippians 3:10",
+    "verse": "Jeremiah 33:3",
     "date": "2026-09-08",
     "formattedDate": "Tuesday, September 8, 2026"
   },
@@ -1443,7 +1444,7 @@
     "formattedDate": "Wednesday, September 23, 2026"
   },
   {
-    "verse": "Colossians 2:14-15",
+    "verse": "Psalm 1:1-3",
     "date": "2026-09-24",
     "formattedDate": "Thursday, September 24, 2026"
   },
@@ -1488,7 +1489,7 @@
     "formattedDate": "Friday, October 2, 2026"
   },
   {
-    "verse": "1 Thessalonians 4:16-18",
+    "verse": "Psalm 126:5-6",
     "date": "2026-10-03",
     "formattedDate": "Saturday, October 3, 2026"
   },
@@ -1544,7 +1545,7 @@
     "formattedDate": "Tuesday, October 13, 2026"
   },
   {
-    "verse": "2 Timothy 1:7",
+    "verse": "Romans 8:28",
     "date": "2026-10-14",
     "formattedDate": "Wednesday, October 14, 2026"
   },
@@ -1589,7 +1590,7 @@
     "formattedDate": "Thursday, October 22, 2026"
   },
   {
-    "verse": "Titus 3:5",
+    "verse": "Romans 8:29",
     "date": "2026-10-23",
     "formattedDate": "Friday, October 23, 2026"
   },
@@ -1614,7 +1615,7 @@
     "formattedDate": "Tuesday, October 27, 2026"
   },
   {
-    "verse": "Hebrews 9:27",
+    "verse": "Romans 10:9-10",
     "date": "2026-10-28",
     "formattedDate": "Wednesday, October 28, 2026"
   },
@@ -1650,7 +1651,7 @@
     "formattedDate": "Tuesday, November 3, 2026"
   },
   {
-    "verse": "Hebrews 12:14",
+    "verse": "Romans 8:30",
     "date": "2026-11-04",
     "formattedDate": "Wednesday, November 4, 2026"
   },
@@ -1685,7 +1686,7 @@
     "formattedDate": "Tuesday, November 10, 2026"
   },
   {
-    "verse": "James 3:1",
+    "verse": "1 Corinthians 6:2",
     "date": "2026-11-11",
     "formattedDate": "Wednesday, November 11, 2026"
   },
@@ -1705,7 +1706,7 @@
     "formattedDate": "Saturday, November 14, 2026"
   },
   {
-    "verse": "1 Peter 2:2",
+    "verse": "1 Corinthians 6:19-20",
     "date": "2026-11-15",
     "formattedDate": "Sunday, November 15, 2026"
   },
@@ -1786,7 +1787,7 @@
     "formattedDate": "Monday, November 30, 2026"
   },
   {
-    "verse": "1 John 1:7",
+    "verse": "Romans 8:1",
     "date": "2026-12-01",
     "formattedDate": "Tuesday, December 1, 2026"
   },
@@ -1876,7 +1877,7 @@
     "formattedDate": "Friday, December 18, 2026"
   },
   {
-    "verse": "Revelation 3:20",
+    "verse": "1 Corinthians 2:5",
     "date": "2026-12-19",
     "formattedDate": "Saturday, December 19, 2026"
   },
