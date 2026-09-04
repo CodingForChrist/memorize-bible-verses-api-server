@@ -50,7 +50,7 @@ describe("parseVerseReferenceIntoParts()", () => {
 
   test("should throw an error for an invalid verse reference", () => {
     // @ts-expect-error passing a number instead of a string
-    expect(() => parseVerseReferenceIntoParts(123456)).toThrow(
+    expect(() => parseVerseReferenceIntoParts(3456)).toThrow(
       /Verse reference must be a string/,
     );
 
