@@ -4,6 +4,14 @@ export type VerseId = `${string}.${number}.${number}`;
 export type PassageId = `${VerseId}-${VerseId}` | VerseId;
 
 export function parseVerseReferenceIntoParts(verseReference: string) {
+  if (typeof verseReference !== "string") {
+    throw new TypeError("Verse reference must be a string");
+  }
+
+  if (verseReference.length < 5) {
+    throw new TypeError("Verse reference must be at least 5 characters");
+  }
+
   let bookNumber;
   let verseReferenceWithoutBookNumber = verseReference;
 
