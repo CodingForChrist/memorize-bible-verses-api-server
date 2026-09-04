@@ -49,7 +49,16 @@ describe("parseVerseReferenceIntoParts()", () => {
   });
 
   test("should throw an error for an invalid verse reference", () => {
-    expect(() => parseVerseReferenceIntoParts("111")).toThrow(
+    // @ts-expect-error passing a number instead of a string
+    expect(() => parseVerseReferenceIntoParts(123456)).toThrow(
+      /Verse reference must be a string/,
+    );
+
+    expect(() => parseVerseReferenceIntoParts("Job")).toThrow(
+      /Verse reference must be at least 5 characters/,
+    );
+
+    expect(() => parseVerseReferenceIntoParts("12 Corinthians 5:17")).toThrow(
       /Book number must be a single digit followed by a space/,
     );
 
@@ -57,7 +66,7 @@ describe("parseVerseReferenceIntoParts()", () => {
       /Invalid book number "4"/,
     );
 
-    expect(() => parseVerseReferenceIntoParts("1 11")).toThrow(
+    expect(() => parseVerseReferenceIntoParts("1 11111")).toThrow(
       /Failed to parse book name out of the verse reference/,
     );
 
