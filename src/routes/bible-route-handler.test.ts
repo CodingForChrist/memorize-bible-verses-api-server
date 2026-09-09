@@ -71,7 +71,7 @@ describe("bibleRouteHandler", () => {
     expect(response.body).toEqual({
       error: "Bad Request",
       errorDescription:
-        "✖ Too big: expected string to have <=3 characters\n  → at language" +
+        "✖ Too big: expected string to have exactly 3 characters\n  → at language" +
         "\n✖ Invalid input: expected boolean, received string\n  → at includeFullDetails",
     });
   });
