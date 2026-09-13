@@ -47,7 +47,7 @@ export function parseVerseReferenceIntoParts(verseReference: string) {
 
   // get chapter and verse
   const chapterAndVerses = verseReferenceWithoutBookNumber
-    .split(bookName)[1]
+    .split(bookName, 2)[1]
     .trim();
 
   if (chapterAndVerses.match(/:/g)?.length !== 1) {
@@ -56,7 +56,7 @@ export function parseVerseReferenceIntoParts(verseReference: string) {
     );
   }
 
-  const [chapter, verseResult] = chapterAndVerses.split(":");
+  const [chapter, verseResult] = chapterAndVerses.split(":", 2);
   const [verseNumberStart, verseNumberEnd] = verseResult.includes("-")
     ? verseResult.split("-")
     : [verseResult, verseResult];
