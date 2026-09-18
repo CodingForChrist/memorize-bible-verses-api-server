@@ -1,39 +1,45 @@
-import { beforeEach, describe, expect, test, vi } from "vitest";
+import assert from "node:assert/strict";
+import { beforeEach, describe, test, mock } from "node:test";
+
 import request from "supertest";
 import express from "express";
 
-import bookRouteHandler from "./book-route-handler.ts";
 import errorMiddleware from "../error-middleware.ts";
 
 import type { Express } from "express";
 
-vi.mock("../api-bible.ts", () => ({
-  getBooks: vi.fn(() =>
-    Promise.resolve({
-      data: [
-        {
-          id: "GEN",
-          bibleId: "32664dc3288a28df-02",
-          abbreviation: "Gen",
-          name: "Genesis",
-          nameLong: "The First Book of Moses, Commonly Called Genesis",
-        },
-        {
-          id: "EXO",
-          bibleId: "32664dc3288a28df-02",
-          abbreviation: "Exo",
-          name: "Exodus",
-          nameLong: "The Second Book of Moses, Commonly Called Exodus",
-        },
-      ],
-    }),
-  ),
-}));
+mock.module("../api-bible.ts", {
+  exports: {
+    getBooks: mock.fn(() =>
+      Promise.resolve({
+        data: [
+          {
+            id: "GEN",
+            bibleId: "32664dc3288a28df-02",
+            abbreviation: "Gen",
+            name: "Genesis",
+            nameLong: "The First Book of Moses, Commonly Called Genesis",
+          },
+          {
+            id: "EXO",
+            bibleId: "32664dc3288a28df-02",
+            abbreviation: "Exo",
+            name: "Exodus",
+            nameLong: "The Second Book of Moses, Commonly Called Exodus",
+          },
+        ],
+      }),
+    ),
+  },
+});
 
 describe("bookRouteHandler", () => {
   let app: Express;
 
-  beforeEach(() => {
+  beforeEach(async () => {
+    const { default: bookRouteHandler } =
+      await import("./book-route-handler.ts");
+
     app = express();
     app.use(express.json());
     app.post("/api/v1/bibles/:bibleId/books", bookRouteHandler);
@@ -45,11 +51,11 @@ describe("bookRouteHandler", () => {
       .post("/api/v1/bibles/32664dc3288a28df-02/books")
       .send({});
 
-    expect(response.status).toBe(200);
-    expect(Array.isArray(response.body.data)).toBe(true);
+    assert.equal(response.status, 200);
+    assert.equal(Array.isArray(response.body.data), true);
 
     const [firstBook] = response.body.data;
-    expect(firstBook.name).toBe("Genesis");
+    assert.equal(firstBook.name, "Genesis");
   });
 
   test("should return 200 with optional input", async () => {
@@ -60,22 +66,22 @@ describe("bookRouteHandler", () => {
         includeChaptersAndSections: false,
       });
 
-    expect(response.status).toBe(200);
-    expect(Array.isArray(response.body.data)).toBe(true);
+    assert.equal(response.status, 200);
+    assert.equal(Array.isArray(response.body.data), true);
 
     const [firstBook] = response.body.data;
-    expect(firstBook.name).toBe("Genesis");
+    assert.equal(firstBook.name, "Genesis");
   });
 
   test("should return 400 for invalid bible id", async () => {
     const response = await request(app).post("/api/v1/bibles/1/books").send({});
 
-    expect(response.status).toBe(400);
-    expect(response.body).toEqual({
-      error: "Bad Request",
-      errorDescription:
-        "✖ Too small: expected string to have >=4 characters\n  → at bibleId",
-    });
+    assert.equal(response.status, 400);
+    assert.equal(response.body.error, "Bad Request");
+    assert.equal(
+      response.body.errorDescription,
+      "✖ Too small: expected string to have >=4 characters\n  → at bibleId",
+    );
   });
 
   test("should return 400 for invalid POST body", async () => {
@@ -86,12 +92,12 @@ describe("bookRouteHandler", () => {
         includeChaptersAndSections: "invalid data",
       });
 
-    expect(response.status).toBe(400);
-    expect(response.body).toEqual({
-      error: "Bad Request",
-      errorDescription:
-        "✖ Invalid input: expected boolean, received string\n  → at includeChapters" +
+    assert.equal(response.status, 400);
+    assert.equal(response.body.error, "Bad Request");
+    assert.equal(
+      response.body.errorDescription,
+      "✖ Invalid input: expected boolean, received string\n  → at includeChapters" +
         "\n✖ Invalid input: expected boolean, received string\n  → at includeChaptersAndSections",
-    });
+    );
   });
 });

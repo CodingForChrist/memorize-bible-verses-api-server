@@ -1,4 +1,5 @@
-import { describe, expect, test } from "vitest";
+import assert from "node:assert/strict";
+import { describe, test } from "node:test";
 
 import {
   parseVerseReferenceIntoParts,
@@ -8,7 +9,7 @@ import {
 
 describe("parseVerseReferenceIntoParts()", () => {
   test("should get parts for valid verse reference", () => {
-    expect(parseVerseReferenceIntoParts("Galatians 2:20")).toEqual({
+    assert.deepEqual(parseVerseReferenceIntoParts("Galatians 2:20"), {
       bookName: "Galatians",
       bookNumber: undefined,
       chapter: 2,
@@ -17,7 +18,7 @@ describe("parseVerseReferenceIntoParts()", () => {
       verseNumberEnd: 20,
       verseNumberStart: 20,
     });
-    expect(parseVerseReferenceIntoParts("2 Corithians 5:17")).toEqual({
+    assert.deepEqual(parseVerseReferenceIntoParts("2 Corithians 5:17"), {
       bookName: "Corithians",
       bookNumber: 2,
       chapter: 5,
@@ -27,7 +28,7 @@ describe("parseVerseReferenceIntoParts()", () => {
       verseNumberStart: 17,
     });
 
-    expect(parseVerseReferenceIntoParts("Song of Solomon 2:1")).toEqual({
+    assert.deepEqual(parseVerseReferenceIntoParts("Song of Solomon 2:1"), {
       bookName: "Song of Solomon",
       bookNumber: undefined,
       chapter: 2,
@@ -37,7 +38,7 @@ describe("parseVerseReferenceIntoParts()", () => {
       verseNumberStart: 1,
     });
 
-    expect(parseVerseReferenceIntoParts("3 John 1:7-8")).toEqual({
+    assert.deepEqual(parseVerseReferenceIntoParts("3 John 1:7-8"), {
       bookName: "John",
       bookNumber: 3,
       chapter: 1,
@@ -50,82 +51,95 @@ describe("parseVerseReferenceIntoParts()", () => {
 
   test("should throw an error for an invalid verse reference", () => {
     // @ts-expect-error passing a number instead of a string
-    expect(() => parseVerseReferenceIntoParts(3456)).toThrow(
-      /Verse reference must be a string/,
-    );
+    assert.throws(() => parseVerseReferenceIntoParts(3456), {
+      message: "Verse reference must be a string",
+    });
 
-    expect(() => parseVerseReferenceIntoParts("Job")).toThrow(
-      /Verse reference must be at least 5 characters/,
-    );
+    assert.throws(() => parseVerseReferenceIntoParts("Job"), {
+      message: "Verse reference must be at least 5 characters",
+    });
 
-    expect(() => parseVerseReferenceIntoParts("12 Corinthians 5:17")).toThrow(
-      /Book number must be a single digit followed by a space/,
-    );
+    assert.throws(() => parseVerseReferenceIntoParts("12 Corinthians 5:17"), {
+      message: "Book number must be a single digit followed by a space",
+    });
 
-    expect(() => parseVerseReferenceIntoParts("4 John 1:1")).toThrow(
-      /Invalid book number "4"/,
-    );
+    assert.throws(() => parseVerseReferenceIntoParts("4 John 1:1"), {
+      message: 'Invalid book number "4"',
+    });
 
-    expect(() => parseVerseReferenceIntoParts("1 11111")).toThrow(
-      /Failed to parse book name out of the verse reference/,
-    );
+    assert.throws(() => parseVerseReferenceIntoParts("1 11111"), {
+      message: "Failed to parse book name out of the verse reference",
+    });
 
-    expect(() => parseVerseReferenceIntoParts("invalid-data")).toThrow(
-      /Must include a single space to separate the book name from the chapter/,
-    );
+    assert.throws(() => parseVerseReferenceIntoParts("invalid-data"), {
+      message:
+        "Must include a single space to separate the book name from the chapter",
+    });
 
-    expect(() => parseVerseReferenceIntoParts("invalid data")).toThrow(
-      /Must include a single space to separate the book name from the chapter/,
-    );
+    assert.throws(() => parseVerseReferenceIntoParts("invalid data"), {
+      message:
+        "Must include a single space to separate the book name from the chapter",
+    });
 
-    expect(() => parseVerseReferenceIntoParts("Genesis 1A:1")).toThrow(
-      /Chapter must be a number/,
-    );
+    assert.throws(() => parseVerseReferenceIntoParts("Genesis 1A:1"), {
+      message: "Chapter must be a number",
+    });
 
-    expect(() => parseVerseReferenceIntoParts("Genesis 1:A")).toThrow(
-      /Verse must be a number/,
-    );
+    assert.throws(() => parseVerseReferenceIntoParts("Genesis 1:A"), {
+      message: "Verse must be a number",
+    });
   });
 });
 
 describe("transformVerseReferenceToVerseId()", () => {
   test("should get verseId for valid verse reference", () => {
-    expect(transformVerseReferenceToVerseId("Psalms 23:1")).toBe("PSA.23.1");
-    expect(transformVerseReferenceToVerseId("Psalm 23:1")).toBe("PSA.23.1");
-    expect(transformVerseReferenceToVerseId("Revelation 3:20")).toBe(
+    assert.equal(transformVerseReferenceToVerseId("Psalms 23:1"), "PSA.23.1");
+    assert.equal(transformVerseReferenceToVerseId("Psalm 23:1"), "PSA.23.1");
+    assert.equal(
+      transformVerseReferenceToVerseId("Revelation 3:20"),
       "REV.3.20",
     );
-    expect(transformVerseReferenceToVerseId("Revelations 3:20")).toBe(
+    assert.equal(
+      transformVerseReferenceToVerseId("Revelations 3:20"),
       "REV.3.20",
     );
-    expect(transformVerseReferenceToVerseId("Galatians 2:20")).toBe("GAL.2.20");
-    expect(transformVerseReferenceToVerseId("2 Corinthians 5:17")).toBe(
+    assert.equal(
+      transformVerseReferenceToVerseId("Galatians 2:20"),
+      "GAL.2.20",
+    );
+    assert.equal(
+      transformVerseReferenceToVerseId("2 Corinthians 5:17"),
       "2CO.5.17",
     );
   });
 
   test("should throw an error for an invalid verse reference", () => {
     // Corthians is purposely misspelled and should be Corinthians
-    expect(() => transformVerseReferenceToVerseId("2 Corthians 5:17")).toThrow(
-      /Failed to look up book name for "2 Corthians"/,
-    );
+    assert.throws(() => transformVerseReferenceToVerseId("2 Corthians 5:17"), {
+      message: 'Failed to look up book name for "2 Corthians"',
+    });
   });
 });
 
 describe("transformVerseReferenceToPassageId()", () => {
   test("should get passageId for valid verse reference", () => {
-    expect(transformVerseReferenceToPassageId("Psalm 23:1-6")).toBe(
+    assert.equal(
+      transformVerseReferenceToPassageId("Psalm 23:1-6"),
       "PSA.23.1-PSA.23.6",
     );
-    expect(transformVerseReferenceToPassageId("2 Corinthians 5:17")).toBe(
+    assert.equal(
+      transformVerseReferenceToPassageId("2 Corinthians 5:17"),
       "2CO.5.17",
     );
   });
 
   test("should throw an error for an invalid verse reference", () => {
     // Corthians is purposely misspelled and should be Corinthians
-    expect(() =>
-      transformVerseReferenceToPassageId("2 Corthians 5:17"),
-    ).toThrow(/Failed to look up book name for "2 Corthians"/);
+    assert.throws(
+      () => transformVerseReferenceToPassageId("2 Corthians 5:17"),
+      {
+        message: 'Failed to look up book name for "2 Corthians"',
+      },
+    );
   });
 });
