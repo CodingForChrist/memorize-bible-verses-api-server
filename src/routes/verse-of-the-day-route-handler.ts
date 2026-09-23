@@ -1,7 +1,9 @@
 import { z } from "zod/v4";
-import { getPassage } from "../services/api-bible/index.ts";
+import {
+  getPassage,
+  transformVerseReferenceToPassageId,
+} from "../services/api-bible/index.ts";
 import { getVerseReferenceOfTheDay } from "../verse-of-the-day.ts";
-import { transformVerseReferenceToPassageId } from "../bible-verse-reference-helper.ts";
 import type { Request, Response } from "express";
 
 export default async function verseOfTheDayRouteHandler(

@@ -1,5 +1,5 @@
 import { TTLCache } from "@isaacs/ttlcache";
-import { HTTPError } from "../../http-error.ts";
+import { HTTPError } from "./http-error.ts";
 import logger from "../logger.ts";
 import { formatSearchParameters } from "./format-url.ts";
 

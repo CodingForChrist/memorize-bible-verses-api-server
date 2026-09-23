@@ -1,9 +1,4 @@
-import bookList from "./data/book-list.json" with { type: "json" };
-
-export type VerseId = `${string}.${number}.${number}`;
-export type PassageId = `${VerseId}-${VerseId}` | VerseId;
-
-export function parseVerseReferenceIntoParts(verseReference: string) {
+export function parseVerseReference(verseReference: string) {
   if (typeof verseReference !== "string") {
     throw new TypeError("Verse reference must be a string");
   }
@@ -83,55 +78,4 @@ export function parseVerseReferenceIntoParts(verseReference: string) {
     verseNumberEnd: Number(verseNumberEnd),
     verseCount,
   };
-}
-
-export function transformVerseReferenceToVerseId(verseReference: string) {
-  const { fullBookName, chapter, verseNumberStart } =
-    parseVerseReferenceIntoParts(verseReference);
-
-  const bookId = findBookIdByBookName(fullBookName);
-
-  const verseId: VerseId = `${bookId}.${chapter}.${verseNumberStart}`;
-  return verseId;
-}
-
-export function transformVerseReferenceToPassageId(verseReference: string) {
-  const {
-    fullBookName,
-    chapter,
-    verseNumberStart,
-    verseNumberEnd,
-    verseCount,
-  } = parseVerseReferenceIntoParts(verseReference);
-  const bookId = findBookIdByBookName(fullBookName);
-
-  if (verseCount > 1) {
-    const passageId: PassageId = `${bookId}.${chapter}.${verseNumberStart}-${bookId}.${chapter}.${verseNumberEnd}`;
-    return passageId;
-  }
-
-  const singleVersePassageId: PassageId = `${bookId}.${chapter}.${verseNumberStart}`;
-  return singleVersePassageId;
-}
-
-function normalizeBookName(bookName: string) {
-  if (bookName === "Psalm") {
-    return "Psalms";
-  }
-  if (bookName === "Revelations") {
-    return "Revelation";
-  }
-  return bookName;
-}
-
-function findBookIdByBookName(bookName: string) {
-  const foundBook = bookList.data.find((book) => {
-    return book.name === normalizeBookName(bookName);
-  });
-
-  if (!foundBook) {
-    throw new Error(`Failed to look up book name for "${bookName}"`);
-  }
-
-  return foundBook.id;
 }
