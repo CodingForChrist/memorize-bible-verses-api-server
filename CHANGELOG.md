@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.18.0](https://github.com/CodingForChrist/memorize-bible-verses-api-server/compare/v1.17.0...v1.18.0) (2026-09-23)
+
+
+### Features
+
+* replace vitest with node test runner ([#201](https://github.com/CodingForChrist/memorize-bible-verses-api-server/issues/201)) ([f49c1a3](https://github.com/CodingForChrist/memorize-bible-verses-api-server/commit/f49c1a3ab871269933e7d6940bb3f9a235c6e9bd))
+
 ## [1.17.0](https://github.com/CodingForChrist/memorize-bible-verses-api-server/compare/v1.16.0...v1.17.0) (2026-09-14)
 
 
