@@ -1,6 +1,5 @@
 import assert from "node:assert/strict";
 import { beforeEach, describe, test, mock } from "node:test";
-
 import request from "supertest";
 import express from "express";
 
@@ -8,7 +7,7 @@ import errorMiddleware from "../error-middleware.ts";
 
 import type { Express } from "express";
 
-mock.module("../api-bible.ts", {
+mock.module("../services/api-bible/index.ts", {
   exports: {
     getBooks: mock.fn(() =>
       Promise.resolve({

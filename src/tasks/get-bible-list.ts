@@ -1,7 +1,7 @@
 import { writeFile } from "node:fs/promises";
 import "dotenv/config";
 
-import { getBibles } from "../api-bible.ts";
+import { getBibles } from "../services/api-bible/index.ts";
 
 const biblesIds = [
   {

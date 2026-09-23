@@ -1,5 +1,5 @@
 import { z } from "zod/v4";
-import { getBooks } from "../api-bible.ts";
+import { getBooks } from "../services/api-bible/index.ts";
 import type { Request, Response } from "express";
 
 export default async function bookRouteHandler(

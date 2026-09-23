@@ -1,36 +1,41 @@
-import { beforeEach, describe, expect, test, vi } from "vitest";
+import assert from "node:assert/strict";
+import { beforeEach, describe, test, mock } from "node:test";
 import request from "supertest";
 import express from "express";
 
-import bibleRouteHandler from "./bible-route-handler.ts";
 import errorMiddleware from "../error-middleware.ts";
 
 import type { Express } from "express";
 
-vi.mock("../api-bible.ts", () => ({
-  getBibles: vi.fn(() =>
-    Promise.resolve({
-      data: [
-        {
-          id: "bba9f40183526463-01",
-          name: "Berean Standard Bible",
-          nameLocal: "English: Berean Standard Bible",
-          abbreviation: "BSB",
-          abbreviationLocal: "BSB",
-          description: "Berean Standard Bible",
-          descriptionLocal: "English: Berean Standard Bible",
-          type: "text",
-          updatedAt: "2025-10-01T02:35:46.000Z",
-        },
-      ],
-    }),
-  ),
-}));
+mock.module("../services/api-bible/index.ts", {
+  exports: {
+    getBibles: mock.fn(() =>
+      Promise.resolve({
+        data: [
+          {
+            id: "bba9f40183526463-01",
+            name: "Berean Standard Bible",
+            nameLocal: "English: Berean Standard Bible",
+            abbreviation: "BSB",
+            abbreviationLocal: "BSB",
+            description: "Berean Standard Bible",
+            descriptionLocal: "English: Berean Standard Bible",
+            type: "text",
+            updatedAt: "2025-10-01T02:35:46.000Z",
+          },
+        ],
+      }),
+    ),
+  },
+});
 
 describe("bibleRouteHandler", () => {
   let app: Express;
 
-  beforeEach(() => {
+  beforeEach(async () => {
+    const { default: bibleRouteHandler } =
+      await import("./bible-route-handler.ts");
+
     app = express();
     app.use(express.json());
     app.post("/api/v1/bibles", bibleRouteHandler);
@@ -40,11 +45,11 @@ describe("bibleRouteHandler", () => {
   test("should return 200 with minimal required input", async () => {
     const response = await request(app).post("/api/v1/bibles").send({});
 
-    expect(response.status).toBe(200);
-    expect(Array.isArray(response.body.data)).toBe(true);
+    assert.equal(response.status, 200);
+    assert.equal(Array.isArray(response.body.data), true);
 
     const [firstBible] = response.body.data;
-    expect(firstBible.name).toBe("Berean Standard Bible");
+    assert.equal(firstBible.name, "Berean Standard Bible");
   });
 
   test("should return 200 with optional input", async () => {
@@ -54,11 +59,11 @@ describe("bibleRouteHandler", () => {
       language: "eng",
     });
 
-    expect(response.status).toBe(200);
-    expect(Array.isArray(response.body.data)).toBe(true);
+    assert.equal(response.status, 200);
+    assert.equal(Array.isArray(response.body.data), true);
 
     const [firstBible] = response.body.data;
-    expect(firstBible.name).toBe("Berean Standard Bible");
+    assert.equal(firstBible.name, "Berean Standard Bible");
   });
 
   test("should return 400 for invalid POST body", async () => {
@@ -67,12 +72,12 @@ describe("bibleRouteHandler", () => {
       language: "english", // should be 3-letter code
     });
 
-    expect(response.status).toBe(400);
-    expect(response.body).toEqual({
-      error: "Bad Request",
-      errorDescription:
-        "✖ Too big: expected string to have exactly 3 characters\n  → at language" +
+    assert.equal(response.status, 400);
+    assert.equal(response.body.error, "Bad Request");
+    assert.equal(
+      response.body.errorDescription,
+      "✖ Too big: expected string to have exactly 3 characters\n  → at language" +
         "\n✖ Invalid input: expected boolean, received string\n  → at includeFullDetails",
-    });
+    );
   });
 });
