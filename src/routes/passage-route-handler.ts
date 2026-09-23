@@ -1,6 +1,6 @@
 import { z } from "zod/v4";
 import { getPassage } from "../services/api-bible/index.ts";
-import { transformVerseReferenceToPassageId } from "../bible-verse-reference-helper.ts";
+import { transformVerseReferenceToPassageId } from "../services/api-bible/transform-verse-reference.ts";
 import type { Request, Response } from "express";
 
 export default async function passageRouteHandler(

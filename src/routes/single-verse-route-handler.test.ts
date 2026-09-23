@@ -3,7 +3,7 @@ import { beforeEach, describe, test, mock } from "node:test";
 import request from "supertest";
 import express from "express";
 
-import errorMiddleware from "../error-middleware.ts";
+import errorMiddleware from "../middleware/error-middleware.ts";
 
 import type { Express } from "express";
 

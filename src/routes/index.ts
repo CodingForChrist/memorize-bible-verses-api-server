@@ -10,7 +10,7 @@ import searchRouteHandler from "./search-route-handler.ts";
 import verseOfTheDayRouteHandler from "./verse-of-the-day-route-handler.ts";
 import verseOfTheDayVerseListRouteHandler from "./verse-of-the-day-verse-list-route-handler.ts";
 
-import authorizationMiddleware from "../authorization-middleware.ts";
+import authorizationMiddleware from "../middleware/authorization-middleware.ts";
 
 const router = Router();
 
