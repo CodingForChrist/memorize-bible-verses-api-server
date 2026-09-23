@@ -4,7 +4,7 @@ import cors from "cors";
 import "dotenv/config";
 
 import errorMiddleware from "./error-middleware.ts";
-import logger from "./logger.ts";
+import logger from "./services/logger.ts";
 import routes from "./routes/index.ts";
 
 import type { Request, Response, NextFunction } from "express";

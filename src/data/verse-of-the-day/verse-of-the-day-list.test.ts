@@ -1,4 +1,5 @@
-import { describe, expect, test } from "vitest";
+import assert from "node:assert/strict";
+import { describe, test } from "node:test";
 import dayjs from "dayjs";
 import isLeapYear from "dayjs/plugin/isLeapYear.js";
 import dayOfYear from "dayjs/plugin/dayOfYear.js";
@@ -12,14 +13,6 @@ import bookList from "../book-list.json" with { type: "json" };
 dayjs.extend(isLeapYear);
 dayjs.extend(dayOfYear);
 
-type VerseOfTheDayList = {
-  verse: string;
-  date: string;
-  formattedDate: string;
-  plan?: string;
-  description?: string;
-}[];
-
 function getBibleBookNames() {
   return bookList.data.map(({ name }) => {
     if (name === "Psalms") {
@@ -29,12 +22,11 @@ function getBibleBookNames() {
   });
 }
 
-describe.for([
-  ["2025", verseOfTheDayList2025],
-  ["2026", verseOfTheDayList2026],
-] as [string, VerseOfTheDayList][])(
-  "verses for year %s",
-  ([year, verseOfTheDayList]) => {
+for (const { year, verseOfTheDayList } of [
+  { year: "2025", verseOfTheDayList: verseOfTheDayList2025 },
+  { year: "2026", verseOfTheDayList: verseOfTheDayList2026 },
+]) {
+  describe(`verse-of-the-day list for year ${year}`, () => {
     const verses = verseOfTheDayList.map(({ verse }) => verse);
 
     test("should not contain duplicate verses", () => {
@@ -42,17 +34,18 @@ describe.for([
         return verses.indexOf(verse) !== index;
       });
 
-      expect(
+      assert.equal(
         duplicates.length,
+        0,
         `found duplicates: ${duplicates.toString()}`,
-      ).toBe(0);
+      );
     });
 
     test("should have one verse for each day of the year", () => {
       if (dayjs(`${year}-01-01`).isLeapYear()) {
-        expect(verses.length).toBe(366);
+        assert.equal(verses.length, 366);
       } else {
-        expect(verses.length).toBe(365);
+        assert.equal(verses.length, 365);
       }
     });
 
@@ -68,10 +61,11 @@ describe.for([
         }
       }
 
-      expect(
+      assert.equal(
         missingBooks.length,
+        0,
         `no verses found for the following books: ${missingBooks.toString()}`,
-      ).toBe(0);
+      );
     });
 
     test("date should match array index for day of year", () => {
@@ -80,40 +74,41 @@ describe.for([
         { date, formattedDate },
       ] of verseOfTheDayList.entries()) {
         const dayjsDate = dayjs(date);
-        expect(dayjsDate.dayOfYear() - 1).toBe(index);
-        expect(dayjsDate.format("dddd, MMMM D, YYYY")).toBe(formattedDate);
+        assert.equal(dayjsDate.dayOfYear() - 1, index);
+        assert.equal(dayjsDate.format("dddd, MMMM D, YYYY"), formattedDate);
       }
     });
+    for (const verse of verses) {
+      describe(`validate verse ${verse}`, () => {
+        test("should spell bible book name correctly", () => {
+          const hasBook = getBibleBookNames().some((name) => {
+            return verse.startsWith(name);
+          });
 
-    describe.for(verses)("validate verse %s", (verse) => {
-      test("should spell bible book name correctly", () => {
-        const hasBook = getBibleBookNames().some((name) => {
-          return verse.startsWith(name);
+          if (!hasBook) {
+            throw new Error(`Unknown book name for verse "${verse}"`);
+          }
         });
 
-        if (!hasBook) {
-          throw new Error(`Unknown book name for verse "${verse}"`);
-        }
-      });
+        test("should be in expected verse reference format", () => {
+          try {
+            parseVerseReferenceIntoParts(verse);
+          } catch (error) {
+            throw new Error(`Invalid verse format for "${verse}"`, {
+              cause: error,
+            });
+          }
+        });
 
-      test("should be in expected verse reference format", () => {
-        try {
-          parseVerseReferenceIntoParts(verse);
-        } catch (error) {
-          throw new Error(`Invalid verse format for "${verse}"`, {
-            cause: error,
-          });
-        }
+        test("should not be longer than 4 verses", () => {
+          const { verseCount } = parseVerseReferenceIntoParts(verse);
+          if (verseCount > 4) {
+            throw new Error(
+              `verse reference range contains too many verses ${verse}`,
+            );
+          }
+        });
       });
-
-      test("should not be longer than 4 verses", () => {
-        const { verseCount } = parseVerseReferenceIntoParts(verse);
-        if (verseCount > 4) {
-          throw new Error(
-            `verse reference range contains too many verses ${verse}`,
-          );
-        }
-      });
-    });
-  },
-);
+    }
+  });
+}

@@ -11,7 +11,8 @@
     "format": "prettier . --write",
     "format:check": "prettier . --check",
     "lint": "eslint .",
-    "test": "vitest",
+    "test": "node --test --experimental-test-module-mocks",
+    "coverage": "npm run test -- --experimental-test-coverage",
     "dev": "npm start",
     "start": "npm run check-node-version && node --watch src/server.ts | pino-pretty",
     "start-production": "node src/server.ts"

@@ -1,5 +1,5 @@
 import { z } from "zod/v4";
-import { getPassage } from "../api-bible.ts";
+import { getPassage } from "../services/api-bible/index.ts";
 import { transformVerseReferenceToPassageId } from "../bible-verse-reference-helper.ts";
 import type { Request, Response } from "express";
 
