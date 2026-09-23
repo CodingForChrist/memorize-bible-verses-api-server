@@ -1,8 +1,6 @@
 import { z } from "zod/v4";
-import {
-  getPassage,
-  transformVerseReferenceToPassageId,
-} from "../services/api-bible/index.ts";
+import { getPassage } from "../services/api-bible/index.ts";
+import { transformVerseReferenceToPassageId } from "../services/api-bible/transform-verse-reference.ts";
 import { getVerseReferenceOfTheDay } from "../verse-of-the-day.ts";
 import type { Request, Response } from "express";
 
