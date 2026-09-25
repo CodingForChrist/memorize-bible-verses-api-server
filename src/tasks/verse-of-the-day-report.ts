@@ -63,10 +63,12 @@ function getVerseCountByCategory(verses: Verse[]) {
           oldTestamentCategoryCount.set(categoryName, 0);
         }
 
-        if (bookNames.includes(fullBookName)) {
-          const currentCount = oldTestamentCategoryCount.get(categoryName) || 0;
-          oldTestamentCategoryCount.set(categoryName, currentCount + 1);
+        if (!bookNames.includes(fullBookName)) {
+          continue;
         }
+
+        const currentCount = oldTestamentCategoryCount.get(categoryName) || 0;
+        oldTestamentCategoryCount.set(categoryName, currentCount + 1);
       }
     } else {
       for (const { categoryName, bookNames } of bookCategories.newTestament) {
@@ -74,10 +76,12 @@ function getVerseCountByCategory(verses: Verse[]) {
           newTestamentCategoryCount.set(categoryName, 0);
         }
 
-        if (bookNames.includes(fullBookName)) {
-          const currentCount = newTestamentCategoryCount.get(categoryName) || 0;
-          newTestamentCategoryCount.set(categoryName, currentCount + 1);
+        if (!bookNames.includes(fullBookName)) {
+          continue;
         }
+
+        const currentCount = newTestamentCategoryCount.get(categoryName) || 0;
+        newTestamentCategoryCount.set(categoryName, currentCount + 1);
       }
     }
   }

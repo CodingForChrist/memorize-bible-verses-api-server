@@ -37,10 +37,7 @@ function normalizeBookName(bookName: string) {
   if (bookName === "Psalm") {
     return "Psalms";
   }
-  if (bookName === "Revelations") {
-    return "Revelation";
-  }
-  return bookName;
+  return bookName === "Revelations" ? "Revelation" : bookName;
 }
 
 function findBookIdByBookName(bookName: string) {

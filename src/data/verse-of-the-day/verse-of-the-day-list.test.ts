@@ -15,10 +15,7 @@ dayjs.extend(dayOfYear);
 
 function getBibleBookNames() {
   return bookList.data.map(({ name }) => {
-    if (name === "Psalms") {
-      return "Psalm";
-    }
-    return name;
+    return name === "Psalms" ? "Psalm" : name;
   });
 }
 
