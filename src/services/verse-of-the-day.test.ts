@@ -21,7 +21,7 @@ const verseOfTheDayList = [
   },
 ];
 
-mock.module("./data/verse-of-the-day/verse-of-the-day-list-2025.json", {
+mock.module("../data/verse-of-the-day/verse-of-the-day-list-2025.json", {
   exports: {
     default: verseOfTheDayList,
   },

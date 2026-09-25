@@ -1,5 +1,5 @@
 import { z } from "zod/v4";
-import { getVerseList } from "../verse-of-the-day.ts";
+import { getVerseList } from "../services/verse-of-the-day.ts";
 import type { Request, Response } from "express";
 
 export default function verseOfTheDayVerseListRouteHandler(
