@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.19.0](https://github.com/CodingForChrist/memorize-bible-verses-api-server/compare/v1.18.0...v1.19.0) (2026-09-25)
+
+
+### Features
+
+* improve health check endpoint  ([#207](https://github.com/CodingForChrist/memorize-bible-verses-api-server/issues/207)) ([0f376a3](https://github.com/CodingForChrist/memorize-bible-verses-api-server/commit/0f376a3d6f68e7826f20205a564dacd3c4a80efd))
+
 ## [1.18.0](https://github.com/CodingForChrist/memorize-bible-verses-api-server/compare/v1.17.0...v1.18.0) (2026-09-23)
 
 
