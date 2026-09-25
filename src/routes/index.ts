@@ -15,7 +15,9 @@ import authorizationMiddleware from "../middleware/authorization-middleware.ts";
 
 const router = Router();
 
+// skip authorization middleware for health check
 router.get("/health", healthCheckRouteHandler);
+
 router.use(authorizationMiddleware);
 
 router.post("/api/v1/bibles", bibleRouteHandler);
