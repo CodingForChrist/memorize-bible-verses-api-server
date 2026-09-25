@@ -4,6 +4,7 @@ import { Router } from "express";
 
 import bibleRouteHandler from "./bible-route-handler.ts";
 import bookRouteHandler from "./book-route-handler.ts";
+import healthCheckRouteHandler from "./health-check-route-handler.ts";
 import singleVerseRouteHandler from "./single-verse-route-handler.ts";
 import passageRouteHandler from "./passage-route-handler.ts";
 import searchRouteHandler from "./search-route-handler.ts";
@@ -14,6 +15,7 @@ import authorizationMiddleware from "../middleware/authorization-middleware.ts";
 
 const router = Router();
 
+router.get("/health", healthCheckRouteHandler);
 router.use(authorizationMiddleware);
 
 router.post("/api/v1/bibles", bibleRouteHandler);

@@ -17,10 +17,6 @@ app.use(cors());
 app.use(express.json());
 app.use(routes);
 
-app.get("/health", (_request: Request, response: Response) => {
-  response.status(200).send("OK");
-});
-
 app.use(errorMiddleware);
 
 app.use((_request: Request, response: Response, _next: NextFunction) => {
