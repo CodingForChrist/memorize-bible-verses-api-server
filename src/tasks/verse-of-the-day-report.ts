@@ -1,4 +1,4 @@
-import { parseVerseReference } from "../services/parse-verse-reference.ts";
+import { VerseReferenceSchema } from "../services/verse-reference-schema.ts";
 import bookList from "../data/book-list.json" with { type: "json" };
 
 import bookCategories from "../data/book-categories.json" with { type: "json" };
@@ -38,7 +38,7 @@ function getVerseCountByTestament(verses: Verse[]) {
   };
 
   for (const { verse } of verses) {
-    const { fullBookName } = parseVerseReference(verse);
+    const { fullBookName } = VerseReferenceSchema.parse(verse);
     if (oldTestamentBookNames.has(fullBookName)) {
       results.oldTestamentCount += 1;
     } else if (newTestamentBookNames.has(fullBookName)) {
@@ -55,7 +55,7 @@ function getVerseCountByCategory(verses: Verse[]) {
   const newTestamentCategoryCount = new Map<string, number>();
 
   for (const { verse } of verses) {
-    const { fullBookName } = parseVerseReference(verse);
+    const { fullBookName } = VerseReferenceSchema.parse(verse);
 
     if (oldTestamentBookNames.has(fullBookName)) {
       for (const { categoryName, bookNames } of bookCategories.oldTestament) {
@@ -100,7 +100,7 @@ function getVerseCountByBook(verses: Verse[]) {
   const counterMap = new Map<string, number>();
 
   for (const { verse } of verses) {
-    const { fullBookName } = parseVerseReference(verse);
+    const { fullBookName } = VerseReferenceSchema.parse(verse);
     const currentCount = counterMap.get(fullBookName) || 0;
     counterMap.set(fullBookName, currentCount + 1);
   }

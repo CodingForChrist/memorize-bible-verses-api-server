@@ -4,7 +4,7 @@ import dayjs from "dayjs";
 import isLeapYear from "dayjs/plugin/isLeapYear.js";
 import dayOfYear from "dayjs/plugin/dayOfYear.js";
 
-import { parseVerseReference } from "../../services/parse-verse-reference.ts";
+import { VerseReferenceSchema } from "../../services/verse-reference-schema.ts";
 
 import verseOfTheDayList2025 from "./verse-of-the-day-list-2025.json" with { type: "json" };
 import verseOfTheDayList2026 from "./verse-of-the-day-list-2026.json" with { type: "json" };
@@ -89,7 +89,7 @@ for (const { year, verseOfTheDayList } of [
 
         test("should be in expected verse reference format", () => {
           try {
-            parseVerseReference(verse);
+            VerseReferenceSchema.parse(verse);
           } catch (error) {
             throw new Error(`Invalid verse format for "${verse}"`, {
               cause: error,
@@ -98,7 +98,7 @@ for (const { year, verseOfTheDayList } of [
         });
 
         test("should not be longer than 4 verses", () => {
-          const { verseCount } = parseVerseReference(verse);
+          const { verseCount } = VerseReferenceSchema.parse(verse);
           if (verseCount > 4) {
             throw new Error(
               `verse reference range contains too many verses ${verse}`,

@@ -31,7 +31,7 @@ describe("transformVerseReferenceToVerseId()", () => {
   test("should throw an error for an invalid verse reference", () => {
     // Corthians is purposely misspelled and should be Corinthians
     assert.throws(() => transformVerseReferenceToVerseId("2 Corthians 5:17"), {
-      message: 'Failed to look up book name for "2 Corthians"',
+      message: "Invalid book name",
     });
   });
 });
@@ -53,7 +53,7 @@ describe("transformVerseReferenceToPassageId()", () => {
     assert.throws(
       () => transformVerseReferenceToPassageId("2 Corthians 5:17"),
       {
-        message: 'Failed to look up book name for "2 Corthians"',
+        message: "Invalid book name",
       },
     );
   });
