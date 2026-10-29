@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.19.1](https://github.com/CodingForChrist/memorize-bible-verses-api-server/compare/v1.19.0...v1.19.1) (2026-10-29)
+
+
+### Bug Fixes
+
+* use zod to improve verse reference validation ([#219](https://github.com/CodingForChrist/memorize-bible-verses-api-server/issues/219)) ([b2d11b3](https://github.com/CodingForChrist/memorize-bible-verses-api-server/commit/b2d11b37caa02c53c69991aa7afa8596c1c98974))
+
 ## [1.19.0](https://github.com/CodingForChrist/memorize-bible-verses-api-server/compare/v1.18.0...v1.19.0) (2026-09-25)
 
 
