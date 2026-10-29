@@ -1,12 +1,17 @@
-import { parseVerseReference } from "../parse-verse-reference.ts";
+import { VerseReferenceSchema } from "../verse-reference-schema.ts";
 import bookList from "../../data/book-list.json" with { type: "json" };
 
 export type VerseId = `${string}.${number}.${number}`;
 export type PassageId = `${VerseId}-${VerseId}` | VerseId;
 
 export function transformVerseReferenceToVerseId(verseReference: string) {
-  const { fullBookName, chapter, verseNumberStart } =
-    parseVerseReference(verseReference);
+  const result = VerseReferenceSchema.safeParse(verseReference);
+  if (!result.success) {
+    const firstErrorMessage = result.error.issues[0]?.message;
+    throw new Error(firstErrorMessage);
+  }
+
+  const { fullBookName, chapter, verseNumberStart } = result.data;
 
   const bookId = findBookIdByBookName(fullBookName);
 
@@ -15,13 +20,20 @@ export function transformVerseReferenceToVerseId(verseReference: string) {
 }
 
 export function transformVerseReferenceToPassageId(verseReference: string) {
+  const result = VerseReferenceSchema.safeParse(verseReference);
+  if (!result.success) {
+    const firstErrorMessage = result.error.issues[0]?.message;
+    throw new Error(firstErrorMessage);
+  }
+
   const {
     fullBookName,
     chapter,
     verseNumberStart,
     verseNumberEnd,
     verseCount,
-  } = parseVerseReference(verseReference);
+  } = result.data;
+
   const bookId = findBookIdByBookName(fullBookName);
 
   if (verseCount > 1) {

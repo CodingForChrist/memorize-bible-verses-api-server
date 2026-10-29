@@ -98,7 +98,7 @@ describe("passageRouteHandler", () => {
     assert.equal(response.body.error, "Bad Request");
     assert.equal(
       response.body.errorDescription,
-      '✖ Error: Failed to look up book name for "FakeBookName"\n  → at verseReference',
+      "✖ Error: Invalid book name\n  → at verseReference",
     );
   });
 
