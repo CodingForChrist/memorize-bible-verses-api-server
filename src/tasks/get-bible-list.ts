@@ -1,6 +1,4 @@
 import { writeFile } from "node:fs/promises";
-import "dotenv/config";
-
 import { getBibles } from "../services/api-bible/index.ts";
 
 const biblesIds = [
