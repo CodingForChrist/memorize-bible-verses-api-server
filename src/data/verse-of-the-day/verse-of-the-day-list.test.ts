@@ -39,11 +39,10 @@ for (const { year, verseOfTheDayList } of [
     });
 
     test("should have one verse for each day of the year", () => {
-      if (dayjs(`${year}-01-01`).isLeapYear()) {
-        assert.equal(verses.length, 366);
-      } else {
-        assert.equal(verses.length, 365);
-      }
+      const expectedDaysInYear = dayjs(`${year}-01-01`).isLeapYear()
+        ? 366
+        : 365;
+      assert.equal(verses.length, expectedDaysInYear);
     });
 
     test("should have at least one verse from each book", () => {

@@ -6,11 +6,8 @@ import utc from "dayjs/plugin/utc.js";
 import verseOfTheDayList2025 from "../data/verse-of-the-day/verse-of-the-day-list-2025.json" with { type: "json" };
 import verseOfTheDayList2026 from "../data/verse-of-the-day/verse-of-the-day-list-2026.json" with { type: "json" };
 
-// eslint-disable-next-line unicorn/no-top-level-side-effects
 dayjs.extend(dayOfYear);
-// eslint-disable-next-line unicorn/no-top-level-side-effects
 dayjs.extend(localizedFormat);
-// eslint-disable-next-line unicorn/no-top-level-side-effects
 dayjs.extend(utc);
 
 const supportedYears = [2025, 2026];
