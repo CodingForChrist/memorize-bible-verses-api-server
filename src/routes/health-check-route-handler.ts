@@ -1,22 +1,21 @@
 import { ApiBibleClient } from "../services/api-bible/api-bible-client.ts";
 import type { Request, Response } from "express";
 
-type HealthCheckResponse = {
-  status: "UP" | "DOWN";
-  timestamp: number;
-  checks: {
-    apiBible: {
-      status: "UP" | "DOWN";
-      responseTimeInMilliseconds?: number;
-      sampleResponse?: Record<string, unknown>;
-    };
-  };
-};
-
 export default async function healthCheckRouteHandler(
   _request: Request,
   response: Response,
 ) {
+  type HealthCheckResponse = {
+    status: "UP" | "DOWN";
+    timestamp: number;
+    checks: {
+      apiBible: {
+        status: "UP" | "DOWN";
+        responseTimeInMilliseconds?: number;
+        sampleResponse?: Record<string, unknown>;
+      };
+    };
+  };
   const healthCheckResponse: HealthCheckResponse = {
     status: "UP",
     timestamp: Date.now(),

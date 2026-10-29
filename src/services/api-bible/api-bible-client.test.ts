@@ -9,7 +9,7 @@ import { ApiBibleClient } from "./api-bible-client.ts";
 function createFetchResponse(data: Record<string, unknown>) {
   return Promise.resolve({
     ok: true,
-    json: () => new Promise((resolve) => resolve(data)),
+    json: () => Promise.resolve(data),
   } as Response);
 }
 
