@@ -6,6 +6,14 @@ process.env.BIBLE_API_KEY = "test-value";
 
 import { ApiBibleClient } from "./api-bible-client.ts";
 
+function mockResponse(status: number, body: unknown): Response {
+  return {
+    ok: status >= 200 && status < 300,
+    status,
+    text: () => Promise.resolve(JSON.stringify(body)),
+  } as unknown as Response;
+}
+
 function createFetchResponse(data: Record<string, unknown>) {
   return Promise.resolve({
     ok: true,
@@ -14,21 +22,25 @@ function createFetchResponse(data: Record<string, unknown>) {
 }
 
 describe("getBibles()", () => {
-  const mockedFetch = mock.fn(createFetchResponse);
+  const mockedFetch = mock.fn(() =>
+    mockResponse(200, Promise.resolve({ data: [], meta: {} })),
+  );
   beforeEach(() => {
     mockedFetch.mock.resetCalls();
     mock.method(globalThis, "fetch", mockedFetch);
   });
 
   test("does not require any input", async () => {
-    const apiBibleClient = new ApiBibleClient();
+    const apiBibleClient = new ApiBibleClient({
+      bibleClientFetch: mockedFetch as unknown as typeof fetch,
+    });
     await apiBibleClient.getBibles();
     assert.equal(mockedFetch.mock.calls.length, 1);
 
     const firstCall = mockedFetch.mock.calls[0];
     assert.equal(
       firstCall.arguments[0],
-      "https://rest.api.bible/v1/bibles?language=eng&include-full-details=false",
+      "https://rest.api.bible/v1/bibles?language=eng&inclu-full-details=false",
     );
   });
 

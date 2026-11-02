@@ -1,13 +1,21 @@
+import {
+  createBibleClient,
+  type BibleClient,
+  type BibleListParams,
+  type ApiResponse,
+} from "@americanbible/api-bible-sdk";
 import { TTLCache } from "@isaacs/ttlcache";
 import { HTTPError } from "./http-error.ts";
 import logger from "../logger.ts";
 import { formatSearchParameters } from "./format-url.ts";
+import { createCacheKey } from "./cache-key.ts";
 
 import bibleListFixtureData from "../../data/bible-list.json" with { type: "json" };
 
-type CacheData = Record<string, unknown>;
+type CacheData = ApiResponse<unknown>;
 
 export class ApiBibleClient {
+  private readonly bibleClient: BibleClient;
   private readonly baseUrl = "https://rest.api.bible/v1";
   private readonly bibleApiKey = process.env.BIBLE_API_KEY as string;
   private readonly isInMemoryMode =
@@ -15,7 +23,17 @@ export class ApiBibleClient {
 
   readonly cache: TTLCache<string, CacheData>;
 
-  constructor(cache?: TTLCache<string, CacheData>) {
+  constructor({
+    cache,
+    bibleClientFetch,
+  }: {
+    cache?: TTLCache<string, CacheData>;
+    bibleClientFetch?: typeof globalThis.fetch;
+  } = {}) {
+    this.bibleClient = createBibleClient({
+      apiKey: process.env.BIBLE_API_KEY as string,
+      fetch: bibleClientFetch ?? fetch,
+    });
     this.cache =
       cache ??
       new TTLCache<string, CacheData>({
@@ -52,34 +70,39 @@ export class ApiBibleClient {
     return data as Record<string, unknown>;
   }
 
-  async getBibles(
-    getBiblesInput: {
-      language?: string;
-      abbreviation?: string;
-      name?: string;
-      ids?: string;
-      includeFullDetails?: boolean;
-    } = {},
-  ) {
+  async getBibles(getBiblesInput: BibleListParams = {}) {
     if (this.isInMemoryMode) {
       logger.debug("bible list loaded from fixture data");
       return bibleListFixtureData;
     }
 
-    const url = new URL(`${this.baseUrl}/bibles`);
-
-    const defaultValues = {
+    const parameters = {
       language: "eng",
       includeFullDetails: false,
+      ...getBiblesInput,
     };
 
-    url.search = formatSearchParameters({
-      ...defaultValues,
-      ...getBiblesInput,
-    }).toString();
+    const cacheKey = `getBibles_${createCacheKey(parameters)}`;
+    const cacheValue = this.cache.get(cacheKey);
 
-    const data = await this.#request({ url, label: "getBibles" });
-    return data;
+    logger.debug(
+      { cacheKey, foundInCache: Boolean(cacheValue) },
+      "getBibles cache lookup",
+    );
+
+    if (cacheValue) {
+      return cacheValue;
+    }
+
+    const jsonData = await this.bibleClient.bibles.list({
+      language: "eng",
+      includeFullDetails: false,
+      ...getBiblesInput,
+    });
+
+    this.cache.set(cacheKey, jsonData);
+
+    return jsonData;
   }
 
   async getBooks(getBooksInput: {

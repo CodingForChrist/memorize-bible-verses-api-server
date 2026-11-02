@@ -36,13 +36,13 @@ Create an [API.Bible developer account](https://docs.api.bible/getting-started/s
 
 This server wraps the following API endpoints provided by API.Bible:
 
-1. [Get Bibles](https://scripture.api.bible/livedocs#/Bibles/getBibles)
+1. [Get Bibles](https://api.bible/api-reference#tag/bibles/GET/bibles)
 
    Here's an example API call that gets the details for two Bible IDs:
 
    ```bash
    curl http://localhost:4000/api/v1/bibles --request POST \
-   --data '{"language": "eng", "ids": "de4e12af7f28f599-02,32664dc3288a28df-02", "includeFullDetails": true}' \
+   --data '{"language": "eng", "ids": ["de4e12af7f28f599-02", "32664dc3288a28df-02"], "includeFullDetails": true}' \
    --header "Content-Type: application/json" \
    --header "Application-User-Id: <YOUR_APP_USER_ID>"
    ```

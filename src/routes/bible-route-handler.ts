@@ -10,7 +10,7 @@ export default async function bibleRouteHandler(
     language: z.string().length(3).optional(),
     abbreviation: z.string().optional(),
     name: z.string().optional(),
-    ids: z.string().optional(),
+    ids: z.string().array().optional(),
     includeFullDetails: z.boolean().optional(),
   });
 
