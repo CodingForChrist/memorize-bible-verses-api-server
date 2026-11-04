@@ -18,6 +18,7 @@ function startTestServer() {
       if (data.toString().includes("API server listening")) {
         resolve(serverProcess);
       }
+      // console.log(`[Server Output]: ${data.toString()}`);
     });
 
     serverProcess.stderr?.on("data", (data: Buffer) => {

@@ -85,4 +85,28 @@ describe("Get Passages Endpoint", () => {
       /✖ Error: Invalid book name\n {2}→ at verseReference/,
     );
   });
+
+  test("should error for a verse not found", async () => {
+    const response = await fetch(urlForGetPassageEndpoint, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Application-User-Id": appUserId,
+      },
+      body: JSON.stringify({
+        // This verse does not exist, so it should return a 404 error
+        verseReference: "2 Corinthians 5:99",
+        contentType: "text",
+      }),
+    });
+
+    const body = await response.json();
+
+    assert.equal(response.status, 404);
+    assert.equal(typeof body, "object");
+
+    const { error, errorDescription } = body;
+    assert.equal(error, "Not Found");
+    assert.equal(errorDescription, "Could not find that passage");
+  });
 });

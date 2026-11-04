@@ -4,6 +4,7 @@ import {
   BadRequestError,
   InvalidInputError,
   AuthError,
+  NotFoundError,
 } from "@americanbible/api-bible-sdk";
 import type { Request, Response, NextFunction } from "express";
 
@@ -13,35 +14,44 @@ export default async function errorMiddleware(
   response: Response,
   _next: NextFunction,
 ) {
-  if (error instanceof AuthError) {
-    response.status(error.statusCode).json({
-      error: error.name,
-      errorDescription: error.message,
-    });
-  } else if (error instanceof InvalidInputError) {
-    response.status(400).json({
-      error: "Bad Request",
-      errorDescription: error.message,
-    });
-  } else if (error instanceof BadRequestError) {
-    response.status(error.statusCode).json({
-      error: "Bad Request",
-      errorDescription: error.message,
-    });
-  } else if (error instanceof BibleError) {
-    response.status(500).json({
-      error: error.name,
-      errorDescription: error.message,
-    });
-  } else if (error instanceof ZodError) {
-    response.status(400).json({
+  if (error instanceof ZodError) {
+    return response.status(400).json({
       error: "Bad Request",
       errorDescription: z.prettifyError(error),
     });
-  } else {
-    response.status(500).json({
-      error: "Internal Server Error",
-      errorDescription: error.toString(),
+  }
+  if (error instanceof AuthError) {
+    return response.status(error.statusCode).json({
+      error: error.name,
+      errorDescription: error.message,
     });
   }
+  if (error instanceof InvalidInputError) {
+    return response.status(400).json({
+      error: "Bad Request",
+      errorDescription: error.message,
+    });
+  }
+  if (error instanceof BadRequestError) {
+    return response.status(error.statusCode).json({
+      error: "Bad Request",
+      errorDescription: error.message,
+    });
+  }
+  if (error instanceof NotFoundError) {
+    return response.status(error.statusCode).json({
+      error: "Not Found",
+      errorDescription: error.message,
+    });
+  }
+  if (error instanceof BibleError) {
+    return response.status(500).json({
+      error: error.name,
+      errorDescription: error.message,
+    });
+  }
+  return response.status(500).json({
+    error: "Internal Server Error",
+    errorDescription: error.toString(),
+  });
 }
