@@ -9,5 +9,5 @@ export function createCacheKey(
     return `${key}:${String(data[key])}`;
   });
 
-  return `{${serialized.join("_")}}`;
+  return `{${serialized.join(",")}}`;
 }

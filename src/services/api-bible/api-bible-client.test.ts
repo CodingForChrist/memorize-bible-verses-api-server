@@ -1,12 +1,12 @@
 import assert from "node:assert/strict";
 import { beforeEach, describe, test, mock } from "node:test";
 
-import bibleListFixtureData from "../../data/bible-list.json" with { type: "json" };
-
-process.env.PINO_LOG_LEVEL = "error";
-process.env.BIBLE_API_KEY = "test-value";
-
 import { ApiBibleClient } from "./api-bible-client.ts";
+
+import bibleListFixtureData from "../../data/bible-list.json" with { type: "json" };
+import bookListFixtureData from "../../data/book-list.json" with { type: "json" };
+
+process.env.BIBLE_API_KEY = "test-value";
 
 function mockResponse(status: number, body: unknown): Response {
   return {
@@ -26,7 +26,7 @@ describe("getBibles()", () => {
 
   test("does not require any input", async () => {
     const apiBibleClient = new ApiBibleClient({
-      bibleClientFetch: mockedFetch as unknown as typeof fetch,
+      bibleClientFetch: mockedFetch,
     });
     await apiBibleClient.getBibles();
     assert.equal(mockedFetch.mock.calls.length, 1);
@@ -38,9 +38,9 @@ describe("getBibles()", () => {
     );
   });
 
-  test("formats optional input into query string parameters", async () => {
+  test("supports optional input", async () => {
     const apiBibleClient = new ApiBibleClient({
-      bibleClientFetch: mockedFetch as unknown as typeof fetch,
+      bibleClientFetch: mockedFetch,
     });
     await apiBibleClient.getBibles({
       language: "eng",
@@ -62,7 +62,7 @@ describe("getBibles()", () => {
       mockResponse(400, { message: "Bad Request" }),
     );
     const apiBibleClient = new ApiBibleClient({
-      bibleClientFetch: mockedFetch as unknown as typeof fetch,
+      bibleClientFetch: mockedFetch,
     });
     await assert.rejects(async () => await apiBibleClient.getBibles(), {
       message: "Bad Request",
@@ -71,10 +71,10 @@ describe("getBibles()", () => {
 
   test("caches successful responses", async () => {
     const apiBibleClient = new ApiBibleClient({
-      bibleClientFetch: mockedFetch as unknown as typeof fetch,
+      bibleClientFetch: mockedFetch,
     });
 
-    const cacheKey = "getBibles_{includeFullDetails:false_language:eng}";
+    const cacheKey = "getBibles_{includeFullDetails:false,language:eng}";
 
     assert.equal(apiBibleClient.cache.get(cacheKey), undefined);
     await apiBibleClient.getBibles();
@@ -98,118 +98,88 @@ describe("getBibles()", () => {
   });
 });
 
-// describe("getBooks()", () => {
-//   const mockedFetch = mock.fn(createFetchResponse);
-//   beforeEach(() => {
-//     mockedFetch.mock.resetCalls();
-//     mock.method(globalThis, "fetch", mockedFetch);
-//   });
+describe("getBooks()", () => {
+  const bibleId = bookListFixtureData.data[0].bibleId;
+  const mockedFetch = mock.fn(async (_url) =>
+    mockResponse(200, bookListFixtureData),
+  );
+  beforeEach(() => {
+    mockedFetch.mock.resetCalls();
+  });
 
-//   test("uses default values", async () => {
-//     const apiBibleClient = new ApiBibleClient();
-//     await apiBibleClient.getBooks({
-//       bibleId: "de4e12af7f28f599-02",
-//     });
+  test("uses default values", async () => {
+    const apiBibleClient = new ApiBibleClient({
+      bibleClientFetch: mockedFetch,
+    });
+    await apiBibleClient.getBooks(bibleId);
+    assert.equal(mockedFetch.mock.calls.length, 1);
 
-//     assert.equal(mockedFetch.mock.calls.length, 1);
+    const firstCall = mockedFetch.mock.calls[0];
+    assert.equal(
+      firstCall.arguments[0],
+      "https://rest.api.bible/v1/bibles/b8ee27bcd1cae43a-01/books?include-chapters=false&include-chapters-and-sections=false",
+    );
+  });
 
-//     const firstCall = mockedFetch.mock.calls[0];
-//     assert.equal(
-//       firstCall.arguments[0],
-//       "https://rest.api.bible/v1/bibles/de4e12af7f28f599-02/books?include-chapters=false&include-chapters-and-sections=false",
-//     );
-//   });
+  test("supports optional input", async () => {
+    const apiBibleClient = new ApiBibleClient({
+      bibleClientFetch: mockedFetch,
+    });
+    await apiBibleClient.getBooks(bibleId, {
+      includeChapters: true,
+      includeChaptersAndSections: true,
+    });
 
-//   test("supports optional input", async () => {
-//     const apiBibleClient = new ApiBibleClient();
-//     await apiBibleClient.getBooks({
-//       bibleId: "de4e12af7f28f599-02",
-//       includeChapters: true,
-//       includeChaptersAndSections: true,
-//     });
+    assert.equal(mockedFetch.mock.calls.length, 1);
 
-//     assert.equal(mockedFetch.mock.calls.length, 1);
+    const firstCall = mockedFetch.mock.calls[0];
+    assert.equal(
+      firstCall.arguments[0],
+      "https://rest.api.bible/v1/bibles/b8ee27bcd1cae43a-01/books?include-chapters=true&include-chapters-and-sections=true",
+    );
+  });
 
-//     const firstCall = mockedFetch.mock.calls[0];
-//     assert.equal(
-//       firstCall.arguments[0],
-//       "https://rest.api.bible/v1/bibles/de4e12af7f28f599-02/books?include-chapters=true&include-chapters-and-sections=true",
-//     );
-//   });
+  test("throws an error for a non-200 status code", async () => {
+    mockedFetch.mock.mockImplementationOnce(async () =>
+      mockResponse(400, { message: "Bad Request" }),
+    );
+    const apiBibleClient = new ApiBibleClient({
+      bibleClientFetch: mockedFetch,
+    });
+    await assert.rejects(async () => await apiBibleClient.getBooks(bibleId), {
+      message: "Bad Request",
+    });
+  });
 
-//   test("throws an error for a non-200 status code", async () => {
-//     const errorResponse = {
-//       ok: false,
-//       status: 400,
-//       statusText: "Bad Request",
-//     } as Response;
+  test("caches successful responses", async () => {
+    const apiBibleClient = new ApiBibleClient({
+      bibleClientFetch: mockedFetch,
+    });
 
-//     mockedFetch.mock.mockImplementationOnce(() =>
-//       Promise.resolve(errorResponse),
-//     );
-//     const apiBibleClient = new ApiBibleClient();
+    const cacheKey =
+      "getBooks_b8ee27bcd1cae43a-01_{includeChapters:false,includeChaptersAndSections:false}";
 
-//     await assert.rejects(
-//       async () =>
-//         await apiBibleClient.getBooks({ bibleId: "de4e12af7f28f599-02" }),
-//       {
-//         message:
-//           "Request failed with status code 400 Bad Request: https://rest.api.bible/v1/bibles/de4e12af7f28f599-02/books?include-chapters=false&include-chapters-and-sections=false",
-//       },
-//     );
-//   });
+    assert.equal(apiBibleClient.cache.get(cacheKey), undefined);
+    await apiBibleClient.getBooks(bibleId);
 
-//   test("caches successful responses", async () => {
-//     const mockResponseData = {
-//       data: [
-//         {
-//           id: "GEN",
-//           bibleId: "32664dc3288a28df-02",
-//           abbreviation: "Gen",
-//           name: "Genesis",
-//           nameLong: "The First Book of Moses, Commonly Called Genesis",
-//         },
-//         {
-//           id: "EXO",
-//           bibleId: "32664dc3288a28df-02",
-//           abbreviation: "Exo",
-//           name: "Exodus",
-//           nameLong: "The Second Book of Mosis, Commonly Called Exodus",
-//         },
-//       ],
-//     };
+    assert.equal(mockedFetch.mock.calls.length, 1);
+    const firstCall = mockedFetch.mock.calls[0];
+    assert.equal(
+      firstCall.arguments[0],
+      "https://rest.api.bible/v1/bibles/b8ee27bcd1cae43a-01/books?include-chapters=false&include-chapters-and-sections=false",
+    );
 
-//     const requestURL =
-//       "https://rest.api.bible/v1/bibles/de4e12af7f28f599-02/books?include-chapters=false&include-chapters-and-sections=false";
+    mockedFetch.mock.resetCalls();
 
-//     mockedFetch.mock.mockImplementationOnce(() =>
-//       createFetchResponse(mockResponseData),
-//     );
+    // the cache should contain the response data after the first call
+    assert.deepEqual(apiBibleClient.cache.get(cacheKey), bookListFixtureData);
 
-//     const apiBibleClient = new ApiBibleClient();
-
-//     assert.equal(apiBibleClient.cache.get(requestURL), undefined);
-//     await apiBibleClient.getBooks({
-//       bibleId: "de4e12af7f28f599-02",
-//     });
-
-//     assert.equal(mockedFetch.mock.calls.length, 1);
-//     const firstCall = mockedFetch.mock.calls[0];
-//     assert.equal(firstCall.arguments[0], requestURL);
-
-//     mockedFetch.mock.resetCalls();
-
-//     // the cache should contain the response data after the first call
-//     assert.deepEqual(apiBibleClient.cache.get(requestURL), mockResponseData);
-
-//     // should read value from cache instead of fetching from api
-//     const cachedData = await apiBibleClient.getBooks({
-//       bibleId: "de4e12af7f28f599-02",
-//     });
-//     assert.equal(mockedFetch.mock.calls.length, 0);
-//     assert.deepEqual(cachedData, mockResponseData);
-//   });
-// });
+    // should read value from cache instead of fetching from api
+    const cachedData = await apiBibleClient.getBooks(bibleId);
+    assert.equal(mockedFetch.mock.calls.length, 0);
+    assert.deepEqual(cachedData, bookListFixtureData);
+  });
+});
 
 // describe("getVerse()", () => {
 //   const mockedFetch = mock.fn(createFetchResponse);
