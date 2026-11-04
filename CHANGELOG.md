@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.20.0](https://github.com/CodingForChrist/memorize-bible-verses-api-server/compare/v1.19.1...v1.20.0) (2026-11-04)
+
+
+### Features
+
+* add e2e test suite ([#225](https://github.com/CodingForChrist/memorize-bible-verses-api-server/issues/225)) ([dd821ac](https://github.com/CodingForChrist/memorize-bible-verses-api-server/commit/dd821acb71bd1093479b078ab50a08989360551e))
+* use api-bible-sdk package ([#228](https://github.com/CodingForChrist/memorize-bible-verses-api-server/issues/228)) ([ac67efd](https://github.com/CodingForChrist/memorize-bible-verses-api-server/commit/ac67efd2a8996e551017fb39018f4229bd738e0b))
+
 ## [1.19.1](https://github.com/CodingForChrist/memorize-bible-verses-api-server/compare/v1.19.0...v1.19.1) (2026-10-29)
 
 
