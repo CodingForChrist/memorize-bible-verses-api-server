@@ -1,5 +1,6 @@
 import { ApiBibleClient } from "../services/api-bible/api-bible-client.ts";
 import type { Request, Response } from "express";
+import npmPackage from "../../package.json" with { type: "json" };
 
 export default async function healthCheckRouteHandler(
   _request: Request,
@@ -8,6 +9,7 @@ export default async function healthCheckRouteHandler(
   type HealthCheckResponse = {
     status: "UP" | "DOWN";
     timestamp: number;
+    version: string;
     checks: {
       apiBible: {
         status: "UP" | "DOWN";
@@ -19,6 +21,7 @@ export default async function healthCheckRouteHandler(
   const healthCheckResponse: HealthCheckResponse = {
     status: "UP",
     timestamp: Date.now(),
+    version: npmPackage.version,
     checks: {
       apiBible: {
         status: "UP",
