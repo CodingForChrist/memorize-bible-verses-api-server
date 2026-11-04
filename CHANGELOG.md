@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.21.0](https://github.com/CodingForChrist/memorize-bible-verses-api-server/compare/v1.20.0...v1.21.0) (2026-11-04)
+
+
+### Features
+
+* add version to health check response ([#230](https://github.com/CodingForChrist/memorize-bible-verses-api-server/issues/230)) ([908835d](https://github.com/CodingForChrist/memorize-bible-verses-api-server/commit/908835d681529ab9457d8de34ff05c49cc7a3933))
+
+
+### Bug Fixes
+
+* return a 404 when a verse is not found ([#232](https://github.com/CodingForChrist/memorize-bible-verses-api-server/issues/232)) ([79610a5](https://github.com/CodingForChrist/memorize-bible-verses-api-server/commit/79610a55c8eb06547b7d698090494f6419e68e25))
+
 ## [1.20.0](https://github.com/CodingForChrist/memorize-bible-verses-api-server/compare/v1.19.1...v1.20.0) (2026-11-04)
 
 
