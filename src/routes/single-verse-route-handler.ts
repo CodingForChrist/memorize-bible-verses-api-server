@@ -27,7 +27,6 @@ export default async function singleVerseRouteHandler(
       includeChapterNumbers: z.boolean().optional(),
       includeVerseNumbers: z.boolean().optional(),
       includeVerseSpans: z.boolean().optional(),
-      useOrgId: z.boolean().optional(),
     })
     .transform(({ verseReference, ...rest }) => {
       const verseId = transformVerseReferenceToVerseId(verseReference);
@@ -37,11 +36,19 @@ export default async function singleVerseRouteHandler(
       };
     });
 
-  const trustedInput = schema.parse({
+  const {
+    bibleId: trustedBibleId,
+    verseId: trustedVerseId,
+    ...trustedParameters
+  } = schema.parse({
     ...request.params,
     ...request.body,
   });
 
-  const results = await getVerse(trustedInput);
+  const results = await getVerse(
+    trustedBibleId,
+    trustedVerseId,
+    trustedParameters,
+  );
   response.status(200).json(results);
 }

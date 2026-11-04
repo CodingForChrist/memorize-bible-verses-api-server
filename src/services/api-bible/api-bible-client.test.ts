@@ -1,6 +1,8 @@
 import assert from "node:assert/strict";
 import { beforeEach, describe, test, mock } from "node:test";
 
+import bibleListFixtureData from "../../data/bible-list.json" with { type: "json" };
+
 process.env.PINO_LOG_LEVEL = "error";
 process.env.BIBLE_API_KEY = "test-value";
 
@@ -22,8 +24,40 @@ function createFetchResponse(data: Record<string, unknown>) {
 }
 
 describe("getBibles()", () => {
-  const mockedFetch = mock.fn(() =>
-    mockResponse(200, Promise.resolve({ data: [], meta: {} })),
+  const mockedFetch = mock.fn(async () =>
+    mockResponse(200, {
+      data: [
+        {
+          id: "bba9f40183526463-01",
+          dblId: "f72b840c31437236",
+          abbreviation: "BSB",
+          abbreviationLocal: "BSB",
+          name: "Berean Standard Bible",
+          nameLocal: "Berean Standard Bible",
+          description: "The Berean Standard Bible",
+          descriptionLocal: "The Berean Standard Bible",
+          relatedDbl: null,
+          type: "text",
+          updatedAt: "2024-01-01T00:00:00.000Z",
+          language: {
+            id: "eng",
+            name: "English",
+            nameLocal: "English",
+            script: "Latin",
+            scriptCode: "Latn",
+            scriptDirection: "LTR",
+            ldml: "en",
+            rod: 1,
+            iso6393: "eng",
+          },
+          countries: [
+            { id: "US", name: "United States", nameLocal: "United States" },
+          ],
+          audioBibles: [],
+        },
+      ],
+      meta: {},
+    }),
   );
   beforeEach(() => {
     mockedFetch.mock.resetCalls();
@@ -40,7 +74,7 @@ describe("getBibles()", () => {
     const firstCall = mockedFetch.mock.calls[0];
     assert.equal(
       firstCall.arguments[0],
-      "https://rest.api.bible/v1/bibles?language=eng&inclu-full-details=false",
+      "https://rest.api.bible/v1/bibles?language=eng&include-full-details=false",
     );
   });
 

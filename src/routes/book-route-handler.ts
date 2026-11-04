@@ -12,11 +12,11 @@ export default async function bookRouteHandler(
     includeChaptersAndSections: z.boolean().optional(),
   });
 
-  const trustedInput = schema.parse({
+  const { bibleId: trustedBibleId, ...trustedParameters } = schema.parse({
     ...request.params,
     ...request.body,
   });
 
-  const results = await getBooks(trustedInput);
+  const results = await getBooks(trustedBibleId, trustedParameters);
   response.status(200).json(results);
 }

@@ -31,11 +31,11 @@ export default async function healthCheckRouteHandler(
     const apiBibleClient = new ApiBibleClient();
 
     const start = performance.now();
-    const results = await apiBibleClient.getVerse({
-      bibleId: "bba9f40183526463-01",
-      contentType: "text",
-      verseId: "GAL.2.20",
-    });
+    const results = await apiBibleClient.getVerse(
+      "bba9f40183526463-01",
+      "GAL.2.20",
+      { contentType: "text" },
+    );
     const end = performance.now();
     const duration = end - start;
     healthCheckResponse.checks.apiBible.responseTimeInMilliseconds = Number(

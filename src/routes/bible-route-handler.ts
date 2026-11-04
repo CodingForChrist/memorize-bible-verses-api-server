@@ -14,7 +14,7 @@ export default async function bibleRouteHandler(
     includeFullDetails: z.boolean().optional(),
   });
 
-  const trustedInput = schema.parse(request.body);
-  const results = await getBibles(trustedInput);
+  const trustedParameters = schema.parse(request.body);
+  const results = await getBibles(trustedParameters);
   response.status(200).json(results);
 }

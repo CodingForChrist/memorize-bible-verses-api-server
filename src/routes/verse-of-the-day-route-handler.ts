@@ -22,9 +22,7 @@ export default async function verseOfTheDayRouteHandler(
     getVerseReferenceOfTheDay(date);
   const passageId = transformVerseReferenceToPassageId(verseReference);
 
-  const results = await getPassage({
-    bibleId,
-    passageId,
+  const results = await getPassage(bibleId, passageId, {
     includeTitles: false,
   });
   response.status(200).json({
