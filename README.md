@@ -1,6 +1,6 @@
 # Memorize Bible Verses API Server
 
-Node.js Express server that wraps [API.Bible](https://scripture.api.bible/). This server acts as a thin wrapper for API.Bible and exposes a subset of endpoints for client-side applications.
+Node.js Express server that wraps [API.Bible](https://api.bible/). This server acts as a thin wrapper for API.Bible and exposes a subset of endpoints for client-side applications.
 
 ## API Features
 
