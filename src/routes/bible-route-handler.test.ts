@@ -53,11 +53,17 @@ describe("bibleRouteHandler", () => {
   });
 
   test("should return 200 with optional input", async () => {
-    const response = await request(app).post("/api/v1/bibles").send({
-      ids: "bba9f40183526463-01,de4e12af7f28f599-02,b8ee27bcd1cae43a-01",
-      includeFullDetails: true,
-      language: "eng",
-    });
+    const response = await request(app)
+      .post("/api/v1/bibles")
+      .send({
+        ids: [
+          "bba9f40183526463-01",
+          "de4e12af7f28f599-02",
+          "b8ee27bcd1cae43a-01",
+        ],
+        includeFullDetails: true,
+        language: "eng",
+      });
 
     assert.equal(response.status, 200);
     assert.equal(Array.isArray(response.body.data), true);
