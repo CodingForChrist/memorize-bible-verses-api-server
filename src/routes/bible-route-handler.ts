@@ -10,11 +10,11 @@ export default async function bibleRouteHandler(
     language: z.string().length(3).optional(),
     abbreviation: z.string().optional(),
     name: z.string().optional(),
-    ids: z.string().optional(),
+    ids: z.string().array().optional(),
     includeFullDetails: z.boolean().optional(),
   });
 
-  const trustedInput = schema.parse(request.body);
-  const results = await getBibles(trustedInput);
+  const trustedParameters = schema.parse(request.body);
+  const results = await getBibles(trustedParameters);
   response.status(200).json(results);
 }

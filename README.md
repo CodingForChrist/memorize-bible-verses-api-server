@@ -1,6 +1,6 @@
 # Memorize Bible Verses API Server
 
-Node.js Express server that wraps [API.Bible](https://scripture.api.bible/). This server acts as a thin wrapper for API.Bible and exposes a subset of endpoints for client-side applications.
+Node.js Express server that wraps [API.Bible](https://api.bible/). This server acts as a thin wrapper for API.Bible and exposes a subset of endpoints for client-side applications.
 
 ## API Features
 
@@ -36,18 +36,18 @@ Create an [API.Bible developer account](https://docs.api.bible/getting-started/s
 
 This server wraps the following API endpoints provided by API.Bible:
 
-1. [Get Bibles](https://scripture.api.bible/livedocs#/Bibles/getBibles)
+1. [Get Bibles](https://api.bible/api-reference#tag/bibles/GET/bibles)
 
    Here's an example API call that gets the details for two Bible IDs:
 
    ```bash
    curl http://localhost:4000/api/v1/bibles --request POST \
-   --data '{"language": "eng", "ids": "de4e12af7f28f599-02,32664dc3288a28df-02", "includeFullDetails": true}' \
+   --data '{"language": "eng", "ids": ["de4e12af7f28f599-02", "32664dc3288a28df-02"], "includeFullDetails": true}' \
    --header "Content-Type: application/json" \
    --header "Application-User-Id: <YOUR_APP_USER_ID>"
    ```
 
-2. [Get Books](https://scripture.api.bible/livedocs#/Books/getBooks)
+2. [Get Books](https://api.bible/api-reference#tag/books/GET/bibles/{bibleId}/books)
 
    Here's an example API call to get the books of the bible for the World English Bible translation:
 
@@ -58,7 +58,7 @@ This server wraps the following API endpoints provided by API.Bible:
    --header "Application-User-Id: <YOUR_APP_USER_ID>"
    ```
 
-3. [Get Verse](https://scripture.api.bible/livedocs#/Verses/getVerse)
+3. [Get Verse](https://api.bible/api-reference#tag/verses/GET/bibles/{bibleId}/verses/{verseId})
 
    This endpoint provides functionality to find a single bible verse by a verse reference. Here's an example API call to get the World English Bible version of Galatians 2:20:
 
@@ -69,7 +69,7 @@ This server wraps the following API endpoints provided by API.Bible:
    --header "Application-User-Id: <YOUR_APP_USER_ID>"
    ```
 
-4. [Get Passage](https://scripture.api.bible/livedocs#/Passages/getPassage)
+4. [Get Passage](https://api.bible/api-reference#tag/passages/GET/bibles/{bibleId}/passages/{passageId})
 
    This endpoint provides functionality to find a single bible verse or multiple bible verses by a verse reference. Here's an example API call to get the World English Bible version of Psalm 23:1-6:
 
@@ -80,7 +80,7 @@ This server wraps the following API endpoints provided by API.Bible:
    --header "Application-User-Id: <YOUR_APP_USER_ID>"
    ```
 
-5. [Search](https://scripture.api.bible/livedocs#/Search/searchBible)
+5. [Search](https://api.bible/api-reference#tag/search/GET/bibles/{bibleId}/search)
 
    Here's an example API call to search the World English Bible version for the phrase "make disciples of all nations":
 

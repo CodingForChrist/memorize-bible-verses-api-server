@@ -13,14 +13,14 @@ export default async function searchRouteHandler(
     offset: z.number().optional(),
     contentType: z.enum(["relevance", "relevance", "canonical"]).optional(),
     range: z.string().optional(),
-    fuzziness: z.string().optional(),
+    fuzziness: z.enum(["AUTO", "0", "1", "2"]).optional(),
   });
 
-  const trustedInput = schema.parse({
+  const { bibleId: trustedBibleId, ...trustedParameters } = schema.parse({
     ...request.params,
     ...request.body,
   });
 
-  const results = await searchForVerses(trustedInput);
+  const results = await searchForVerses(trustedBibleId, trustedParameters);
   response.status(200).json(results);
 }

@@ -3,13 +3,15 @@
     {
       "id": "bba9f40183526463-01",
       "dblId": "bba9f40183526463",
-      "relatedDbl": null,
-      "name": "Berean Standard Bible",
-      "nameLocal": "English: Berean Standard Bible",
       "abbreviation": "BSB",
       "abbreviationLocal": "BSB",
+      "name": "Berean Standard Bible",
+      "nameLocal": "English: Berean Standard Bible",
       "description": "Berean Standard Bible",
       "descriptionLocal": "English: Berean Standard Bible",
+      "relatedDbl": null,
+      "type": "text",
+      "updatedAt": "2025-10-01T02:35:46.000Z",
       "language": {
         "id": "eng",
         "name": "English",
@@ -149,20 +151,20 @@
           "nameLocal": "South Africa"
         }
       ],
-      "type": "text",
-      "updatedAt": "2025-10-01T02:35:46.000Z",
       "audioBibles": []
     },
     {
       "id": "a556c5305ee15c3f-01",
       "dblId": "a556c5305ee15c3f",
-      "relatedDbl": null,
-      "name": "Christian Standard Bible",
-      "nameLocal": "Christian Standard Bible",
       "abbreviation": "CSB",
       "abbreviationLocal": "CSB",
+      "name": "Christian Standard Bible",
+      "nameLocal": "Christian Standard Bible",
       "description": "Protestant",
       "descriptionLocal": "Protestant",
+      "relatedDbl": null,
+      "type": "text",
+      "updatedAt": "2025-11-25T02:20:42.000Z",
       "language": {
         "id": "eng",
         "name": "English",
@@ -192,20 +194,20 @@
           "nameLocal": "United Kingdom of Great Britain and Northern Ireland"
         }
       ],
-      "type": "text",
-      "updatedAt": "2025-11-25T02:20:42.000Z",
       "audioBibles": []
     },
     {
       "id": "555fef9a6cb31151-01",
       "dblId": "555fef9a6cb31151",
-      "relatedDbl": null,
-      "name": "Contemporary English Version",
-      "nameLocal": "Contemporary English Version",
       "abbreviation": "CEV",
       "abbreviationLocal": "CEV",
+      "name": "Contemporary English Version",
+      "nameLocal": "Contemporary English Version",
       "description": "Contemporary English Version Protestant Bible",
       "descriptionLocal": "Contemporary English Version Protestant Bible",
+      "relatedDbl": null,
+      "type": "text",
+      "updatedAt": "2025-09-28T08:56:45.000Z",
       "language": {
         "id": "eng",
         "name": "English",
@@ -220,20 +222,20 @@
           "nameLocal": "United States of America"
         }
       ],
-      "type": "text",
-      "updatedAt": "2025-09-28T08:56:45.000Z",
       "audioBibles": []
     },
     {
       "id": "61fd76eafa1577c2-02",
       "dblId": "61fd76eafa1577c2",
-      "relatedDbl": null,
-      "name": "Good News Translation",
-      "nameLocal": "Good News Translation",
       "abbreviation": "GNT",
       "abbreviationLocal": "GNT",
+      "name": "Good News Translation",
+      "nameLocal": "Good News Translation",
       "description": "Protestant Bible",
       "descriptionLocal": "Protestant Bible",
+      "relatedDbl": null,
+      "type": "text",
+      "updatedAt": "2025-09-28T16:56:25.000Z",
       "language": {
         "id": "eng",
         "name": "English",
@@ -248,20 +250,20 @@
           "nameLocal": "United States"
         }
       ],
-      "type": "text",
-      "updatedAt": "2025-09-28T16:56:25.000Z",
       "audioBibles": []
     },
     {
       "id": "de4e12af7f28f599-02",
       "dblId": "de4e12af7f28f599",
-      "relatedDbl": null,
-      "name": "King James (Authorised) Version",
-      "nameLocal": "King James Version",
       "abbreviation": "engKJV",
       "abbreviationLocal": "KJV",
+      "name": "King James (Authorised) Version",
+      "nameLocal": "King James Version",
       "description": "Protestant",
       "descriptionLocal": "Protestant",
+      "relatedDbl": null,
+      "type": "text",
+      "updatedAt": "2026-09-18T02:26:09.000Z",
       "language": {
         "id": "eng",
         "name": "English",
@@ -274,22 +276,67 @@
           "id": "GB",
           "name": "United Kingdom of Great Britain and Northern Ireland",
           "nameLocal": "United Kingdom of Great Britain and Northern Ireland"
+        },
+        {
+          "id": "AS",
+          "name": "American Samoa",
+          "nameLocal": "American Samoa"
+        },
+        {
+          "id": "AU",
+          "name": "Australia",
+          "nameLocal": "Australia"
+        },
+        {
+          "id": "CA",
+          "name": "Canada",
+          "nameLocal": "Canada"
+        },
+        {
+          "id": "NZ",
+          "name": "New Zealand",
+          "nameLocal": "New Zealand"
+        },
+        {
+          "id": "PG",
+          "name": "Papua New Guinea",
+          "nameLocal": "Papua New Guinea"
+        },
+        {
+          "id": "VI",
+          "name": "Virgin Islands, U.S.",
+          "nameLocal": "Virgin Islands, U.S."
+        },
+        {
+          "id": "US",
+          "name": "United States of America",
+          "nameLocal": "United States of America"
+        },
+        {
+          "id": "UM",
+          "name": "United States Minor Outlying Islands",
+          "nameLocal": "United States Minor Outlying Islands"
+        },
+        {
+          "id": "KE",
+          "name": "Kenya",
+          "nameLocal": "Kenya"
         }
       ],
-      "type": "text",
-      "updatedAt": "2025-10-01T18:54:59.000Z",
       "audioBibles": []
     },
     {
       "id": "b8ee27bcd1cae43a-01",
       "dblId": "b8ee27bcd1cae43a",
-      "relatedDbl": null,
-      "name": "New American Standard Bible 1995",
-      "nameLocal": "New American Standard Bible - NASB 1995",
       "abbreviation": "NASB1995",
       "abbreviationLocal": "NASB 1995",
+      "name": "New American Standard Bible 1995",
+      "nameLocal": "New American Standard Bible - NASB 1995",
       "description": null,
       "descriptionLocal": null,
+      "relatedDbl": null,
+      "type": "text",
+      "updatedAt": "2025-10-01T00:51:28.000Z",
       "language": {
         "id": "eng",
         "name": "English",
@@ -304,20 +351,20 @@
           "nameLocal": "United States"
         }
       ],
-      "type": "text",
-      "updatedAt": "2025-10-01T00:51:28.000Z",
       "audioBibles": []
     },
     {
       "id": "a761ca71e0b3ddcf-01",
       "dblId": "a761ca71e0b3ddcf",
-      "relatedDbl": null,
-      "name": "New American Standard Bible 2020",
-      "nameLocal": "New American Standard Bible - NASB",
       "abbreviation": "NASB",
       "abbreviationLocal": "NASB",
+      "name": "New American Standard Bible 2020",
+      "nameLocal": "New American Standard Bible - NASB",
       "description": null,
       "descriptionLocal": null,
+      "relatedDbl": null,
+      "type": "text",
+      "updatedAt": "2026-01-30T21:31:18.000Z",
       "language": {
         "id": "eng",
         "name": "English",
@@ -332,20 +379,20 @@
           "nameLocal": "United States of America"
         }
       ],
-      "type": "text",
-      "updatedAt": "2026-01-14T02:22:32.000Z",
       "audioBibles": []
     },
     {
       "id": "78a9f6124f344018-01",
       "dblId": "78a9f6124f344018",
-      "relatedDbl": null,
-      "name": "New International Version 2011",
-      "nameLocal": "New International Version",
       "abbreviation": "NIV11",
       "abbreviationLocal": "NIV",
+      "name": "New International Version 2011",
+      "nameLocal": "New International Version",
       "description": "Holy Bible",
       "descriptionLocal": "Holy Bible",
+      "relatedDbl": null,
+      "type": "text",
+      "updatedAt": "2025-10-17T17:59:01.000Z",
       "language": {
         "id": "eng",
         "name": "English",
@@ -360,20 +407,20 @@
           "nameLocal": "United States of America"
         }
       ],
-      "type": "text",
-      "updatedAt": "2025-10-17T17:59:01.000Z",
       "audioBibles": []
     },
     {
       "id": "63097d2a0a2f7db3-01",
       "dblId": "63097d2a0a2f7db3",
-      "relatedDbl": null,
-      "name": "New King James Version",
-      "nameLocal": "New King James Version",
       "abbreviation": "NKJV",
       "abbreviationLocal": "NKJV",
+      "name": "New King James Version",
+      "nameLocal": "New King James Version",
       "description": "English: New King James Version Old and New Testament",
       "descriptionLocal": "English: New King James Version Old and New Testament",
+      "relatedDbl": null,
+      "type": "text",
+      "updatedAt": "2025-10-28T16:18:52.000Z",
       "language": {
         "id": "eng",
         "name": "English",
@@ -388,20 +435,20 @@
           "nameLocal": "United States of America"
         }
       ],
-      "type": "text",
-      "updatedAt": "2025-10-28T16:18:52.000Z",
       "audioBibles": []
     },
     {
       "id": "d6e14a625393b4da-01",
       "dblId": "d6e14a625393b4da",
-      "relatedDbl": null,
-      "name": "New Living Translation",
-      "nameLocal": "New Living Translation",
       "abbreviation": "NLT",
       "abbreviationLocal": "NLT",
+      "name": "New Living Translation",
+      "nameLocal": "New Living Translation",
       "description": "English: New Living Translation (Bible)",
       "descriptionLocal": "English: New Living Translation (Bible)",
+      "relatedDbl": null,
+      "type": "text",
+      "updatedAt": "2025-10-01T15:38:13.000Z",
       "language": {
         "id": "eng",
         "name": "English",
@@ -416,20 +463,20 @@
           "nameLocal": "Unspecific"
         }
       ],
-      "type": "text",
-      "updatedAt": "2025-10-01T15:38:13.000Z",
       "audioBibles": []
     },
     {
       "id": "06125adad2d5898a-01",
       "dblId": "06125adad2d5898a",
-      "relatedDbl": null,
-      "name": "The Holy Bible, American Standard Version",
-      "nameLocal": "The Holy Bible, American Standard Version",
       "abbreviation": "ASV",
       "abbreviationLocal": "ASV",
+      "name": "The Holy Bible, American Standard Version",
+      "nameLocal": "The Holy Bible, American Standard Version",
       "description": "Bible",
       "descriptionLocal": "Bible",
+      "relatedDbl": null,
+      "type": "text",
+      "updatedAt": "2025-09-26T00:24:05.000Z",
       "language": {
         "id": "eng",
         "name": "English",
@@ -444,20 +491,20 @@
           "nameLocal": "United States of America"
         }
       ],
-      "type": "text",
-      "updatedAt": "2025-09-26T00:24:05.000Z",
       "audioBibles": []
     },
     {
       "id": "9879dbb7cfe39e4d-04",
       "dblId": "9879dbb7cfe39e4d",
-      "relatedDbl": null,
-      "name": "World English Bible",
-      "nameLocal": "World English Bible",
       "abbreviation": "WEB",
       "abbreviationLocal": "WEB",
+      "name": "World English Bible",
+      "nameLocal": "World English Bible",
       "description": "Protestant",
       "descriptionLocal": "Protestant",
+      "relatedDbl": null,
+      "type": "text",
+      "updatedAt": "2024-06-28T21:53:41.000Z",
       "language": {
         "id": "eng",
         "name": "English",
@@ -472,14 +519,12 @@
           "nameLocal": "United States of America"
         }
       ],
-      "type": "text",
-      "updatedAt": "2024-06-28T21:53:41.000Z",
       "audioBibles": [
         {
           "id": "105a06b6146d11e7-01",
+          "dblId": "105a06b6146d11e7",
           "name": "English - World English Bible 2013 (Drama NT)",
-          "nameLocal": "English - World English Bible 2013 (Drama NT)",
-          "dblId": "105a06b6146d11e7"
+          "nameLocal": "English - World English Bible 2013 (Drama NT)"
         }
       ]
     }

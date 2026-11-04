@@ -55,7 +55,7 @@ const biblesIds = [
 const bibleList = await getBibles({
   includeFullDetails: false,
   language: "eng",
-  ids: biblesIds.map((b) => b.id).join(","),
+  ids: biblesIds.map((b) => b.id),
 });
 
 const __dirname = import.meta.dirname;

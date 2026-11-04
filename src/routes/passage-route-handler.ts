@@ -27,8 +27,7 @@ export default async function passageRouteHandler(
       includeChapterNumbers: z.boolean().optional(),
       includeVerseNumbers: z.boolean().optional(),
       includeVerseSpans: z.boolean().optional(),
-      useOrgId: z.boolean().optional(),
-      parallels: z.string().optional(),
+      parallels: z.string().array().optional(),
     })
     .transform(({ verseReference, ...rest }) => {
       const passageId = transformVerseReferenceToPassageId(verseReference);
@@ -38,11 +37,19 @@ export default async function passageRouteHandler(
       };
     });
 
-  const trustedInput = schema.parse({
+  const {
+    bibleId: trustedBibleId,
+    passageId: trustedPassageId,
+    ...trustedParameters
+  } = schema.parse({
     ...request.params,
     ...request.body,
   });
 
-  const results = await getPassage(trustedInput);
+  const results = await getPassage(
+    trustedBibleId,
+    trustedPassageId,
+    trustedParameters,
+  );
   response.status(200).json(results);
 }

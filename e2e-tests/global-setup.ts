@@ -7,7 +7,11 @@ const serverContext = {
 function startTestServer() {
   return new Promise<ChildProcess>((resolve, reject) => {
     const serverProcess = spawn("node", ["src/server.ts"], {
-      env: { ...process.env, NODE_ENV: "test" },
+      env: {
+        ...process.env,
+        API_CLIENT_BEHAVIOR_IN_MEMORY_MODE: "false",
+        NODE_ENV: "test",
+      },
     });
 
     serverProcess.stdout?.on("data", (data: Buffer) => {
