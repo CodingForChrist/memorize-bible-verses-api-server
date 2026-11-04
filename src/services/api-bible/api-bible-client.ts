@@ -22,7 +22,6 @@ type CacheData = ApiResponse<unknown>;
 
 export class ApiBibleClient {
   private readonly bibleClient: BibleClient;
-  private readonly baseUrl = "https://rest.api.bible/v1";
   private readonly isInMemoryMode: boolean;
   readonly cache: TTLCache<string, CacheData>;
 
