@@ -3,7 +3,7 @@ export function createCacheKey(
 ): string {
   const sortedKeys = Object.keys(data)
     .filter((key) => data[key] !== null && data[key] !== undefined)
-    .toSorted((a, b) => a.localeCompare(b)); // Explicit string comparison function
+    .toSorted((a, b) => a.localeCompare(b));
 
   const serialized = sortedKeys.map((key) => {
     return `${key}:${String(data[key])}`;
