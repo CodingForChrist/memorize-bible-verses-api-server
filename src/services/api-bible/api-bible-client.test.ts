@@ -218,7 +218,7 @@ describe("getPassage()", () => {
     const firstCall = mockedFetch.mock.calls[0];
     assert.equal(
       firstCall.arguments[0],
-      "https://rest.api.bible/v1/bibles/b8ee27bcd1cae43a-01/passages/GAL.5.22-GAL.5.23?content-type=json&include-notes=false&include-titles=false&include-chapter-numbers=false&include-verse-numbers=false&include-verse-spans=false",
+      "https://rest.api.bible/v1/bibles/b8ee27bcd1cae43a-01/passages/GAL.5.22-GAL.5.23?content-type=json&include-notes=false&include-titles=true&include-chapter-numbers=false&include-verse-numbers=true&include-verse-spans=false",
     );
   });
 
@@ -236,7 +236,7 @@ describe("getPassage()", () => {
     const firstCall = mockedFetch.mock.calls[0];
     assert.equal(
       firstCall.arguments[0],
-      "https://rest.api.bible/v1/bibles/b8ee27bcd1cae43a-01/passages/GAL.5.22-GAL.5.23?content-type=html&include-notes=true&include-titles=false&include-chapter-numbers=false&include-verse-numbers=false&include-verse-spans=false",
+      "https://rest.api.bible/v1/bibles/b8ee27bcd1cae43a-01/passages/GAL.5.22-GAL.5.23?content-type=html&include-notes=true&include-titles=true&include-chapter-numbers=false&include-verse-numbers=true&include-verse-spans=false",
     );
   });
 
@@ -262,7 +262,7 @@ describe("getPassage()", () => {
     });
 
     const cacheKey =
-      "getPassage_b8ee27bcd1cae43a-01_GAL.5.22-GAL.5.23_{contentType:json,includeChapterNumbers:false,includeNotes:false,includeTitles:false,includeVerseNumbers:false,includeVerseSpans:false}";
+      "getPassage_b8ee27bcd1cae43a-01_GAL.5.22-GAL.5.23_{contentType:json,includeChapterNumbers:false,includeNotes:false,includeTitles:true,includeVerseNumbers:true,includeVerseSpans:false}";
 
     assert.equal(apiBibleClient.cache.get(cacheKey), undefined);
     await apiBibleClient.getPassage(bible.id, "GAL.5.22-GAL.5.23");
@@ -271,7 +271,7 @@ describe("getPassage()", () => {
     const firstCall = mockedFetch.mock.calls[0];
     assert.equal(
       firstCall.arguments[0],
-      "https://rest.api.bible/v1/bibles/b8ee27bcd1cae43a-01/passages/GAL.5.22-GAL.5.23?content-type=json&include-notes=false&include-titles=false&include-chapter-numbers=false&include-verse-numbers=false&include-verse-spans=false",
+      "https://rest.api.bible/v1/bibles/b8ee27bcd1cae43a-01/passages/GAL.5.22-GAL.5.23?content-type=json&include-notes=false&include-titles=true&include-chapter-numbers=false&include-verse-numbers=true&include-verse-spans=false",
     );
 
     mockedFetch.mock.resetCalls();
