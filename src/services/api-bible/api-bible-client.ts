@@ -140,9 +140,9 @@ export class ApiBibleClient {
     const parameters = {
       contentType: "json",
       includeNotes: false,
-      includeTitles: false,
+      includeTitles: true,
       includeChapterNumbers: false,
-      includeVerseNumbers: false,
+      includeVerseNumbers: true,
       includeVerseSpans: false,
       ...contentRenderingParameters,
     } as const;

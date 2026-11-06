@@ -30,7 +30,7 @@ describe("Get Passages Endpoint", () => {
     assert.equal(reference, "2 Corinthians 5:17");
     assert.match(
       content,
-      /Therefore if anyone is in Christ, he is a new creation\. The old has passed away\. Behold, the new has come!/,
+      /\[17\] Therefore if anyone is in Christ, he is a new creation\. The old has passed away\. Behold, the new has come!/,
     );
   });
 
