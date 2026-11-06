@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.21.1](https://github.com/CodingForChrist/memorize-bible-verses-api-server/compare/v1.21.0...v1.21.1) (2026-11-06)
+
+
+### Bug Fixes
+
+* display verse numbers and titles by default ([#233](https://github.com/CodingForChrist/memorize-bible-verses-api-server/issues/233)) ([f52b0e2](https://github.com/CodingForChrist/memorize-bible-verses-api-server/commit/f52b0e2550f26b4f27c5b0ba42236d564a63519c))
+
 ## [1.21.0](https://github.com/CodingForChrist/memorize-bible-verses-api-server/compare/v1.20.0...v1.21.0) (2026-11-04)
 
 
