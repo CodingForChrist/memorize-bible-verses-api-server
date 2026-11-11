@@ -22,7 +22,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@americanbible/api-bible-sdk": "^2.0.1",
+    "@americanbible/api-bible-sdk": "^2.0.2",
     "@isaacs/ttlcache": "^2.1.5",
     "cors": "^2.8.6",
     "dayjs": "^1.11.23",
