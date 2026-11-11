@@ -1,0 +1,45 @@
+[
+  {
+    "id": "tt-mission-agents-of-grace-handbook",
+    "title": "T&T Mission: Agents of Grace",
+    "ageGroup": "T&T",
+    "itemNumber": "MV-TT34AOGHndbk",
+    "link": "https://store.awana.org/product/new-tt-mission-agents-of-grace-kids-handbook",
+    "verseReferences": [
+      {
+        "verseReference": "Titus 3:4-5",
+        "section": "1.1"
+      },
+      {
+        "verseReference": "Romans 15:13",
+        "section": "1.2"
+      },
+      {
+        "verseReference": "1 John 2:1",
+        "section": "1.3"
+      },
+      {
+        "verseReference": "Psalm 46:1",
+        "section": "1.4"
+      },
+      {
+        "verseReference": "John 16:33",
+        "section": "1.5"
+      }
+    ]
+  },
+  {
+    "id": "tt-mission-discovery-of-grace-kids-handbook",
+    "title": "T&T Mission: Discovery of Grace",
+    "ageGroup": "T&T",
+    "itemNumber": "MV-TT34DOGHndbk",
+    "link": "https://store.awana.org/product/tt-mission-discovery-of-grace-kids-handbook"
+  },
+  {
+    "id": "sparks-wingrunner-handbook",
+    "title": "Sparks Wing Runner",
+    "ageGroup": "Sparks",
+    "itemNumber": "MV-WingRnnerHandbookwCD",
+    "link": "https://store.awana.org/product/sparks-wingrunner-handbook"
+  }
+]
