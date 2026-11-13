@@ -1,13 +1,19 @@
 import { z } from "zod/v4";
-import { getBooks } from "../services/api-bible/index.ts";
+import { getAllBooks, getBookById } from "../services/awana-books.ts";
 import type { Request, Response } from "express";
 
-export default async function bookRouteHandler(
+export default async function awanaBookRouteHandler(
   request: Request,
   response: Response,
 ) {
   const schema = z.object({
-    awanaBookId: z.string().optional(),
+    awanaBookId: z
+      .enum([
+        "sparks-wingrunner-handbook",
+        "tt-mission-agents-of-grace-kids-handbook",
+        "tt-mission-discovery-of-grace-kids-handbook",
+      ])
+      .optional(),
     includeMemoryVerses: z.boolean().default(false),
   });
 
@@ -16,6 +22,9 @@ export default async function bookRouteHandler(
     ...request.body,
   });
 
-  const results = await getBooks(trustedBibleId, trustedParameters);
-  response.status(200).json(results);
+  const data = awanaBookId
+    ? getBookById(awanaBookId, { includeMemoryVerses })
+    : getAllBooks({ includeMemoryVerses });
+
+  response.status(200).json(data);
 }
