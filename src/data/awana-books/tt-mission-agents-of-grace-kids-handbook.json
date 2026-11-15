@@ -4,7 +4,7 @@
   "ageGroup": "T&T",
   "itemNumber": "MV-TT34AOGHndbk",
   "link": "https://store.awana.org/product/new-tt-mission-agents-of-grace-kids-handbook",
-  "memoryVerses": [
+  "verseList": [
     {
       "verseReference": "Titus 3:4-5",
       "section": "1.1"
@@ -38,7 +38,7 @@
       "section": "2.3"
     },
     {
-      "verseReference": "Psalm 12:16",
+      "verseReference": "Psalm 12:6",
       "section": "2.4"
     },
     {

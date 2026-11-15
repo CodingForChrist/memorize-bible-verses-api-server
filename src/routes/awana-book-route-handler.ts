@@ -14,17 +14,17 @@ export default async function awanaBookRouteHandler(
         "tt-mission-discovery-of-grace-kids-handbook",
       ])
       .optional(),
-    includeMemoryVerses: z.boolean().default(false),
+    includeVerses: z.boolean().default(false),
   });
 
-  const { awanaBookId, includeMemoryVerses } = schema.parse({
+  const { awanaBookId, includeVerses } = schema.parse({
     ...request.params,
     ...request.body,
   });
 
   const data = awanaBookId
-    ? getBookById(awanaBookId, { includeMemoryVerses })
-    : getAllBooks({ includeMemoryVerses });
+    ? getBookById(awanaBookId, { includeVerses })
+    : getAllBooks({ includeVerses });
 
   response.status(200).json(data);
 }

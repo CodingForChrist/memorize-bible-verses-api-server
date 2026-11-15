@@ -15,7 +15,7 @@ describe("Get Awana Books Endpoint", () => {
         "Application-User-Id": appUserId,
       },
       body: JSON.stringify({
-        includeMemoryVerses: false,
+        includeVerses: false,
       }),
     });
 
@@ -45,7 +45,7 @@ describe("Get Awana Books Endpoint", () => {
         "Application-User-Id": appUserId,
       },
       body: JSON.stringify({
-        includeMemoryVerses: true,
+        includeVerses: true,
       }),
     });
 
@@ -54,10 +54,10 @@ describe("Get Awana Books Endpoint", () => {
     assert.equal(response.status, 200);
     assert.equal(typeof body, "object");
 
-    const { id, memoryVerses } = body;
+    const { id, verseList } = body;
     assert.equal(id, bookId);
-    assert.ok(Array.isArray(memoryVerses));
-    assert.ok(memoryVerses.length > 10);
+    assert.ok(Array.isArray(verseList));
+    assert.ok(verseList.length > 10);
   });
 
   test("should error for an invalid awana book id", async () => {
