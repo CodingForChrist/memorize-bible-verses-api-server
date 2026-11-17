@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.22.0](https://github.com/CodingForChrist/memorize-bible-verses-api-server/compare/v1.21.1...v1.22.0) (2026-11-17)
+
+
+### Features
+
+* add api endpoint for awana books ([#237](https://github.com/CodingForChrist/memorize-bible-verses-api-server/issues/237)) ([9053aa5](https://github.com/CodingForChrist/memorize-bible-verses-api-server/commit/9053aa5936105a7ee58079a8d926be2368691a3a))
+
 ## [1.21.1](https://github.com/CodingForChrist/memorize-bible-verses-api-server/compare/v1.21.0...v1.21.1) (2026-11-06)
 
 
