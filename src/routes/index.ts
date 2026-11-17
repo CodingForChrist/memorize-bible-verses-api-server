@@ -8,6 +8,7 @@ import passageRouteHandler from "./passage-route-handler.ts";
 import searchRouteHandler from "./search-route-handler.ts";
 import verseOfTheDayRouteHandler from "./verse-of-the-day-route-handler.ts";
 import verseOfTheDayVerseListRouteHandler from "./verse-of-the-day-verse-list-route-handler.ts";
+import awanaBookRouteHandler from "./awana-book-route-handler.ts";
 
 import authorizationMiddleware from "../middleware/authorization-middleware.ts";
 
@@ -37,5 +38,6 @@ router.post(
   "/api/v1/verse-of-the-day/verse-list",
   verseOfTheDayVerseListRouteHandler,
 );
+router.post("/api/v1/awana-books{/:awanaBookId}", awanaBookRouteHandler);
 
 export default router;
