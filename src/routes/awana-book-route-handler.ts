@@ -9,7 +9,7 @@ export default async function awanaBookRouteHandler(
   const schema = z.object({
     awanaBookId: z
       .enum([
-        "sparks-wingrunner-handbook",
+        "sparks-hangglider-handbook",
         "tt-mission-agents-of-grace-kids-handbook",
         "tt-mission-discovery-of-grace-kids-handbook",
       ])

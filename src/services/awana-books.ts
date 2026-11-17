@@ -1,4 +1,4 @@
-import sparksWingRunnerHandbook from "../data/awana-books/sparks-wingrunner-handbook.json" with { type: "json" };
+import sparksHangGliderHandbook from "../data/awana-books/sparks-hangglider-handbook.json" with { type: "json" };
 import ttAgentsOfGraceKidsHandbook from "../data/awana-books/tt-mission-agents-of-grace-kids-handbook.json" with { type: "json" };
 import ttDiscoveryofGraceKidsHandbook from "../data/awana-books/tt-mission-discovery-of-grace-kids-handbook.json" with { type: "json" };
 
@@ -8,7 +8,7 @@ type BookOptions = {
 
 export function getAllBooks({ includeVerses }: BookOptions) {
   const allBooks = [
-    sparksWingRunnerHandbook,
+    sparksHangGliderHandbook,
     ttAgentsOfGraceKidsHandbook,
     ttDiscoveryofGraceKidsHandbook,
   ];

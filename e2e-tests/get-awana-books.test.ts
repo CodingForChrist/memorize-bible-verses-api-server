@@ -81,7 +81,7 @@ describe("Get Awana Books Endpoint", () => {
     assert.equal(error, "Bad Request");
     assert.match(
       errorDescription,
-      /✖ Invalid option: expected one of "sparks-wingrunner-handbook"|"tt-mission-agents-of-grace-kids-handbook"|"tt-mission-discovery-of-grace-kids-handbook"\n {2}→ at awanaBookId/,
+      /✖ Invalid option: expected one of "sparks-hangglider-handbook"\|"tt-mission-agents-of-grace-kids-handbook"\|"tt-mission-discovery-of-grace-kids-handbook"\n {2}→ at awanaBookId/,
     );
   });
 });

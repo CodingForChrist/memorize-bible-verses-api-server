@@ -32,7 +32,7 @@ Create an [API.Bible developer account](https://docs.api.bible/getting-started/s
    npm start
    ```
 
-## API Endpoints
+## API Bible Endpoints
 
 This server wraps the following API endpoints provided by API.Bible:
 
@@ -91,9 +91,13 @@ This server wraps the following API endpoints provided by API.Bible:
    --header "Application-User-Id: <YOUR_APP_USER_ID>"
    ```
 
+## Custom Endpoints
+
+This server also provides custom endpoints for returning verse collections.
+
 ### Verse of the Day Endpoints
 
-This server also provides an endpoint for returning the verse of the day using [this collection of verse references](./src/data/verse-of-the-day/verse-of-the-day-list-2026.json). For example, here's the verse of the day for January 1st using the World English Bible translation:
+The verse of the day endpoint returns a bible verse based on the date passed in. For example, here's the verse of the day for January 1st using the World English Bible translation:
 
 ```bash
 curl http://localhost:4000/api/v1/bibles/32664dc3288a28df-02/verse-of-the-day --request POST \
@@ -109,4 +113,15 @@ curl http://localhost:4000/api/v1/verse-of-the-day/verse-list --request POST \
 --data '{"year": "2026"}' \
 --header "Content-Type: application/json" \
 --header "Application-User-Id: <YOUR_APP_USER_ID>"
+```
+
+### Awana Books Endpoint
+
+The Awana books endpoint returns memory verses for the [Awana Club](https://clubs.awana.org/) books. For example, here are the memory verses for the [Agents of Grace book](https://store.awana.org/product/new-tt-mission-agents-of-grace-kids-handbook):
+
+```bash
+curl http://localhost:4000/api/v1/awana-books/tt-mission-agents-of-grace-kids-handbook --request POST \
+--data '{"includeVerses": true}' \
+--header "Content-Type: application/json" \
+--header "Application-User-Id: memorize_bible_verses_web_app"
 ```
